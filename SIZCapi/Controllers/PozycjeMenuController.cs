@@ -9,6 +9,8 @@ using SIZCapi.Models;
 
 namespace SIZCapi.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class PozycjeMenuController : ControllerBase
     {
         private readonly ISIZCRepozytorium _repozytorium;
