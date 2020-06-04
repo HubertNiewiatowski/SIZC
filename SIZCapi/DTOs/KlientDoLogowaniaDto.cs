@@ -1,9 +1,12 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace SIZCapi.DTOs
 {
     public class KlientDoLogowaniaDto
     {
+        [EmailAddress]
         public string AdresEmail { get; set; }
-        public byte[] HasloHash { get; set; }        
-        public byte[] HasloSalt { get; set; }
+        
+        public string Haslo { get; set; }
     }
 }
