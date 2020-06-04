@@ -24,7 +24,7 @@ namespace SIZCapi.Controllers
 
         // GET api/pozycjemenu
         [HttpGet]
-        public async Task<ActionResult> PobierzPozycjeMenuWszystkie()
+        public async Task<IActionResult> PobierzPozycjeMenuWszystkie()
         {
             var pozycjeMenu = await _repozytorium.PobierzPozycjeMenuWszystkie();
 
@@ -39,7 +39,7 @@ namespace SIZCapi.Controllers
 
         // GET api/pozycjemenu/{id}
         [HttpGet("{id}")]
-        public async Task<ActionResult> PobierzPozycjeMenuPoId(int id)
+        public async Task<IActionResult> PobierzPozycjeMenuPoId(int id)
         {
             var pozycjaMenu = await _repozytorium.PobierzPozycjeMenuPoId(id);
 
@@ -54,7 +54,7 @@ namespace SIZCapi.Controllers
 
         // POST api/pozycjemenu
         [HttpPost]
-        public async Task<ActionResult> DodajPozycjaMenu(DodajPozycjeMenuDto pozycjaDoDodania)
+        public async Task<IActionResult> DodajPozycjaMenu(DodajPozycjeMenuDto pozycjaDoDodania)
         {
             var pozycjaModel = _mapper.Map<PozycjaMenu>(pozycjaDoDodania);
 
@@ -66,7 +66,7 @@ namespace SIZCapi.Controllers
 
         // PUT api/pozycjemenu/{id}
         [HttpPut("{id}")]
-        public async Task<ActionResult> AktualizujPozycjeMenu(int id, DodajPozycjeMenuDto pozycjaDoAktualizacji)
+        public async Task<IActionResult> AktualizujPozycjeMenu(int id, DodajPozycjeMenuDto pozycjaDoAktualizacji)
         {
             var pozycjaModel = await _repozytorium.PobierzPozycjeMenuPoId(id);
 
@@ -84,7 +84,7 @@ namespace SIZCapi.Controllers
 
         // PATCH api/pozycjemenu/{id}
         [HttpPatch("{id}")]
-        public async Task<ActionResult> AktualizujCzesciowoPozycjeMenu(int id, JsonPatchDocument<DodajPozycjeMenuDto> dokumentAktualizacji)
+        public async Task<IActionResult> AktualizujCzesciowoPozycjeMenu(int id, JsonPatchDocument<DodajPozycjeMenuDto> dokumentAktualizacji)
         {
             var pozycjaModel = await _repozytorium.PobierzPozycjeMenuPoId(id);
 
@@ -111,7 +111,7 @@ namespace SIZCapi.Controllers
 
         // DELETE api/pozycjemenu/{id}
         [HttpDelete("{id}")]
-        public async Task<ActionResult> UsunPozycjeMenu(int id)
+        public async Task<IActionResult> UsunPozycjeMenu(int id)
         {
             var pozycjaModel = await _repozytorium.PobierzPozycjeMenuPoId(id);
 
