@@ -41,9 +41,11 @@ namespace SIZCapi
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
+            services.AddCors();
+
             services.AddScoped<ISIZCRepozytorium, SqlSIZCRepozytorium>();
 
-            services.AddCors();
+            services.AddScoped<IAutoryzacjaKlient, AutoryzacjaKlient>();    
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -58,7 +60,7 @@ namespace SIZCapi
 
             app.UseRouting();
 
-            app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+            app.UseCors(e => e.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
             app.UseAuthorization();
 

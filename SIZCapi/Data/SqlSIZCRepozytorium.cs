@@ -15,14 +15,14 @@ namespace SIZCapi.Data
             _kontekst = kontekst;
         }
 
-        public void DodajZasob<T>(T entity) where T : class
+        public void DodajZasob<T>(T encja) where T : class
         {
-            if (entity == null)
+            if (encja == null)
             {
-                throw new ArgumentNullException(nameof(entity));
+                throw new ArgumentNullException(nameof(encja));
             }
 
-            _kontekst.Add(entity);
+            _kontekst.Add(encja);
         }
 
         public async Task<PozycjaMenu> PobierzPozycjeMenuPoId(int id)
@@ -39,14 +39,14 @@ namespace SIZCapi.Data
             return pozycjeMenu;
         }
 
-        public void UsunZasob<T>(T entity) where T : class
+        public void UsunZasob<T>(T encja) where T : class
         {
-            if (entity == null)
+            if (encja == null)
             {
-                throw new ArgumentNullException(nameof(entity));
+                throw new ArgumentNullException(nameof(encja));
             }
 
-            _kontekst.Remove(entity);
+            _kontekst.Remove(encja);
         }
 
         public async Task<bool> ZapiszZasob()
