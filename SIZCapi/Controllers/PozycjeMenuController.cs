@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using SIZCapi.Data;
@@ -9,6 +10,7 @@ using SIZCapi.Models;
 
 namespace SIZCapi.Controllers
 {
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class PozycjeMenuController : ControllerBase
@@ -22,7 +24,7 @@ namespace SIZCapi.Controllers
             _mapper = mapper;
         }
 
-        // GET api/pozycjemenu
+        // GET http://localhost:5000/api/pozycjemenu
         [HttpGet]
         public async Task<IActionResult> PobierzPozycjeMenuWszystkie()
         {
@@ -36,8 +38,9 @@ namespace SIZCapi.Controllers
             }
             return NotFound();
         }
-
-        // GET api/pozycjemenu/{id}
+        
+        // GET http://localhost:5000/api/pozycjemenu/{id}
+        [AllowAnonymous]
         [HttpGet("{id}")]
         public async Task<IActionResult> PobierzPozycjeMenuPoId(int id)
         {
@@ -52,7 +55,7 @@ namespace SIZCapi.Controllers
             return NotFound();
         }
 
-        // POST api/pozycjemenu
+        // POST http://localhost:5000/api/pozycjemenu
         [HttpPost]
         public async Task<IActionResult> DodajPozycjaMenu(DodajPozycjeMenuDto pozycjaDoDodania)
         {
@@ -64,7 +67,7 @@ namespace SIZCapi.Controllers
             return Ok();
         }
 
-        // PUT api/pozycjemenu/{id}
+        // PUT http://localhost:5000/api/pozycjemenu/{id}
         [HttpPut("{id}")]
         public async Task<IActionResult> AktualizujPozycjeMenu(int id, DodajPozycjeMenuDto pozycjaDoAktualizacji)
         {
@@ -82,7 +85,7 @@ namespace SIZCapi.Controllers
             return NoContent();
         }
 
-        // PATCH api/pozycjemenu/{id}
+        // PATCH http://localhost:5000/api/pozycjemenu/{id}
         [HttpPatch("{id}")]
         public async Task<IActionResult> AktualizujCzesciowoPozycjeMenu(int id, JsonPatchDocument<DodajPozycjeMenuDto> dokumentAktualizacji)
         {
@@ -109,7 +112,7 @@ namespace SIZCapi.Controllers
             return NoContent();
         }
 
-        // DELETE api/pozycjemenu/{id}
+        // DELETE http://localhost:5000/api/pozycjemenu/{id}
         [HttpDelete("{id}")]
         public async Task<IActionResult> UsunPozycjeMenu(int id)
         {

@@ -28,6 +28,7 @@ namespace SIZCapi.Controllers
             _mapper = mapper;
         }
 
+        // POST api/AutoryzacjaKlient/zarejestruj
         [HttpPost("zarejestruj")]
         public async Task<IActionResult> Zarejestruj(KlientDoRejestracjiDto klientRejestracja)
         {
@@ -45,6 +46,7 @@ namespace SIZCapi.Controllers
             return NoContent();
         }
 
+        // POST /api/AutoryzacjaKlient/zaloguj
         [HttpPost("zaloguj")]
         public async Task<IActionResult> Zaloguj(KlientDoLogowaniaDto klientLogowanie)
         {

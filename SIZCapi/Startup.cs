@@ -14,6 +14,9 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using SIZCapi.Data;
 using Newtonsoft.Json.Serialization;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace SIZCapi
 {
@@ -45,7 +48,20 @@ namespace SIZCapi
 
             services.AddScoped<ISIZCRepozytorium, SqlSIZCRepozytorium>();
 
-            services.AddScoped<IAutoryzacjaKlient, AutoryzacjaKlient>();    
+            services.AddScoped<IAutoryzacjaKlient, AutoryzacjaKlient>();  
+
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(opcje => 
+                {
+                    opcje.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.Unicode
+                            .GetBytes(Configuration.GetSection("AppSettings:Token").Value)),
+                        ValidateIssuer = false,
+                        ValidateAudience = false
+                    };
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -61,6 +77,8 @@ namespace SIZCapi
             app.UseRouting();
 
             app.UseCors(e => e.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 
