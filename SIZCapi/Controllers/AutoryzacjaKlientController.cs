@@ -34,6 +34,8 @@ namespace SIZCapi.Controllers
         {
             klientRejestracja.AdresEmail = klientRejestracja.AdresEmail.ToLower();
 
+            klientRejestracja.DataRejestracji = DateTime.Now;
+
             if (await _repozytorium.CzyEmailIstnieje(klientRejestracja.AdresEmail))
             {
                 return BadRequest("Konto o tym adresie email jest już zajęte");

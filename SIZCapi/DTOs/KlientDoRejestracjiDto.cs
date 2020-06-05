@@ -35,7 +35,6 @@ namespace SIZCapi.DTOs
         [StringLength(50, MinimumLength = 6, ErrorMessage = "Hasło musi zawierać pomiędzy 6 a 50 znaków")]
         public string Haslo { get; set; }
 
-        [Required]
         public DateTime DataRejestracji { get; set; }
     }
 }

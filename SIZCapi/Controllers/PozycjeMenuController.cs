@@ -10,7 +10,7 @@ using SIZCapi.Models;
 
 namespace SIZCapi.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class PozycjeMenuController : ControllerBase
