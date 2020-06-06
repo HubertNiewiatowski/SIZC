@@ -8,17 +8,21 @@ import { map } from 'rxjs/operators';
 export class AutoryzacjaService {
   baseUrl = 'http://localhost:5000/api/AutoryzacjaKlient/';
 
-constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-zaloguj(klientLogowanie: any) {
-  return this.http.post(this.baseUrl + 'zaloguj', klientLogowanie)
-    .pipe(
-      map((response: any) => {
-        const klientModel = response;
-        if (klientModel) {
-          localStorage.setItem('token', klientModel.token);
+  zaloguj(klientLogowanie: any) {
+    return this.http.post(this.baseUrl + 'zaloguj', klientLogowanie)
+      .pipe(
+        map((response: any) => {
+          const klientModel = response;
+          if (klientModel) {
+            localStorage.setItem('token', klientModel.token);
         }
       })
     );
+  }
+
+  zarejestruj(klientRejestracja: any) {
+    return this.http.post(this.baseUrl + 'zarejestruj', klientRejestracja);
   }
 }

@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PanelBocznyComponent implements OnInit {
 
+  opened = true;
+
   constructor() { }
 
   ngOnInit() {
   }
+
+  toggleSidebar() {
+    this.opened = !this.opened;
+  }
+
+
 
 }

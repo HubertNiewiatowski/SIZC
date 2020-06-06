@@ -25,6 +25,7 @@ namespace SIZCapi.Controllers
         }
 
         // GET http://localhost:5000/api/pozycjemenu
+        [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> PobierzPozycjeMenuWszystkie()
         {
