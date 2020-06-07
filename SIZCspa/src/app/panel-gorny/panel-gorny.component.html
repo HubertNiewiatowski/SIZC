@@ -2,17 +2,16 @@
 
   <a class="navbar-brand h1 ml-4" href="#">Firma Cateringowa</a>
 
-  <a class="nav-link" (click)="wyloguj()">Wyloguj</a>
 
-  <div *ngIf="zalogowany()" class="dropdown show mr-4">
-    <a class="btn btn-secondary dropdown-toggle" role="button">
-      Klient
+  <div *ngIf="zalogowany()" class="dropdown show mr-4" dropdown>
+    <a class="btn btn-secondary dropdown-toggle text-light" dropdownToggle>
+      Zarządzaj kontem
     </a>
   
-    <div class="dropdown-menu">
+    <div class="dropdown-menu" *dropdownMenu>
       <a class="dropdown-item" href="#"><i class="fa fa-user"></i>Twoje dane</a>
       <div class="dropdown-divider"></div>
-      <a class="dropdown-item" href="#"><i class="fa fa-sign-out"></i>Wyloguj</a>
+      <a class="dropdown-item" (click)="wyloguj()"><i class="fa fa-sign-out"></i>Wyloguj</a>
     </div>
   </div>
 

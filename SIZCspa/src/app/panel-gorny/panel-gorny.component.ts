@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AutoryzacjaService } from '../_serwisy/autoryzacja.service';
+import { AlertService } from 'ngx-alerts';
 
 @Component({
   selector: 'app-panel-gorny',
@@ -9,26 +10,25 @@ import { AutoryzacjaService } from '../_serwisy/autoryzacja.service';
 export class PanelGornyComponent implements OnInit {
   klient: any = {};
 
-  constructor(private autoryzacja: AutoryzacjaService) { }
+  constructor(public autoryzacja: AutoryzacjaService, private alertService: AlertService) { }
 
   ngOnInit() {
   }
 
   zaloguj() {
     this.autoryzacja.zaloguj(this.klient).subscribe(next => {
-      console.log('Zalogowano pomyślnie');
+      this.alertService.success('Zalogowano pomyślnie');
     }, error => {
-      console.log('Nie udało się zalogować');
+      this.alertService.warning('Nie udało się zalogować');
     });
   }
 
   wyloguj() {
     localStorage.removeItem('token');
-    console.log('Nastąpiło wylogowanie');
+    this.alertService.info('Nastąpiło wylogowanie');
   }
 
   zalogowany() {
-    const token = localStorage.getItem('token');
-    return !!token;
+    return this.autoryzacja.zalogowany();
   }
 }

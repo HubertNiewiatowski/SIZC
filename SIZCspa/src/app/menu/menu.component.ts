@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { AlertService } from 'ngx-alerts';
 
 @Component({
   selector: 'app-menu',
@@ -10,7 +11,7 @@ export class MenuComponent implements OnInit {
 
   pozycjeMenu: any;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private alertService: AlertService) { }
 
   ngOnInit() {
     this.pobierzWartosci();
@@ -22,7 +23,7 @@ export class MenuComponent implements OnInit {
       this.pozycjeMenu = odpowiedz;
     }, blad =>
     {
-      console.log(blad);
+      this.alertService.danger('Błąd przy pobieraniu menu');
     });
   }
 }

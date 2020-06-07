@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using SIZCapi.Models;
@@ -37,6 +38,13 @@ namespace SIZCapi.Data
             var pozycjeMenu = await _kontekst.PozycjaMenu.ToListAsync();
 
             return pozycjeMenu;
+        }
+
+        public async Task<IEnumerable<Zamowienie>> PobierzZamowieniaKlienta(int id)
+        {
+            var zamowienia = await _kontekst.Zamowienie.Where(e => e.KlientID == id).ToListAsync();
+
+            return zamowienia;
         }
 
         public void UsunZasob<T>(T encja) where T : class

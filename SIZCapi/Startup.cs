@@ -48,7 +48,9 @@ namespace SIZCapi
 
             services.AddScoped<ISIZCRepozytorium, SqlSIZCRepozytorium>();
 
-            services.AddScoped<IAutoryzacjaKlient, AutoryzacjaKlient>();  
+            services.AddScoped<IAutoryzacjaKlient, AutoryzacjaKlient>();
+
+            services.AddScoped<IAutoryzacjaPracownik, AutoryzacjaPracownik>();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(opcje => 
@@ -70,6 +72,10 @@ namespace SIZCapi
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                app.UseExceptionHandler();
             }
 
             // app.UseHttpsRedirection();
