@@ -1,3 +1,8 @@
-<p>
-  zamowienia works!
-</p>
+<div class="container mt-5" style="text-align: center">
+  <p *ngFor="let zamowienie of zamowienia">
+    {{zamowienie.zamowienieID}}, {{zamowienie.koszt}}, {{zamowienie.kodPocztowy}}, {{zamowienie.miejscowosc}}, 
+    {{zamowienie.ulica}}, {{zamowienie.nrBudynek}}, {{zamowienie.nrMieszkanie}}, {{zamowienie.dataRealizacji}},
+    {{zamowienie.dataZlozenia}}, {{zamowienie.pozycjaMenuID}}, {{zamowienie.klientID}}, {{zamowienie.pracownikID}},
+    {{zamowienie.platnoscTypID}}, {{zamowienie.zamowienieStatusID}}
+  </p>
+</div>

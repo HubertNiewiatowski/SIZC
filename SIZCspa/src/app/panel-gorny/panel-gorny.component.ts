@@ -8,19 +8,14 @@ import { AlertService } from 'ngx-alerts';
   styleUrls: ['./panel-gorny.component.css']
 })
 export class PanelGornyComponent implements OnInit {
-  klient: any = {};
 
   constructor(public autoryzacja: AutoryzacjaService, private alertService: AlertService) { }
 
   ngOnInit() {
   }
 
-  zaloguj() {
-    this.autoryzacja.zaloguj(this.klient).subscribe(next => {
-      this.alertService.success('Zalogowano pomyślnie');
-    }, error => {
-      this.alertService.warning('Nie udało się zalogować');
-    });
+  zalogowany() {
+    return this.autoryzacja.zalogowany();
   }
 
   wyloguj() {
@@ -28,7 +23,4 @@ export class PanelGornyComponent implements OnInit {
     this.alertService.info('Nastąpiło wylogowanie');
   }
 
-  zalogowany() {
-    return this.autoryzacja.zalogowany();
-  }
 }

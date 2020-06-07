@@ -5,13 +5,13 @@
     <p>Sidebar Contents</p>
     <button (click)="toggleSidebar()">Close Sidebar</button>
     <ul class="menu">
-      <li><a href="">
+      <li><a [routerLink]="['/stronaGlowna']" routerLinkActive="router-link-active" >
         <i class="fa fa-home"></i>
         Strona główna</a></li>
-      <li><a href="">
+      <li><a [routerLink]="['/zamowienia']" routerLinkActive="router-link-active" >
         <i class="fa fa-list"></i>
         Zamówienia</a></li>
-      <li><a href="">
+      <li><a [routerLink]="['/menu']" routerLinkActive="router-link-active" >
         <i class="fa fa-shopping-cart"></i>
         Menu</a></li>
     </ul>
@@ -20,8 +20,7 @@
   <div ng-sidebar-content>
     <!-- Page content -->
     <button (click)="toggleSidebar()">Open Sidebar</button>
-    <app-strona-glowna></app-strona-glowna>
-    <app-menu></app-menu>
+    <router-outlet></router-outlet>
   </div>
 
 </ng-sidebar-container>

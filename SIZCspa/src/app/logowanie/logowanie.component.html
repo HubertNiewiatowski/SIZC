@@ -1,0 +1,13 @@
+<div>
+  <form *ngIf="!zalogowany()" #formularzLogowania="ngForm" class="form-inline" (ngSubmit)="zaloguj()">
+
+    <input class="form-control form-control-dark mr-2" type="text" name="adresEmail"
+      placeholder="Adres email" required [(ngModel)]="klient.adresEmail">
+  
+    <input class="form-control form-control-dark mr-2" type="password" name="haslo"
+      placeholder="Hasło" required [(ngModel)]="klient.haslo">
+  
+    <button [disabled]="!formularzLogowania.valid" class="btn btn-success mr-4" type="submit">Zaloguj</button>
+  
+  </form>
+</div>

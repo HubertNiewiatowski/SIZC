@@ -6,6 +6,7 @@ import { SidebarModule } from 'ng-sidebar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AlertModule } from 'ngx-alerts';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
@@ -15,6 +16,9 @@ import { AutoryzacjaService } from './_serwisy/autoryzacja.service';
 import { StronaGlownaComponent } from './strona-glowna/strona-glowna.component';
 import { RejestracjaComponent } from './rejestracja/rejestracja.component';
 import { ZamowieniaComponent } from './zamowienia/zamowienia.component';
+import { LogowanieComponent } from './logowanie/logowanie.component';
+import { appRoutes } from './routes';
+import { KlientComponent } from './klient/klient.component';
 
 @NgModule({
    declarations: [
@@ -24,7 +28,9 @@ import { ZamowieniaComponent } from './zamowienia/zamowienia.component';
       PanelBocznyComponent,
       StronaGlownaComponent,
       RejestracjaComponent,
-      ZamowieniaComponent
+      ZamowieniaComponent,
+      LogowanieComponent,
+      KlientComponent
    ],
    imports: [
       BrowserModule,
@@ -33,7 +39,8 @@ import { ZamowieniaComponent } from './zamowienia/zamowienia.component';
       SidebarModule.forRoot(),
       BrowserAnimationsModule,
       AlertModule.forRoot({maxMessages: 5, timeout: 2000, position: 'right'}),
-      BsDropdownModule.forRoot()
+      BsDropdownModule.forRoot(),
+      RouterModule.forRoot(appRoutes)
    ],
    providers: [
       AutoryzacjaService

@@ -9,22 +9,12 @@
     </a>
   
     <div class="dropdown-menu" *dropdownMenu>
-      <a class="dropdown-item" href="#"><i class="fa fa-user"></i>Twoje dane</a>
+      <a class="dropdown-item" [routerLink]="['/routePath']" routerLinkActive="router-link-active">
+        <i class="fa fa-user"></i>Twoje dane</a>
       <div class="dropdown-divider"></div>
-      <a class="dropdown-item" (click)="wyloguj()"><i class="fa fa-sign-out"></i>Wyloguj</a>
+      <a class="dropdown-item" (click)="wyloguj()">
+        <i class="fa fa-sign-out"></i>Wyloguj</a>
     </div>
   </div>
-
-  <form *ngIf="!zalogowany()" #formularzLogowania="ngForm" class="form-inline" (ngSubmit)="zaloguj()">
-
-    <input class="form-control form-control-dark mr-2" type="text" name="adresEmail"
-      placeholder="Adres email" required [(ngModel)]="klient.adresEmail">
-
-    <input class="form-control form-control-dark mr-2" type="password" name="haslo"
-      placeholder="Hasło" required [(ngModel)]="klient.haslo">
-  
-    <button [disabled]="!formularzLogowania.valid" class="btn btn-success mr-4" type="submit">Zaloguj</button>
-  
-  </form>
 
 </nav>

@@ -6,19 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./strona-glowna.component.css']
 })
 export class StronaGlownaComponent implements OnInit {
-  trybRejestracji = false;
 
   constructor() { }
 
   ngOnInit() {
-  }
-
-  przelacznikRejestracja() {
-    this.trybRejestracji = true;
-  }
-
-  wylaczTrybRejestracji(trybRejestracji: boolean) {
-    this.trybRejestracji = trybRejestracji;
   }
 
 }
