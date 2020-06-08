@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SIZCapi.DTOs
 {
-    public class DodajPozycjeMenuDto
+    public class DodajPozycjaMenuDto
     {
         [Required]
         public string NazwaPozycja { get; set; }

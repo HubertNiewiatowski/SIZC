@@ -25,24 +25,10 @@ namespace SIZCapi.DTOs
         
         public DateTime DataZlozenia { get; set; }
 
-        public int PozycjaMenuID { get; set; }
-
-        public int KlientID { get; set; }        
-
-        public int PracownikID { get; set; }        
-
-        public int PlatnoscTypID { get; set; }
-
-        public int ZamowienieStatusID { get; set; }
-
         public virtual DlaZamowieniePozycjaMenuDto PozycjaMenu { get; set; }
 
         public virtual DlaZamowieniePlatnoscTypDto PlatnoscTyp { get; set; }
 
         public virtual DlaZamowienieZamowienieStatusDto ZamowienieStatus { get; set; }
-
-
-
-
     }
 }

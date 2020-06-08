@@ -31,7 +31,7 @@ namespace SIZCapi.Controllers
         {
             var pozycjeMenu = await _repozytorium.PobierzPozycjeMenuWszystkie();
 
-            var pozycjeMenuDoPobrania = _mapper.Map<IEnumerable<PobierzPozycjeMenuDto>>(pozycjeMenu);
+            var pozycjeMenuDoPobrania = _mapper.Map<IEnumerable<PobierzPozycjaMenuDto>>(pozycjeMenu);
 
             if (pozycjeMenu != null)
             {
@@ -47,7 +47,7 @@ namespace SIZCapi.Controllers
         {
             var pozycjaMenu = await _repozytorium.PobierzPozycjeMenuPoId(id);
 
-            var pozycjaMenuDoPobrania = _mapper.Map<PobierzPozycjeMenuDto>(pozycjaMenu);
+            var pozycjaMenuDoPobrania = _mapper.Map<PobierzPozycjaMenuDto>(pozycjaMenu);
 
             if (pozycjaMenu != null)
             {
@@ -58,7 +58,7 @@ namespace SIZCapi.Controllers
 
         // POST http://localhost:5000/api/pozycjemenu
         [HttpPost]
-        public async Task<IActionResult> DodajPozycjaMenu(DodajPozycjeMenuDto pozycjaDoDodania)
+        public async Task<IActionResult> DodajPozycjaMenu(DodajPozycjaMenuDto pozycjaDoDodania)
         {
             var pozycjaModel = _mapper.Map<PozycjaMenu>(pozycjaDoDodania);
 
@@ -70,7 +70,7 @@ namespace SIZCapi.Controllers
 
         // PUT http://localhost:5000/api/pozycjemenu/{id}
         [HttpPut("{id}")]
-        public async Task<IActionResult> AktualizujPozycjeMenu(int id, DodajPozycjeMenuDto pozycjaDoAktualizacji)
+        public async Task<IActionResult> AktualizujPozycjeMenu(int id, DodajPozycjaMenuDto pozycjaDoAktualizacji)
         {
             var pozycjaModel = await _repozytorium.PobierzPozycjeMenuPoId(id);
 
@@ -88,7 +88,7 @@ namespace SIZCapi.Controllers
 
         // PATCH http://localhost:5000/api/pozycjemenu/{id}
         [HttpPatch("{id}")]
-        public async Task<IActionResult> AktualizujCzesciowoPozycjeMenu(int id, JsonPatchDocument<DodajPozycjeMenuDto> dokumentAktualizacji)
+        public async Task<IActionResult> AktualizujCzesciowoPozycjeMenu(int id, JsonPatchDocument<DodajPozycjaMenuDto> dokumentAktualizacji)
         {
             var pozycjaModel = await _repozytorium.PobierzPozycjeMenuPoId(id);
 
@@ -97,7 +97,7 @@ namespace SIZCapi.Controllers
                 return NotFound();
             }
 
-            var pozycjaDoAktualizacji = _mapper.Map<DodajPozycjeMenuDto>(pozycjaModel);
+            var pozycjaDoAktualizacji = _mapper.Map<DodajPozycjaMenuDto>(pozycjaModel);
 
             dokumentAktualizacji.ApplyTo(pozycjaDoAktualizacji, ModelState);
 

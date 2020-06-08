@@ -8,7 +8,7 @@ namespace SIZCapi.Profiles
     {
         public SkladnikiProfile()
         {
-            CreateMap<Skladnik, PobierzSkladnikiDto>();
+            CreateMap<Skladnik, DlaPozycjaMenuSkladnikDto>();
         }
         
     }

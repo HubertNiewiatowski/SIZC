@@ -1,6 +1,6 @@
 namespace SIZCapi.DTOs
 {
-    public class PobierzSkladnikiDto
+    public class DlaPozycjaMenuSkladnikDto
     {
         public int SkladnikID { get; set; }
 

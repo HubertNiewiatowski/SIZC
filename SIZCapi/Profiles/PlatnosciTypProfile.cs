@@ -4,9 +4,9 @@ using SIZCapi.Models;
 
 namespace SIZCapi.Profiles
 {
-    public class PlatnoscTypProfile : Profile
+    public class PlatnosciTypProfile : Profile
     {
-        public PlatnoscTypProfile()
+        public PlatnosciTypProfile()
         {
             CreateMap<PlatnoscTyp, DlaZamowieniePlatnoscTypDto>();
         }    

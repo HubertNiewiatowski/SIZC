@@ -4,7 +4,7 @@ using SIZCapi.Models;
 
 namespace SIZCapi.DTOs
 {
-    public class PobierzPozycjeMenuDto
+    public class PobierzPozycjaMenuDto
     {
         [Required]
         public int PozycjaMenuID { get; set; }
@@ -17,6 +17,6 @@ namespace SIZCapi.DTOs
         
         public string ObrazekUrl { get; set; }
 
-        public virtual ICollection<PobierzSkladnikiDto> Skladnik { get; set; }
+        public virtual ICollection<DlaPozycjaMenuSkladnikDto> Skladnik { get; set; }
     }
 }
