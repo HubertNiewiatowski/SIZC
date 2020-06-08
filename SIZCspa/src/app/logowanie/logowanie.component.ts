@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AutoryzacjaService } from '../_serwisy/autoryzacja.service';
 import { AlertService } from 'ngx-alerts';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-logowanie',
@@ -10,7 +11,7 @@ import { AlertService } from 'ngx-alerts';
 export class LogowanieComponent implements OnInit {
   klient: any = {};
 
-  constructor(public autoryzacja: AutoryzacjaService, private alertService: AlertService) { }
+  constructor(public autoryzacja: AutoryzacjaService, private alertService: AlertService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -20,16 +21,8 @@ export class LogowanieComponent implements OnInit {
       this.alertService.success('Zalogowano pomyślnie');
     }, error => {
       this.alertService.warning('Nie udało się zalogować');
+    }, () => {
+      this.router.navigate(['/menu']);
     });
   }
-
-  wyloguj() {
-    localStorage.removeItem('token');
-    this.alertService.info('Nastąpiło wylogowanie');
-  }
-
-  zalogowany() {
-    return this.autoryzacja.zalogowany();
-  }
-
 }

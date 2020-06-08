@@ -1,5 +1,5 @@
 <div>
-  <form *ngIf="!zalogowany()" #formularzLogowania="ngForm" class="form-inline" (ngSubmit)="zaloguj()">
+  <form #formularzLogowania="ngForm" class="form-inline" (ngSubmit)="zaloguj()">
 
     <input class="form-control form-control-dark mr-2" type="text" name="adresEmail"
       placeholder="Adres email" required [(ngModel)]="klient.adresEmail">

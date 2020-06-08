@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using SIZCapi.Models;
 
 namespace SIZCapi.DTOs
 {
@@ -33,5 +34,15 @@ namespace SIZCapi.DTOs
         public int PlatnoscTypID { get; set; }
 
         public int ZamowienieStatusID { get; set; }
+
+        public virtual DlaZamowieniePozycjaMenuDto PozycjaMenu { get; set; }
+
+        public virtual DlaZamowieniePlatnoscTypDto PlatnoscTyp { get; set; }
+
+        public virtual DlaZamowienieZamowienieStatusDto ZamowienieStatus { get; set; }
+
+
+
+
     }
 }

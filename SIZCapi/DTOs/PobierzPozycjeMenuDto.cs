@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using SIZCapi.Models;
 
 namespace SIZCapi.DTOs
 {
@@ -14,5 +16,7 @@ namespace SIZCapi.DTOs
         public string Opis { get; set; }
         
         public string ObrazekUrl { get; set; }
+
+        public virtual ICollection<PobierzSkladnikiDto> Skladnik { get; set; }
     }
 }

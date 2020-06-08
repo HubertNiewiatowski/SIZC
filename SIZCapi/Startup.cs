@@ -35,10 +35,13 @@ namespace SIZCapi
             services.AddDbContext<SIZCKontekst>(opcje => opcje.UseSqlServer
                 (Configuration.GetConnectionString("SIZCConnection")));
 
-            services.AddControllers().AddNewtonsoftJson(e => 
+            services.AddControllers().AddNewtonsoftJson(opcje => 
                 {
-                    e.SerializerSettings.ContractResolver = 
+                    opcje.SerializerSettings.ContractResolver = 
                     new CamelCasePropertyNamesContractResolver();
+                    
+                    opcje.SerializerSettings.ReferenceLoopHandling =
+                    Newtonsoft.Json.ReferenceLoopHandling.Ignore;
                 }
             );
 

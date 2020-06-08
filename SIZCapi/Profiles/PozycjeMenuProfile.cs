@@ -13,6 +13,8 @@ namespace SIZCapi.Profiles
             CreateMap<DodajPozycjeMenuDto, PozycjaMenu>();
 
             CreateMap<PozycjaMenu, DodajPozycjeMenuDto>();
+
+            CreateMap<PozycjaMenu, DlaZamowieniePozycjaMenuDto>();
         }
     }
 }

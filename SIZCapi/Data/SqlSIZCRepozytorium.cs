@@ -28,21 +28,28 @@ namespace SIZCapi.Data
 
         public async Task<PozycjaMenu> PobierzPozycjeMenuPoId(int id)
         {
-            var pozycjaMenu = await _kontekst.PozycjaMenu.FirstOrDefaultAsync(e => e.PozycjaMenuID == id);
+            var pozycjaMenu = await _kontekst.PozycjaMenu.Include(e => e.Skladnik).FirstOrDefaultAsync(e => e.PozycjaMenuID == id);
 
             return pozycjaMenu;
         }
 
         public async Task<IEnumerable<PozycjaMenu>> PobierzPozycjeMenuWszystkie()
         {
-            var pozycjeMenu = await _kontekst.PozycjaMenu.ToListAsync();
+            var pozycjeMenu = await _kontekst.PozycjaMenu.Include(e => e.Skladnik).ToListAsync();
 
             return pozycjeMenu;
         }
 
         public async Task<IEnumerable<Zamowienie>> PobierzZamowieniaKlienta(int id)
         {
-            var zamowienia = await _kontekst.Zamowienie.Where(e => e.KlientID == id).ToListAsync();
+            var zamowienia = await _kontekst.Zamowienie.Include(e => e.PozycjaMenu).Include(e => e.PlatnoscTyp).Include(e => e.ZamowienieStatus).Where(e => e.KlientID == id).ToListAsync();
+
+            return zamowienia;
+        }
+
+        public async Task<IEnumerable<Zamowienie>> PobierzZamowieniaWszystkie()
+        {
+            var zamowienia = await _kontekst.Zamowienie.ToListAsync();
 
             return zamowienia;
         }

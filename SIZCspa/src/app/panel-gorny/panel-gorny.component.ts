@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AutoryzacjaService } from '../_serwisy/autoryzacja.service';
 import { AlertService } from 'ngx-alerts';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-panel-gorny',
@@ -9,7 +10,7 @@ import { AlertService } from 'ngx-alerts';
 })
 export class PanelGornyComponent implements OnInit {
 
-  constructor(public autoryzacja: AutoryzacjaService, private alertService: AlertService) { }
+  constructor(public autoryzacja: AutoryzacjaService, private alertService: AlertService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -21,6 +22,7 @@ export class PanelGornyComponent implements OnInit {
   wyloguj() {
     localStorage.removeItem('token');
     this.alertService.info('Nastąpiło wylogowanie');
+    this.router.navigate(['/stronaGlowna']);
   }
 
 }

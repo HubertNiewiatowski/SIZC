@@ -5,13 +5,14 @@ import { LogowanieComponent } from './logowanie/logowanie.component';
 import { MenuComponent } from './menu/menu.component';
 import { ZamowieniaComponent } from './zamowienia/zamowienia.component';
 import { KlientComponent } from './klient/klient.component';
+import { AutoryzacjaGuard } from './_guards/autoryzacja.guard';
 
 export const appRoutes: Routes = [
     { path: 'stronaGlowna', component: StronaGlownaComponent },
     { path: 'rejestracja', component: RejestracjaComponent },
     { path: 'logowanie', component: LogowanieComponent },
     { path: 'menu', component: MenuComponent },
-    { path: 'zamowienia', component: ZamowieniaComponent },
-    { path: 'klient', component: KlientComponent },
+    { path: 'zamowienia', component: ZamowieniaComponent, canActivate: [AutoryzacjaGuard] },
+    { path: 'klient', component: KlientComponent, canActivate: [AutoryzacjaGuard] },
     { path: '**', redirectTo: 'stronaGlowna', pathMatch: 'full' }
 ];
