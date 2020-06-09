@@ -20,6 +20,7 @@ import { LogowanieComponent } from './logowanie/logowanie.component';
 import { appRoutes } from './routes';
 import { KlientComponent } from './klient/klient.component';
 import { MenuKartaComponent } from './menu-karta/menu-karta.component';
+import { ZamowieniaKartaComponent } from './zamowienia-karta/zamowienia-karta.component';
 
 @NgModule({
    declarations: [
@@ -32,7 +33,8 @@ import { MenuKartaComponent } from './menu-karta/menu-karta.component';
       ZamowieniaComponent,
       LogowanieComponent,
       KlientComponent,
-      MenuKartaComponent
+      MenuKartaComponent,
+      ZamowieniaKartaComponent
    ],
    imports: [
       BrowserModule,

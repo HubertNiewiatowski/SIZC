@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div *ngFor="let pozycja of pozycjeMenu" class="col-lg-2">
+    <div *ngFor="let pozycja of pozycjeMenu" class="col-sm-4 offset-sm-4 col-md-4 offset-md-4 col-lg-4 offset-lg-4">
       <app-menu-karta [pozycjaMenu]="pozycja" [skladniki]="pozycja.skladnik"></app-menu-karta>
     </div>
   </div>

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AlertService } from 'ngx-alerts';
+import { Zamowienie } from '../_models/zamowienie';
+import { ZamowieniaService } from '../_serwisy/zamowienia.service';
+import { AutoryzacjaService } from '../_serwisy/autoryzacja.service';
 
 @Component({
   selector: 'app-zamowienia',
@@ -8,23 +11,22 @@ import { AlertService } from 'ngx-alerts';
   styleUrls: ['./zamowienia.component.css']
 })
 export class ZamowieniaComponent implements OnInit {
+  zamowienia: Zamowienie[];
+  nameId: any;
 
-  zamowienia: any;
-
-
-  constructor(private http: HttpClient, private alertService: AlertService) { }
+  constructor(private http: HttpClient, private alertService: AlertService,
+              private zamowieniaService: ZamowieniaService, private autoryzacja: AutoryzacjaService) { }
 
   ngOnInit() {
-    this.pobierzWartosci();
+    this.nameId = this.autoryzacja.decodedToken.nameid;
+    this.pobierzZamowienia();
   }
 
-  pobierzWartosci() {
-    this.http.get('http://localhost:5000/api/zamowienia/klient/1').subscribe(odpowiedz =>
-    {
-      this.zamowienia = odpowiedz;
-    }, blad =>
-    {
-      this.alertService.danger('Błąd przy pobieraniu menu');
+  pobierzZamowienia() {
+    this.zamowieniaService.pobierzZamowienia(this.nameId).subscribe((zamowienia: Zamowienie[]) => {
+      this.zamowienia = zamowienia;
+    }, error => {
+      this.alertService.danger('Błąd przy pobieraniu zamowień');
     });
   }
 

@@ -1,8 +1,8 @@
-<div class="container mt-5" style="text-align: center">
-  <p *ngFor="let zamowienie of zamowienia">
-    {{zamowienie.zamowienieID}}, {{zamowienie.koszt}}, {{zamowienie.kodPocztowy}}, {{zamowienie.miejscowosc}}, 
-    {{zamowienie.ulica}}, {{zamowienie.nrBudynek}}, {{zamowienie.nrMieszkanie}}, {{zamowienie.dataRealizacji}},
-    {{zamowienie.dataZlozenia}}, {{zamowienie.pozycjaMenuID}}, {{zamowienie.klientID}}, {{zamowienie.pracownikID}},
-    {{zamowienie.platnoscTypID}}, {{zamowienie.zamowienieStatusID}}
-  </p>
+<div class="container">
+  <div class="row">
+    <div *ngFor="let zamowienie of zamowienia" class="col-sm-4 offset-sm-4 col-md-4 offset-md-4 col-lg-4 offset-lg-4">
+      <app-zamowienia-karta [zamowienie]="zamowienie" [pozycjaMenu]="zamowienie.pozycjaMenu" 
+        [platnoscTyp]="zamowienie.platnoscTyp" [zamowienieStatus]="zamowienie.zamowienieStatus"></app-zamowienia-karta>
+    </div>
+  </div>
 </div>
