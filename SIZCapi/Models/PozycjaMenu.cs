@@ -17,10 +17,10 @@ namespace SIZCapi.Models
 
         public string ObrazekUrl { get; set; }
 
-        //relacja Zamowienie
+        // relacja Zamowienie
         public virtual ICollection<Zamowienie> Zamowienie { get; set; }
 
-        //relacja Skladnik
+        // relacja Skladnik
         public virtual ICollection<Skladnik> Skladnik { get; set; }
     }
 }

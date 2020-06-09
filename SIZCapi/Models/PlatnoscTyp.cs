@@ -10,7 +10,7 @@ namespace SIZCapi.Models
         [Column(TypeName = "nvarchar(50)")]
         public string NazwaPlatnosc { get; set; }
 
-        //relacja Zamowienie
+        // relacja Zamowienie
         public virtual ICollection<Zamowienie> Zamowienie { get; set; }
     }
 }

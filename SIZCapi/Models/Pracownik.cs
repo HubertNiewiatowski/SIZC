@@ -14,10 +14,10 @@ namespace SIZCapi.Models
 
         public byte[] HasloSalt { get; set; }
 
-        //relacja Zamowienie
+        // relacja Zamowienie
         public virtual ICollection<Zamowienie> Zamowienie { get; set; }
 
-        //relacja PracownikRola
+        // relacja PracownikRola
         public int PracownikRolaID { get; set; }
         public virtual PracownikRola PracownikRola { get; set; }
     }

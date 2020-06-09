@@ -10,8 +10,8 @@ using SIZCapi.Data;
 namespace SIZCapi.Migrations
 {
     [DbContext(typeof(SIZCKontekst))]
-    [Migration("20200603132737_InicjalizacjaDB")]
-    partial class InicjalizacjaDB
+    [Migration("20200609132813_InicjializacjaDB")]
+    partial class InicjializacjaDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -34,6 +34,28 @@ namespace SIZCapi.Migrations
                     b.HasKey("AlergenID");
 
                     b.ToTable("Alergen");
+                });
+
+            modelBuilder.Entity("SIZCapi.Models.InformacjaAlergen", b =>
+                {
+                    b.Property<int>("InformacjaAlergenID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("AlergenID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SkladnikID")
+                        .HasColumnType("int");
+
+                    b.HasKey("InformacjaAlergenID");
+
+                    b.HasIndex("AlergenID");
+
+                    b.HasIndex("SkladnikID");
+
+                    b.ToTable("InformacjaAlergen");
                 });
 
             modelBuilder.Entity("SIZCapi.Models.Klient", b =>
@@ -174,9 +196,6 @@ namespace SIZCapi.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("AlergenID")
-                        .HasColumnType("int");
-
                     b.Property<bool>("CzyWeganski")
                         .HasColumnType("bit");
 
@@ -186,27 +205,35 @@ namespace SIZCapi.Migrations
                     b.Property<float>("MasaSkladnik")
                         .HasColumnType("real");
 
-                    b.Property<float>("MasaWartoscOdzywcza")
-                        .HasColumnType("real");
-
                     b.Property<string>("NazwaSkladnik")
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<int>("PozycjaMenuID")
                         .HasColumnType("int");
 
-                    b.Property<int>("WartoscOdzywczaID")
-                        .HasColumnType("int");
-
                     b.HasKey("SkladnikID");
-
-                    b.HasIndex("AlergenID");
 
                     b.HasIndex("PozycjaMenuID");
 
-                    b.HasIndex("WartoscOdzywczaID");
-
                     b.ToTable("Skladnik");
+                });
+
+            modelBuilder.Entity("SIZCapi.Models.SkladnikOdzywczy", b =>
+                {
+                    b.Property<int>("SkladnikOdzywczyID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<float>("Kalorycznosc")
+                        .HasColumnType("real");
+
+                    b.Property<string>("NazwaSkladnik")
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("SkladnikOdzywczyID");
+
+                    b.ToTable("SkladnikOdzywczy");
                 });
 
             modelBuilder.Entity("SIZCapi.Models.WartoscOdzywcza", b =>
@@ -216,13 +243,20 @@ namespace SIZCapi.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<float>("Kalorycznosc")
+                    b.Property<int>("SkladnikID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SkladnikOdzywczyID")
+                        .HasColumnType("int");
+
+                    b.Property<float>("ZawartoscSkladnikOdzywczy")
                         .HasColumnType("real");
 
-                    b.Property<string>("NazwaWartoscOdzywcza")
-                        .HasColumnType("nvarchar(50)");
-
                     b.HasKey("WartoscOdzywczaID");
+
+                    b.HasIndex("SkladnikID");
+
+                    b.HasIndex("SkladnikOdzywczyID");
 
                     b.ToTable("WartoscOdzywcza");
                 });
@@ -303,6 +337,21 @@ namespace SIZCapi.Migrations
                     b.ToTable("ZamowienieStatus");
                 });
 
+            modelBuilder.Entity("SIZCapi.Models.InformacjaAlergen", b =>
+                {
+                    b.HasOne("SIZCapi.Models.Alergen", "Alergen")
+                        .WithMany("InformacjaAlergen")
+                        .HasForeignKey("AlergenID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SIZCapi.Models.Skladnik", "Skladnik")
+                        .WithMany("InformacjaAlergen")
+                        .HasForeignKey("SkladnikID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("SIZCapi.Models.Pracownik", b =>
                 {
                     b.HasOne("SIZCapi.Models.PracownikRola", "PracownikRola")
@@ -314,21 +363,24 @@ namespace SIZCapi.Migrations
 
             modelBuilder.Entity("SIZCapi.Models.Skladnik", b =>
                 {
-                    b.HasOne("SIZCapi.Models.Alergen", "Alergen")
-                        .WithMany("Skladnik")
-                        .HasForeignKey("AlergenID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("SIZCapi.Models.PozycjaMenu", "PozycjaMenu")
                         .WithMany("Skladnik")
                         .HasForeignKey("PozycjaMenuID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
 
-                    b.HasOne("SIZCapi.Models.WartoscOdzywcza", "WartoscOdzywcza")
-                        .WithMany("Skladnik")
-                        .HasForeignKey("WartoscOdzywczaID")
+            modelBuilder.Entity("SIZCapi.Models.WartoscOdzywcza", b =>
+                {
+                    b.HasOne("SIZCapi.Models.Skladnik", "Skladnik")
+                        .WithMany("WartoscOdzywcza")
+                        .HasForeignKey("SkladnikID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SIZCapi.Models.SkladnikOdzywczy", "SkladnikOdzywczy")
+                        .WithMany("WartoscOdzywcza")
+                        .HasForeignKey("SkladnikOdzywczyID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

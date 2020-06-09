@@ -7,12 +7,14 @@ namespace SIZCapi.Models
     {
         public int WartoscOdzywczaID { get; set; }
 
-        [Column(TypeName = "nvarchar(50)")]
-        public string NazwaWartoscOdzywcza { get; set; }
+        public float ZawartoscSkladnikOdzywczy { get; set; }
 
-        public float Kalorycznosc { get; set; }
+        // relacja Skladnik
+        public int SkladnikID { get; set; }
+        public virtual Skladnik Skladnik { get; set; }
 
-        //relacja Skladnik
-        public virtual ICollection<Skladnik> Skladnik { get; set; }
+        // relacja SkladnikOdzywczy
+        public int SkladnikOdzywczyID { get; set; }
+        public virtual SkladnikOdzywczy SkladnikOdzywczy { get; set; }
     }
 }

@@ -45,7 +45,7 @@ namespace SIZCapi.Models
         [Column(TypeName = "datetime2")]
         public DateTime DataRejestracji { get; set; }
 
-        //relacja Zamowienie
+        // relacja Zamowienie
         public virtual ICollection<Zamowienie> Zamowienie { get; set; }
     }
 }

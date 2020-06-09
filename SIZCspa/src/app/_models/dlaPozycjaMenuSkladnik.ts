@@ -4,5 +4,4 @@ export interface DlaPozycjaMenuSkladnik {
     czyWeganski: boolean;
     czyWegetarianski: boolean;
     masaSkladnik: number;
-    masaWartoscOdzywcza: number;
 }

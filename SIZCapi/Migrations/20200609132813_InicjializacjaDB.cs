@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SIZCapi.Migrations
 {
-    public partial class InicjalizacjaDB : Migration
+    public partial class InicjializacjaDB : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -88,17 +88,17 @@ namespace SIZCapi.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "WartoscOdzywcza",
+                name: "SkladnikOdzywczy",
                 columns: table => new
                 {
-                    WartoscOdzywczaID = table.Column<int>(nullable: false)
+                    SkladnikOdzywczyID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    NazwaWartoscOdzywcza = table.Column<string>(type: "nvarchar(50)", nullable: true),
+                    NazwaSkladnik = table.Column<string>(type: "nvarchar(50)", nullable: true),
                     Kalorycznosc = table.Column<float>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_WartoscOdzywcza", x => x.WartoscOdzywczaID);
+                    table.PrimaryKey("PK_SkladnikOdzywczy", x => x.SkladnikOdzywczyID);
                 });
 
             migrationBuilder.CreateTable(
@@ -112,6 +112,29 @@ namespace SIZCapi.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ZamowienieStatus", x => x.ZamowienieStatusID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Skladnik",
+                columns: table => new
+                {
+                    SkladnikID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    NazwaSkladnik = table.Column<string>(type: "nvarchar(50)", nullable: true),
+                    CzyWeganski = table.Column<bool>(nullable: false),
+                    CzyWegetarianski = table.Column<bool>(nullable: false),
+                    MasaSkladnik = table.Column<float>(nullable: false),
+                    PozycjaMenuID = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Skladnik", x => x.SkladnikID);
+                    table.ForeignKey(
+                        name: "FK_Skladnik_PozycjaMenu_PozycjaMenuID",
+                        column: x => x.PozycjaMenuID,
+                        principalTable: "PozycjaMenu",
+                        principalColumn: "PozycjaMenuID",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -137,40 +160,55 @@ namespace SIZCapi.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Skladnik",
+                name: "InformacjaAlergen",
                 columns: table => new
                 {
-                    SkladnikID = table.Column<int>(nullable: false)
+                    InformacjaAlergenID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    NazwaSkladnik = table.Column<string>(type: "nvarchar(50)", nullable: true),
-                    CzyWeganski = table.Column<bool>(nullable: false),
-                    CzyWegetarianski = table.Column<bool>(nullable: false),
-                    MasaSkladnik = table.Column<float>(nullable: false),
-                    MasaWartoscOdzywcza = table.Column<float>(nullable: false),
-                    PozycjaMenuID = table.Column<int>(nullable: false),
-                    AlergenID = table.Column<int>(nullable: false),
-                    WartoscOdzywczaID = table.Column<int>(nullable: false)
+                    SkladnikID = table.Column<int>(nullable: false),
+                    AlergenID = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Skladnik", x => x.SkladnikID);
+                    table.PrimaryKey("PK_InformacjaAlergen", x => x.InformacjaAlergenID);
                     table.ForeignKey(
-                        name: "FK_Skladnik_Alergen_AlergenID",
+                        name: "FK_InformacjaAlergen_Alergen_AlergenID",
                         column: x => x.AlergenID,
                         principalTable: "Alergen",
                         principalColumn: "AlergenID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Skladnik_PozycjaMenu_PozycjaMenuID",
-                        column: x => x.PozycjaMenuID,
-                        principalTable: "PozycjaMenu",
-                        principalColumn: "PozycjaMenuID",
+                        name: "FK_InformacjaAlergen_Skladnik_SkladnikID",
+                        column: x => x.SkladnikID,
+                        principalTable: "Skladnik",
+                        principalColumn: "SkladnikID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "WartoscOdzywcza",
+                columns: table => new
+                {
+                    WartoscOdzywczaID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ZawartoscSkladnikOdzywczy = table.Column<float>(nullable: false),
+                    SkladnikID = table.Column<int>(nullable: false),
+                    SkladnikOdzywczyID = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_WartoscOdzywcza", x => x.WartoscOdzywczaID);
+                    table.ForeignKey(
+                        name: "FK_WartoscOdzywcza_Skladnik_SkladnikID",
+                        column: x => x.SkladnikID,
+                        principalTable: "Skladnik",
+                        principalColumn: "SkladnikID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Skladnik_WartoscOdzywcza_WartoscOdzywczaID",
-                        column: x => x.WartoscOdzywczaID,
-                        principalTable: "WartoscOdzywcza",
-                        principalColumn: "WartoscOdzywczaID",
+                        name: "FK_WartoscOdzywcza_SkladnikOdzywczy_SkladnikOdzywczyID",
+                        column: x => x.SkladnikOdzywczyID,
+                        principalTable: "SkladnikOdzywczy",
+                        principalColumn: "SkladnikOdzywczyID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -230,14 +268,19 @@ namespace SIZCapi.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_InformacjaAlergen_AlergenID",
+                table: "InformacjaAlergen",
+                column: "AlergenID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_InformacjaAlergen_SkladnikID",
+                table: "InformacjaAlergen",
+                column: "SkladnikID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Pracownik_PracownikRolaID",
                 table: "Pracownik",
                 column: "PracownikRolaID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Skladnik_AlergenID",
-                table: "Skladnik",
-                column: "AlergenID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Skladnik_PozycjaMenuID",
@@ -245,9 +288,14 @@ namespace SIZCapi.Migrations
                 column: "PozycjaMenuID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Skladnik_WartoscOdzywczaID",
-                table: "Skladnik",
-                column: "WartoscOdzywczaID");
+                name: "IX_WartoscOdzywcza_SkladnikID",
+                table: "WartoscOdzywcza",
+                column: "SkladnikID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_WartoscOdzywcza_SkladnikOdzywczyID",
+                table: "WartoscOdzywcza",
+                column: "SkladnikOdzywczyID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Zamowienie_KlientID",
@@ -278,7 +326,10 @@ namespace SIZCapi.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Skladnik");
+                name: "InformacjaAlergen");
+
+            migrationBuilder.DropTable(
+                name: "WartoscOdzywcza");
 
             migrationBuilder.DropTable(
                 name: "Zamowienie");
@@ -287,7 +338,10 @@ namespace SIZCapi.Migrations
                 name: "Alergen");
 
             migrationBuilder.DropTable(
-                name: "WartoscOdzywcza");
+                name: "Skladnik");
+
+            migrationBuilder.DropTable(
+                name: "SkladnikOdzywczy");
 
             migrationBuilder.DropTable(
                 name: "Klient");
@@ -296,13 +350,13 @@ namespace SIZCapi.Migrations
                 name: "PlatnoscTyp");
 
             migrationBuilder.DropTable(
-                name: "PozycjaMenu");
-
-            migrationBuilder.DropTable(
                 name: "Pracownik");
 
             migrationBuilder.DropTable(
                 name: "ZamowienieStatus");
+
+            migrationBuilder.DropTable(
+                name: "PozycjaMenu");
 
             migrationBuilder.DropTable(
                 name: "PracownikRola");

@@ -11,7 +11,5 @@ namespace SIZCapi.DTOs
         public bool CzyWegetarianski { get; set; }
 
         public float MasaSkladnik { get; set; }
-
-        public float MasaWartoscOdzywcza { get; set; }   
     }
 }

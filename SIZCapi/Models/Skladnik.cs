@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SIZCapi.Models
@@ -15,18 +16,14 @@ namespace SIZCapi.Models
 
         public float MasaSkladnik { get; set; }
 
-        public float MasaWartoscOdzywcza { get; set; }
-
-        //relacja PozycjaMenu
+        // relacja PozycjaMenu
         public int PozycjaMenuID { get; set; }
         public virtual PozycjaMenu PozycjaMenu { get; set; }
 
-        //relacja Alergen
-        public int AlergenID { get; set; }
-        public virtual Alergen Alergen { get; set; }
+        // relacja InformacjaAlergen
+        public virtual ICollection<InformacjaAlergen> InformacjaAlergen { get; set; }
         
-        //relacja WartoscOdzywcza
-        public int WartoscOdzywczaID { get; set; }
-        public virtual WartoscOdzywcza WartoscOdzywcza { get; set; }
+        // relacja WartoscOdzywcza
+        public virtual ICollection<WartoscOdzywcza> WartoscOdzywcza { get; set; }
     }
 }

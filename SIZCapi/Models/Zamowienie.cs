@@ -31,23 +31,23 @@ namespace SIZCapi.Models
         [Column(TypeName = "datetime2")]
         public DateTime DataZlozenia { get; set; }
 
-        //relacja PozycjaMenu
+        // relacja PozycjaMenu
         public int PozycjaMenuID { get; set; }
         public virtual PozycjaMenu PozycjaMenu { get; set; }
         
-        //relacja Klient
+        // relacja Klient
         public int KlientID { get; set; }
         public virtual Klient Klient { get; set; }
 
-        //relacja Pracownik
+        // relacja Pracownik
         public int PracownikID { get; set; }
         public virtual Pracownik Pracownik { get; set; }
 
-        //relacja PlatnoscTyp
+        // relacja PlatnoscTyp
         public int PlatnoscTypID { get; set; }
         public virtual PlatnoscTyp PlatnoscTyp { get; set; }
 
-        //relacja ZamowienieStatus
+        // relacja ZamowienieStatus
         public int ZamowienieStatusID { get; set; }
         public virtual ZamowienieStatus ZamowienieStatus { get; set; }
     }
