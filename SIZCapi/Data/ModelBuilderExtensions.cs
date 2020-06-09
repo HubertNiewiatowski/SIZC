@@ -27,90 +27,108 @@ namespace SIZCapi.Data
             modelBuilder.Entity<ZamowienieStatus>().HasData(
                 new ZamowienieStatus
                 {
-                    NazwaStatus="zamówione"
+                    ZamowienieStatusID = 1,
+                    NazwaStatus = "zamówione"
                 },
                 new ZamowienieStatus
                 {
-                    NazwaStatus="w trakcie przygotowywania"
+                    ZamowienieStatusID = 2,
+                    NazwaStatus = "w trakcie przygotowywania"
                 },
                 new ZamowienieStatus
                 {
-                    NazwaStatus="przygotowane"
+                    ZamowienieStatusID = 3,
+                    NazwaStatus = "przygotowane"
                 },
                 new ZamowienieStatus
                 {
-                    NazwaStatus="w trakcie dostawy"
+                    ZamowienieStatusID = 4,
+                    NazwaStatus = "w trakcie dostawy"
                 },
                 new ZamowienieStatus
                 {
-                    NazwaStatus="dostarczone"
+                    ZamowienieStatusID = 5,
+                    NazwaStatus = "dostarczone"
                 }
             );
 
             modelBuilder.Entity<PracownikRola>().HasData(
                 new PracownikRola
                 {
-                    NazwaRola="kucharz"
+                    PracownikRolaID = 1,
+                    NazwaRola = "kucharz"
                 },
                 new PracownikRola
                 {
-                    NazwaRola="dostawca"
+                    PracownikRolaID = 2,
+                    NazwaRola = "dostawca"
                 },
                 new PracownikRola
                 {
-                    NazwaRola="administrator"
+                    PracownikRolaID = 3,
+                    NazwaRola = "administrator"
                 }
             );
 
             modelBuilder.Entity<Alergen>().HasData(
                 new Alergen
                 {
-                    NazwaAlergen="brak alergenu"
+                    AlergenID = 1,
+                    NazwaAlergen = "brak alergenu"
                 },
                 new Alergen
                 {
-                    NazwaAlergen="jajka"
+                    AlergenID = 2,
+                    NazwaAlergen = "jajka"
                 },
                 new Alergen
                 {
-                    NazwaAlergen="mleko"
+                    AlergenID = 3,
+                    NazwaAlergen = "mleko"
                 },
                 new Alergen
                 {
-                    NazwaAlergen="orzechy"
+                    AlergenID = 4,
+                    NazwaAlergen = "orzechy"
                 }
             );
 
             modelBuilder.Entity<SkladnikOdzywczy>().HasData(
                 new SkladnikOdzywczy
                 {
-                    NazwaSkladnik="białko",
-                    Kalorycznosc=4
+                    SkladnikOdzywczyID = 1,
+                    NazwaSkladnik = "białko",
+                    Kalorycznosc = 4
                 },
                 new SkladnikOdzywczy
                 {
-                    NazwaSkladnik="tłuszcz",
-                    Kalorycznosc=9
+                    SkladnikOdzywczyID = 2,
+                    NazwaSkladnik = "tłuszcz",
+                    Kalorycznosc = 9
                 },
                 new SkladnikOdzywczy
                 {
-                    NazwaSkladnik="węglowodany",
-                    Kalorycznosc=4
+                    SkladnikOdzywczyID = 3,
+                    NazwaSkladnik = "węglowodany",
+                    Kalorycznosc = 4
                 }
             );
 
             modelBuilder.Entity<PlatnoscTyp>().HasData(
                 new PlatnoscTyp
                 {
-                    NazwaPlatnosc="gotówka"
+                    PlatnoscTypID = 1,
+                    NazwaPlatnosc = "gotówka"
                 },
                 new PlatnoscTyp
                 {
-                    NazwaPlatnosc="blik"
+                    PlatnoscTypID = 2,
+                    NazwaPlatnosc = "blik"
                 },
                 new PlatnoscTyp
                 {
-                    NazwaPlatnosc="przelew"
+                    PlatnoscTypID = 3,
+                    NazwaPlatnosc = "przelew"
                 }
             );
 
@@ -119,6 +137,7 @@ namespace SIZCapi.Data
             modelBuilder.Entity<Klient>().HasData(
                 new Klient
                 {
+                    KlientID = 1,
                     Imie = "Jan",
                     Nazwisko = "Kowalski",
                     AdresEmail = "jan.kowalski@wp.pl",
@@ -140,6 +159,7 @@ namespace SIZCapi.Data
             modelBuilder.Entity<Klient>().HasData(
                 new Klient
                 {
+                    KlientID = 2,
                     Imie = "Elżbieta",
                     Nazwisko = "Zalewska",
                     AdresEmail = "elzbieta.zalewska@gmail.com",
@@ -161,6 +181,7 @@ namespace SIZCapi.Data
             modelBuilder.Entity<Klient>().HasData(            
                 new Klient
                 {
+                    KlientID = 3,
                     Imie = "Marcin",
                     Nazwisko = "Nowak",
                     AdresEmail = "marcin.nowak@onet.pl",
@@ -180,6 +201,7 @@ namespace SIZCapi.Data
             modelBuilder.Entity<PozycjaMenu>().HasData(
                 new PozycjaMenu
                 {
+                    PozycjaMenuID = 1,
                     NazwaPozycja = "Dieta Vege",
                     Cena = 26.50m,
                     Opis = "Pozycja dla wegetarian, bogata w produkty roślinne",
@@ -187,6 +209,7 @@ namespace SIZCapi.Data
                 },
                 new PozycjaMenu
                 {
+                    PozycjaMenuID = 2,
                     NazwaPozycja = "Dieta Light",
                     Cena = 25.50m,
                     Opis = "Pozycja dla osób odchudzjących się, bogata w błonnik",
@@ -194,6 +217,7 @@ namespace SIZCapi.Data
                 },
                 new PozycjaMenu
                 {
+                    PozycjaMenuID = 3,
                     NazwaPozycja = "Dieta Sport",
                     Cena = 27.50m,
                     Opis = "Pozycja dla osób trenujących, bogata w białko",
@@ -204,6 +228,7 @@ namespace SIZCapi.Data
             modelBuilder.Entity<Skladnik>().HasData(
                 new Skladnik
                 {
+                    SkladnikID = 1,
                     NazwaSkladnik = "awokado",
                     CzyWeganski = true,
                     CzyWegetarianski = true,
@@ -212,6 +237,7 @@ namespace SIZCapi.Data
                 },
                 new Skladnik
                 {
+                    SkladnikID = 2,
                     NazwaSkladnik = "marchew",
                     CzyWeganski = true,
                     CzyWegetarianski = true,
@@ -220,6 +246,7 @@ namespace SIZCapi.Data
                 },
                 new Skladnik
                 {
+                    SkladnikID = 3,
                     NazwaSkladnik = "soczewica",
                     CzyWeganski = true,
                     CzyWegetarianski = true,
@@ -228,6 +255,7 @@ namespace SIZCapi.Data
                 },
                 new Skladnik
                 {
+                    SkladnikID = 4,
                     NazwaSkladnik = "pomidory",
                     CzyWeganski = true,
                     CzyWegetarianski = true,
@@ -236,6 +264,7 @@ namespace SIZCapi.Data
                 },
                 new Skladnik
                 {
+                    SkladnikID = 5,
                     NazwaSkladnik = "dorsz gotowany",
                     CzyWeganski = false,
                     CzyWegetarianski = false,
@@ -244,6 +273,7 @@ namespace SIZCapi.Data
                 },
                 new Skladnik
                 {
+                    SkladnikID = 6,
                     NazwaSkladnik = "brokuły",
                     CzyWeganski = false,
                     CzyWegetarianski = false,
@@ -252,6 +282,7 @@ namespace SIZCapi.Data
                 },
                 new Skladnik
                 {
+                    SkladnikID = 7,
                     NazwaSkladnik = "dziki ryż",
                     CzyWeganski = true,
                     CzyWegetarianski = true,
@@ -260,6 +291,7 @@ namespace SIZCapi.Data
                 },
                 new Skladnik
                 {
+                    SkladnikID = 8,
                     NazwaSkladnik = "kurczak",
                     CzyWeganski = false,
                     CzyWegetarianski = false,
@@ -268,6 +300,7 @@ namespace SIZCapi.Data
                 },
                 new Skladnik
                 {
+                    SkladnikID = 9,
                     NazwaSkladnik = "ziemniaki",
                     CzyWeganski = true,
                     CzyWegetarianski = true,
@@ -276,6 +309,7 @@ namespace SIZCapi.Data
                 },
                 new Skladnik
                 {
+                    SkladnikID = 10,
                     NazwaSkladnik = "sałata",
                     CzyWeganski = true,
                     CzyWegetarianski = true,
@@ -287,51 +321,61 @@ namespace SIZCapi.Data
             modelBuilder.Entity<InformacjaAlergen>().HasData(
                 new InformacjaAlergen
                 {
+                    InformacjaAlergenID = 1,
                     SkladnikID = 1,
                     AlergenID = 1
                 },
                 new InformacjaAlergen
                 {
+                    InformacjaAlergenID = 2,
                     SkladnikID = 2,
                     AlergenID = 1
                 },
                 new InformacjaAlergen
                 {
+                    InformacjaAlergenID = 3,
                     SkladnikID = 3,
                     AlergenID = 1
                 },
                 new InformacjaAlergen
                 {
+                    InformacjaAlergenID = 4,
                     SkladnikID = 4,
                     AlergenID = 1
                 },
                 new InformacjaAlergen
                 {
+                    InformacjaAlergenID = 5,
                     SkladnikID = 5,
                     AlergenID = 1
                 },
                 new InformacjaAlergen
                 {
+                    InformacjaAlergenID = 6,
                     SkladnikID = 6,
                     AlergenID = 1
                 },
                 new InformacjaAlergen
                 {
+                    InformacjaAlergenID = 7,
                     SkladnikID = 7,
                     AlergenID = 1
                 },
                 new InformacjaAlergen
                 {
+                    InformacjaAlergenID = 8,
                     SkladnikID = 8,
                     AlergenID = 1
                 },
                 new InformacjaAlergen
                 {
+                    InformacjaAlergenID = 9,
                     SkladnikID = 9,
                     AlergenID = 1
                 },
                 new InformacjaAlergen
                 {
+                    InformacjaAlergenID = 10,
                     SkladnikID = 10,
                     AlergenID = 1
                 }            
@@ -340,18 +384,21 @@ namespace SIZCapi.Data
             modelBuilder.Entity<WartoscOdzywcza>().HasData(
                 new WartoscOdzywcza
                 {
+                    WartoscOdzywczaID = 1,
                     ZawartoscSkladnikOdzywczy = 15,
                     SkladnikID = 1,
                     SkladnikOdzywczyID = 2
                 },
                 new WartoscOdzywcza
                 {
+                    WartoscOdzywczaID = 2,
                     ZawartoscSkladnikOdzywczy = 9,
                     SkladnikID = 1,
                     SkladnikOdzywczyID = 3
                 },
                 new WartoscOdzywcza
                 {
+                    WartoscOdzywczaID = 3,
                     ZawartoscSkladnikOdzywczy = 4,
                     SkladnikID = 1,
                     SkladnikOdzywczyID = 1
@@ -360,18 +407,21 @@ namespace SIZCapi.Data
 
                 new WartoscOdzywcza
                 {
+                    WartoscOdzywczaID = 4,
                     ZawartoscSkladnikOdzywczy = 0.2f,
                     SkladnikID = 2,
                     SkladnikOdzywczyID = 2
                 },
                 new WartoscOdzywcza
                 {
+                    WartoscOdzywczaID = 5,
                     ZawartoscSkladnikOdzywczy = 10,
                     SkladnikID = 2,
                     SkladnikOdzywczyID = 3
                 },
                 new WartoscOdzywcza
                 {
+                    WartoscOdzywczaID = 6,
                     ZawartoscSkladnikOdzywczy = 0.9f,
                     SkladnikID = 2,
                     SkladnikOdzywczyID = 1
@@ -379,18 +429,21 @@ namespace SIZCapi.Data
 
                 new WartoscOdzywcza
                 {
+                    WartoscOdzywczaID = 7,
                     ZawartoscSkladnikOdzywczy = 0.4f,
                     SkladnikID = 3,
                     SkladnikOdzywczyID = 2
                 },
                 new WartoscOdzywcza
                 {
+                    WartoscOdzywczaID = 8,
                     ZawartoscSkladnikOdzywczy = 20,
                     SkladnikID = 3,
                     SkladnikOdzywczyID = 3
                 },
                 new WartoscOdzywcza
                 {
+                    WartoscOdzywczaID = 9,
                     ZawartoscSkladnikOdzywczy = 9,
                     SkladnikID = 3,
                     SkladnikOdzywczyID = 1
@@ -398,18 +451,21 @@ namespace SIZCapi.Data
 
                 new WartoscOdzywcza
                 {
+                    WartoscOdzywczaID = 10,
                     ZawartoscSkladnikOdzywczy = 0.2f,
                     SkladnikID = 4,
                     SkladnikOdzywczyID = 2
                 },
                 new WartoscOdzywcza
                 {
+                    WartoscOdzywczaID = 11,
                     ZawartoscSkladnikOdzywczy = 3.9f,
                     SkladnikID = 4,
                     SkladnikOdzywczyID = 3
                 },
                 new WartoscOdzywcza
                 {
+                    WartoscOdzywczaID = 12,
                     ZawartoscSkladnikOdzywczy = 0.9f,
                     SkladnikID = 4,
                     SkladnikOdzywczyID = 1
@@ -417,18 +473,21 @@ namespace SIZCapi.Data
 
                 new WartoscOdzywcza
                 {
+                    WartoscOdzywczaID = 13,
                     ZawartoscSkladnikOdzywczy = 0.67f,
                     SkladnikID = 5,
                     SkladnikOdzywczyID = 2
                 },
                 new WartoscOdzywcza
                 {
+                    WartoscOdzywczaID = 14,
                     ZawartoscSkladnikOdzywczy = 0,
                     SkladnikID = 5,
                     SkladnikOdzywczyID = 3
                 },
                 new WartoscOdzywcza
                 {
+                    WartoscOdzywczaID = 15,
                     ZawartoscSkladnikOdzywczy = 17.8f,
                     SkladnikID = 5,
                     SkladnikOdzywczyID = 1
@@ -436,18 +495,21 @@ namespace SIZCapi.Data
 
                 new WartoscOdzywcza
                 {
+                    WartoscOdzywczaID = 16,
                     ZawartoscSkladnikOdzywczy = 0.4f,
                     SkladnikID = 6,
                     SkladnikOdzywczyID = 2
                 },
                 new WartoscOdzywcza
                 {
+                    WartoscOdzywczaID = 17,
                     ZawartoscSkladnikOdzywczy = 7,
                     SkladnikID = 6,
                     SkladnikOdzywczyID = 3
                 },
                 new WartoscOdzywcza
                 {
+                    WartoscOdzywczaID = 18,
                     ZawartoscSkladnikOdzywczy = 2.8f,
                     SkladnikID = 6,
                     SkladnikOdzywczyID = 1
@@ -455,18 +517,21 @@ namespace SIZCapi.Data
 
                 new WartoscOdzywcza
                 {
+                    WartoscOdzywczaID = 19,
                     ZawartoscSkladnikOdzywczy = 1.1f,
                     SkladnikID = 7,
                     SkladnikOdzywczyID = 2
                 },
                 new WartoscOdzywcza
                 {
+                    WartoscOdzywczaID = 20,
                     ZawartoscSkladnikOdzywczy = 75,
                     SkladnikID = 7,
                     SkladnikOdzywczyID = 3
                 },
                 new WartoscOdzywcza
                 {
+                    WartoscOdzywczaID = 21,
                     ZawartoscSkladnikOdzywczy = 15,
                     SkladnikID = 7,
                     SkladnikOdzywczyID = 1
@@ -474,18 +539,21 @@ namespace SIZCapi.Data
 
                 new WartoscOdzywcza
                 {
+                    WartoscOdzywczaID = 22,
                     ZawartoscSkladnikOdzywczy = 14,
                     SkladnikID = 8,
                     SkladnikOdzywczyID = 2
                 },
                 new WartoscOdzywcza
                 {
+                    WartoscOdzywczaID = 23,
                     ZawartoscSkladnikOdzywczy = 0,
                     SkladnikID = 8,
                     SkladnikOdzywczyID = 3
                 },
                 new WartoscOdzywcza
                 {
+                    WartoscOdzywczaID = 24,
                     ZawartoscSkladnikOdzywczy = 27,
                     SkladnikID = 8,
                     SkladnikOdzywczyID = 1
@@ -493,18 +561,21 @@ namespace SIZCapi.Data
                 
                 new WartoscOdzywcza
                 {
+                    WartoscOdzywczaID = 25,
                     ZawartoscSkladnikOdzywczy = 0.1f,
                     SkladnikID = 9,
                     SkladnikOdzywczyID = 2
                 },
                 new WartoscOdzywcza
                 {
+                    WartoscOdzywczaID = 26,
                     ZawartoscSkladnikOdzywczy = 16.3f,
                     SkladnikID = 9,
                     SkladnikOdzywczyID = 3
                 },
                 new WartoscOdzywcza
                 {
+                    WartoscOdzywczaID = 27,
                     ZawartoscSkladnikOdzywczy = 1.8f,
                     SkladnikID = 9,
                     SkladnikOdzywczyID = 1
@@ -512,18 +583,21 @@ namespace SIZCapi.Data
 
                 new WartoscOdzywcza
                 {
+                    WartoscOdzywczaID = 28,
                     ZawartoscSkladnikOdzywczy = 0.2f,
                     SkladnikID = 10,
                     SkladnikOdzywczyID = 2
                 },
                 new WartoscOdzywcza
                 {
+                    WartoscOdzywczaID = 29,
                     ZawartoscSkladnikOdzywczy = 2.9f,
                     SkladnikID = 10,
                     SkladnikOdzywczyID = 3
                 },
                 new WartoscOdzywcza
                 {
+                    WartoscOdzywczaID = 30,
                     ZawartoscSkladnikOdzywczy = 1.4f,
                     SkladnikID = 10,
                     SkladnikOdzywczyID = 1
@@ -535,6 +609,7 @@ namespace SIZCapi.Data
             modelBuilder.Entity<Pracownik>().HasData(
                 new Pracownik
                 {
+                    PracownikID = 1,
                     Login = "kucharz1",
                     HasloHash = hasloHash,
                     HasloSalt = hasloSalt,
@@ -547,6 +622,7 @@ namespace SIZCapi.Data
             modelBuilder.Entity<Pracownik>().HasData(
                 new Pracownik
                 {
+                    PracownikID = 2,
                     Login = "dostawca1",
                     HasloHash = hasloHash,
                     HasloSalt = hasloSalt,
@@ -559,6 +635,7 @@ namespace SIZCapi.Data
             modelBuilder.Entity<Pracownik>().HasData(
                 new Pracownik
                 {
+                    PracownikID = 3,
                     Login = "administartor1",
                     HasloHash = hasloHash,
                     HasloSalt = hasloSalt,
@@ -569,6 +646,7 @@ namespace SIZCapi.Data
             modelBuilder.Entity<Zamowienie>().HasData(
                 new Zamowienie
                 {
+                    ZamowienieID = 1,
                     Koszt = 31.5m,
                     KodPocztowy = "01234",
                     Miejscowosc = "Warszawa",
@@ -585,6 +663,7 @@ namespace SIZCapi.Data
                 },                
                 new Zamowienie
                 {
+                    ZamowienieID = 2,
                     Koszt = 30.5m,
                     KodPocztowy = "43210",
                     Miejscowosc = "Wrocław",
@@ -601,6 +680,7 @@ namespace SIZCapi.Data
                 },
                 new Zamowienie
                 {
+                    ZamowienieID = 3,
                     Koszt = 36.5m,
                     KodPocztowy = "11222",
                     Miejscowosc = "Gdańsk",
