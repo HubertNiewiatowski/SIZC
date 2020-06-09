@@ -1,0 +1,16 @@
+<div class="card mb-4">
+  <div>
+    <img class="card-img-top" src="https://ocs-pl.oktawave.com/v1/AUTH_876e5729-f8dd-45dd-908f-35d8bb716177/amrest-web-ordering/img%2FKFC%2FWeb%2FKiosk%2Fzinger-menu.png" alt="">
+  </div>
+  <div class="card-body p-1">
+    <p class="card-text text-center">{{pozycjaMenu.nazwaPozycja}}</p>
+    <p class="card-text text-center">{{pozycjaMenu.cena}}</p>
+    <p class="card-text text-center">{{pozycjaMenu.opis}}</p>
+    <div *ngFor="let skladnik of skladniki" class="row">
+      <p class="card-text text-center">{{skladnik.nazwaSkladnik}}</p>
+      <p class="card-text text-center">{{skladnik.czyWeganski}}</p>
+      <p class="card-text text-center">{{skladnik.czyWegetarianski}}</p>
+      <p class="card-text text-center">{{skladnik.masaSkladnik}}</p>
+    </div>
+  </div>
+</div>

@@ -19,6 +19,7 @@ import { ZamowieniaComponent } from './zamowienia/zamowienia.component';
 import { LogowanieComponent } from './logowanie/logowanie.component';
 import { appRoutes } from './routes';
 import { KlientComponent } from './klient/klient.component';
+import { MenuKartaComponent } from './menu-karta/menu-karta.component';
 
 @NgModule({
    declarations: [
@@ -30,7 +31,8 @@ import { KlientComponent } from './klient/klient.component';
       RejestracjaComponent,
       ZamowieniaComponent,
       LogowanieComponent,
-      KlientComponent
+      KlientComponent,
+      MenuKartaComponent
    ],
    imports: [
       BrowserModule,

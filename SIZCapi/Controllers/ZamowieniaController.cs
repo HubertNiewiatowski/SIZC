@@ -20,7 +20,7 @@ namespace SIZCapi.Controllers
             _mapper = mapper;
         }
 
-        // GET http://localhost:5000/api/zamowienia/klient/{id}
+        // GET http://localhost:5000/api/Zamowienia/klient/{id}
         [HttpGet("klient/{id}")]
         public async Task<IActionResult> PobierzZamowieniaKlienta(int id)
         {

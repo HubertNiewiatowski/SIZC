@@ -24,8 +24,8 @@ namespace SIZCapi.Controllers
             _mapper = mapper;
         }
 
-        // GET http://localhost:5000/api/pozycjemenu
-        [AllowAnonymous]
+        // GET http://localhost:5000/api/PozycjeMenuController/
+        //[AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> PobierzPozycjeMenuWszystkie()
         {
@@ -40,8 +40,8 @@ namespace SIZCapi.Controllers
             return NotFound();
         }
         
-        // GET http://localhost:5000/api/pozycjemenu/{id}
-        [AllowAnonymous]
+        // GET http://localhost:5000/api/PozycjeMenuController/{id}
+        //[AllowAnonymous]
         [HttpGet("{id}")]
         public async Task<IActionResult> PobierzPozycjeMenuPoId(int id)
         {
@@ -56,7 +56,7 @@ namespace SIZCapi.Controllers
             return NotFound();
         }
 
-        // POST http://localhost:5000/api/pozycjemenu
+        // POST http://localhost:5000/api/PozycjeMenuController/
         [HttpPost]
         public async Task<IActionResult> DodajPozycjaMenu(DodajPozycjaMenuDto pozycjaDoDodania)
         {
@@ -68,7 +68,7 @@ namespace SIZCapi.Controllers
             return Ok();
         }
 
-        // PUT http://localhost:5000/api/pozycjemenu/{id}
+        // PUT http://localhost:5000/api/PozycjeMenuController/{id}
         [HttpPut("{id}")]
         public async Task<IActionResult> AktualizujPozycjeMenu(int id, DodajPozycjaMenuDto pozycjaDoAktualizacji)
         {
@@ -86,7 +86,7 @@ namespace SIZCapi.Controllers
             return NoContent();
         }
 
-        // PATCH http://localhost:5000/api/pozycjemenu/{id}
+        // PATCH http://localhost:5000/api/PozycjeMenuController/{id}
         [HttpPatch("{id}")]
         public async Task<IActionResult> AktualizujCzesciowoPozycjeMenu(int id, JsonPatchDocument<DodajPozycjaMenuDto> dokumentAktualizacji)
         {
@@ -113,7 +113,7 @@ namespace SIZCapi.Controllers
             return NoContent();
         }
 
-        // DELETE http://localhost:5000/api/pozycjemenu/{id}
+        // DELETE http://localhost:5000/api/PozycjeMenuController/{id}
         [HttpDelete("{id}")]
         public async Task<IActionResult> UsunPozycjeMenu(int id)
         {

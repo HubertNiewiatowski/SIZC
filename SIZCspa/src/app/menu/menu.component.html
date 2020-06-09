@@ -1,6 +1,7 @@
-<div class="container mt-5" style="text-align: center">
-  <p *ngFor="let pozycja of pozycjeMenu">
-    {{pozycja.pozycjaMenuID}}, {{pozycja.nazwaPozycja}}, {{pozycja.cena}}, {{pozycja.opis}}, {{pozycja.obrazekUrl}} 
-  </p>
+<div class="container">
+  <div class="row">
+    <div *ngFor="let pozycja of pozycjeMenu" class="col-lg-2">
+      <app-menu-karta [pozycjaMenu]="pozycja" [skladniki]="pozycja.skladnik"></app-menu-karta>
+    </div>
+  </div>
 </div>
-

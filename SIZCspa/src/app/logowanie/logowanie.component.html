@@ -1,13 +1,19 @@
-<div>
-  <form #formularzLogowania="ngForm" class="form-inline" (ngSubmit)="zaloguj()">
+<div class="container col-sm-4 offset-sm-4 col-md-4 offset-md-4 col-lg-4 offset-lg-4">
+  <form #formularzLogowania="ngForm" (ngSubmit)="zaloguj()">
 
-    <input class="form-control form-control-dark mr-2" type="text" name="adresEmail"
+    <div class="row">
+      <input class="form-control form-control-dark mr-2" type="text" name="adresEmail"
       placeholder="Adres email" required [(ngModel)]="klient.adresEmail">
-  
-    <input class="form-control form-control-dark mr-2" type="password" name="haslo"
+    </div>
+
+    <div class="row">
+      <input class="form-control form-control-dark mr-2" type="password" name="haslo"
       placeholder="Hasło" required [(ngModel)]="klient.haslo">
-  
-    <button [disabled]="!formularzLogowania.valid" class="btn btn-success mr-4" type="submit">Zaloguj</button>
+    </div>
+
+    <div class="row">
+      <button [disabled]="!formularzLogowania.valid" class="btn btn-success" type="submit">Zaloguj</button>
+    </div>    
   
   </form>
 </div>
