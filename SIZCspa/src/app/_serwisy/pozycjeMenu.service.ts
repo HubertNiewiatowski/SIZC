@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { PozycjaMenu } from '../_models/pozycjaMenu';
+import { PobierzPozycjaMenu } from '../_models/pobierzPozycjaMenu';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -17,11 +17,11 @@ export class PozycjeMenuService {
 
   constructor(private http: HttpClient) { }
 
-  pobierzPozycjeMenu(): Observable<PozycjaMenu[]> {
-    return this.http.get<PozycjaMenu[]>(this.baseUrl, httpOptions);
+  pobierzPozycjeMenu(): Observable<PobierzPozycjaMenu[]> {
+    return this.http.get<PobierzPozycjaMenu[]>(this.baseUrl, httpOptions);
   }
 
-  pobierzPozycjeMenuPoId(id): Observable<PozycjaMenu> {
-    return this.http.get<PozycjaMenu>(this.baseUrl + id, httpOptions);
+  pobierzPozycjeMenuPoId(id): Observable<PobierzPozycjaMenu> {
+    return this.http.get<PobierzPozycjaMenu>(this.baseUrl + id, httpOptions);
   }
 }

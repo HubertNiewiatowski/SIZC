@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { PozycjaMenu } from '../_models/pozycjaMenu';
+import { PobierzPozycjaMenu } from '../_models/pobierzPozycjaMenu';
 import { DlaPozycjaMenuSkladnik } from '../_models/dlaPozycjaMenuSkladnik';
 
 @Component({
@@ -8,7 +8,7 @@ import { DlaPozycjaMenuSkladnik } from '../_models/dlaPozycjaMenuSkladnik';
   styleUrls: ['./menu-karta.component.css']
 })
 export class MenuKartaComponent implements OnInit {
-  @Input() pozycjaMenu: PozycjaMenu;
+  @Input() pozycjaMenu: PobierzPozycjaMenu;
   @Input() skladniki: DlaPozycjaMenuSkladnik[];
 
   constructor() { }

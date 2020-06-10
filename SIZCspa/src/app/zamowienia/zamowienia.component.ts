@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AlertService } from 'ngx-alerts';
-import { Zamowienie } from '../_models/zamowienie';
+import { PobierzZamowienie } from '../_models/pobierzZamowienie';
 import { ZamowieniaService } from '../_serwisy/zamowienia.service';
 import { AutoryzacjaService } from '../_serwisy/autoryzacja.service';
 
@@ -11,7 +11,7 @@ import { AutoryzacjaService } from '../_serwisy/autoryzacja.service';
   styleUrls: ['./zamowienia.component.css']
 })
 export class ZamowieniaComponent implements OnInit {
-  zamowienia: Zamowienie[];
+  zamowienia: PobierzZamowienie[];
   nameId: any;
 
   constructor(private http: HttpClient, private alertService: AlertService,
@@ -23,7 +23,7 @@ export class ZamowieniaComponent implements OnInit {
   }
 
   pobierzZamowienia() {
-    this.zamowieniaService.pobierzZamowienia(this.nameId).subscribe((zamowienia: Zamowienie[]) => {
+    this.zamowieniaService.pobierzZamowienia(this.nameId).subscribe((zamowienia: PobierzZamowienie[]) => {
       this.zamowienia = zamowienia;
     }, error => {
       this.alertService.danger('Błąd przy pobieraniu zamowień');

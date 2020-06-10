@@ -1,9 +1,11 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using SIZCapi.Data;
 using SIZCapi.DTOs;
+using SIZCapi.Models;
 
 namespace SIZCapi.Controllers
 {
@@ -33,6 +35,24 @@ namespace SIZCapi.Controllers
                 return Ok(zamowieniaDoPobrania);
             }
             return NotFound();
+        }
+
+        // POST http://localhost:5000/api/Zamowienia/
+        [HttpPost]
+        public async Task<IActionResult> DodajZamowienieKlienta(DodajZamowienieDto zamowienieDoDodania)
+        {
+            zamowienieDoDodania.DataZlozenia =  DateTime.Now;
+
+            zamowienieDoDodania.PracownikID = 1;
+
+            zamowienieDoDodania.ZamowienieStatusID = 1;
+
+            var zamowienieModel = _mapper.Map<Zamowienie>(zamowienieDoDodania);
+
+            _repozytorium.DodajZasob(zamowienieModel);
+            await _repozytorium.ZapiszZasob();
+
+            return Ok();
         }
         
     }

@@ -40,6 +40,13 @@ namespace SIZCapi.Data
             return pozycjeMenu;
         }
 
+        public async Task<Klient> PobierzProfilKlienta(int id)
+        {
+            var profilKlienta = await _kontekst.Klient.FirstOrDefaultAsync(e => e.KlientID == id);
+
+            return profilKlienta;
+        }
+
         public async Task<IEnumerable<Zamowienie>> PobierzZamowieniaKlienta(int id)
         {
             var zamowienia = await _kontekst.Zamowienie.Include(e => e.PozycjaMenu).Include(e => e.PlatnoscTyp).Include(e => e.ZamowienieStatus).Where(e => e.KlientID == id).ToListAsync();
@@ -68,5 +75,6 @@ namespace SIZCapi.Data
         {
             return await _kontekst.SaveChangesAsync() > 0;
         }
+
     }
 }

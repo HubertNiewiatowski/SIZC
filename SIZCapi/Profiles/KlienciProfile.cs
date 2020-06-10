@@ -9,6 +9,8 @@ namespace SIZCapi.Profiles
         public KlienciProfile()
         {
             CreateMap<KlientDoRejestracjiDto, Klient>();
+
+            CreateMap<Klient, PobierzKlientDto>();
         }
         
     }

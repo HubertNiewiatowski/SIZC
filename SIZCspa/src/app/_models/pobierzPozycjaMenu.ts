@@ -1,6 +1,6 @@
 import { DlaPozycjaMenuSkladnik } from './dlaPozycjaMenuSkladnik';
 
-export interface PozycjaMenu {
+export interface PobierzPozycjaMenu {
     pozycjaMenuID: number;
     nazwaPozycja: string;
     cena: number;

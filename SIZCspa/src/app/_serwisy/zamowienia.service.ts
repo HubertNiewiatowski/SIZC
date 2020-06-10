@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Zamowienie } from '../_models/zamowienie';
+import { PobierzZamowienie } from '../_models/pobierzZamowienie';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -17,8 +17,8 @@ export class ZamowieniaService {
 
   constructor(private http: HttpClient) { }
 
-  pobierzZamowienia(id): Observable<Zamowienie[]> {
-    return this.http.get<Zamowienie[]>(this.baseUrl + id, httpOptions);
+  pobierzZamowienia(id): Observable<PobierzZamowienie[]> {
+    return this.http.get<PobierzZamowienie[]>(this.baseUrl + id, httpOptions);
   }
 
 }

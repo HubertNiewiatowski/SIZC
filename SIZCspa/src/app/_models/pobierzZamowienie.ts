@@ -2,7 +2,7 @@ import { DlaZamowieniePlatnoscTyp } from './dlaZamowieniePlatnoscTyp';
 import { DlaZamowienieZamowienieStatus } from './dlaZamowienieZamowienieStatus';
 import { DlaZamowieniePozycjaMenu } from './dlaZamowieniePozycjaMenu';
 
-export interface Zamowienie {
+export interface PobierzZamowienie {
     zamowienieID: number;
     koszt: number;
     kodPocztowy: string;

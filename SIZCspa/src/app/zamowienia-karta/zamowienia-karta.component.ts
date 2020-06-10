@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { DlaZamowieniePozycjaMenu } from '../_models/dlaZamowieniePozycjaMenu';
 import { DlaZamowieniePlatnoscTyp } from '../_models/dlaZamowieniePlatnoscTyp';
 import { DlaZamowienieZamowienieStatus } from '../_models/dlaZamowienieZamowienieStatus';
-import { Zamowienie } from '../_models/zamowienie';
+import { PobierzZamowienie } from '../_models/pobierzZamowienie';
 
 @Component({
   selector: 'app-zamowienia-karta',
@@ -10,7 +10,7 @@ import { Zamowienie } from '../_models/zamowienie';
   styleUrls: ['./zamowienia-karta.component.css']
 })
 export class ZamowieniaKartaComponent implements OnInit {
-  @Input() zamowienie: Zamowienie;
+  @Input() zamowienie: PobierzZamowienie;
   @Input() pozycjaMenu: DlaZamowieniePozycjaMenu;
   @Input() platnoscTyp: DlaZamowieniePlatnoscTyp;
   @Input() zamowienieStatus: DlaZamowienieZamowienieStatus;
