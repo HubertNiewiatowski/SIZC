@@ -3,6 +3,12 @@
     <img class="card-img-top" src={{pozycjaMenu.obrazekUrl}} alt="">
   </div>
   <div class="card-body p-1">
+
+    <button [routerLink]="['/menu/', pozycjaMenu.pozycjaMenuID]">Open Sidebar</button>
+    <p>This is a paragraph.</p>
+    <p>This is a paragraph.</p>
+
+    
     <p class="card-text text-center">{{pozycjaMenu.nazwaPozycja}}</p>
     <p class="card-text text-center">{{pozycjaMenu.cena}}</p>
     <p class="card-text text-center">{{pozycjaMenu.opis}}</p>

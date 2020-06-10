@@ -22,6 +22,7 @@ import { appRoutes } from './routes';
 import { KlientComponent } from './klient/klient.component';
 import { MenuKartaComponent } from './menu-karta/menu-karta.component';
 import { ZamowieniaKartaComponent } from './zamowienia-karta/zamowienia-karta.component';
+import { MenuZamowComponent } from './menu-zamow/menu-zamow.component';
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -39,7 +40,8 @@ export function tokenGetter() {
       LogowanieComponent,
       KlientComponent,
       MenuKartaComponent,
-      ZamowieniaKartaComponent
+      ZamowieniaKartaComponent,
+      MenuZamowComponent
    ],
    imports: [
       BrowserModule,

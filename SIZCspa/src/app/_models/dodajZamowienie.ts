@@ -6,10 +6,10 @@ export interface DodajZamowienie {
     nrBudynek: string;
     nrMieszkanie: string;
     dataRealizacji: Date;
-    dataZlozenia: Date;
+    dataZlozenia?: Date;
     pozycjaMenuID: number;
     klientID: number;
-    pracownikID: number;
+    pracownikID?: number;
     platnoscTypID: number;
-    zamowienieStatusID: number;
+    zamowienieStatusID?: number;
 }
