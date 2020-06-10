@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SIZCapi.Data;
 using SIZCapi.DTOs;
@@ -9,6 +10,7 @@ using SIZCapi.Models;
 
 namespace SIZCapi.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ZamowieniaController : ControllerBase

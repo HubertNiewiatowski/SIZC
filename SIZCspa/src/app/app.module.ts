@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AlertModule } from 'ngx-alerts';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { RouterModule } from '@angular/router';
+import { JwtModule } from '@auth0/angular-jwt';
 
 import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
@@ -21,6 +22,10 @@ import { appRoutes } from './routes';
 import { KlientComponent } from './klient/klient.component';
 import { MenuKartaComponent } from './menu-karta/menu-karta.component';
 import { ZamowieniaKartaComponent } from './zamowienia-karta/zamowienia-karta.component';
+
+export function tokenGetter() {
+   return localStorage.getItem('token');
+}
 
 @NgModule({
    declarations: [
@@ -44,7 +49,14 @@ import { ZamowieniaKartaComponent } from './zamowienia-karta/zamowienia-karta.co
       BrowserAnimationsModule,
       AlertModule.forRoot({maxMessages: 5, timeout: 2000, position: 'right'}),
       BsDropdownModule.forRoot(),
-      RouterModule.forRoot(appRoutes)
+      RouterModule.forRoot(appRoutes),
+      JwtModule.forRoot({
+         config: {
+            tokenGetter: tokenGetter,
+            whitelistedDomains: ['localhost:5000'],
+            blacklistedRoutes: ['localhost:5000/api/AutoryzacjaKlient']
+         }
+      })
    ],
    providers: [
       AutoryzacjaService

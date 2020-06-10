@@ -6,6 +6,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 @Injectable({
   providedIn: 'root'
 })
+
 export class AutoryzacjaService {
   baseUrl = 'http://localhost:5000/api/AutoryzacjaKlient/';
   jwtHelper = new JwtHelperService();
