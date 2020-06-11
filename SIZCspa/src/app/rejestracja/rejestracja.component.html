@@ -1,54 +1,85 @@
-<form #formularzRejestracji="ngForm" (ngSubmit)="zarejestruj()">
-  <h2 class="text-center text-primary">Zarejestruj się</h2>
-  <hr>
-
-  <div class="form-group">
-    <input type="text" class="form-control" required name="imie" [(ngModel)]="klient.imie" placeholder="imię">
-  </div>
-
-  <div class="form-group">
-    <input type="text" class="form-control" required name="nazwisko" [(ngModel)]="klient.nazwisko" placeholder="nazwisko">
-  </div>
-
-  <div class="form-group">
-    <input type="text" class="form-control" required name="adresEmail" [(ngModel)]="klient.adresEmail" placeholder="adres email">
-  </div>
-
-  <div class="form-group">
-    <input type="text" class="form-control" name="nrTelStacjonarny" [(ngModel)]="klient.nrTelStacjonarny" placeholder="nr tel. stacjonarny">
-  </div>
-
-  <div class="form-group">
-    <input type="text" class="form-control" name="nrTelKomorkowy" [(ngModel)]="klient.nrTelKomorkowy" placeholder="nr tel. komórkowy">
-  </div>
-
-  <div class="form-group">
-    <input type="text" class="form-control" required name="kodPocztowy" [(ngModel)]="klient.kodPocztowy" placeholder="kod pocztowy">
-  </div>
-
-  <div class="form-group">
-    <input type="text" class="form-control" required name="miejscowosc" [(ngModel)]="klient.miejscowosc" placeholder="miejscowość">
-  </div>
-
-  <div class="form-group">
-    <input type="text" class="form-control" name="ulica" [(ngModel)]="klient.ulica" placeholder="ulica">
-  </div>
-
-  <div class="form-group">
-    <input type="text" class="form-control" name="nrBudynek" [(ngModel)]="klient.nrBudynek" placeholder="nr budynku">
-  </div>
-
-  <div class="form-group">
-    <input type="text" class="form-control" name="nrMieszkanie" [(ngModel)]="klient.nrMieszkanie" placeholder="nr mieszkania">
-  </div>
-
-  <div class="form-group">
-    <input type="password" class="form-control" required name="haslo" [(ngModel)]="klient.haslo" placeholder="hasło">
-  </div>
-
-  <div class="form-group text-center">
-    <button class="btn btn-success" type="submit">Zarejestruj się</button>
-    <button class="btn btn-primary" type="button" (click)="anuluj()">Anuluj</button>
-  </div>
+<div class="container ml-5">
+  <h1 class="text-left text-primary ml-5">Zarejestruj się</h1>
+  <br>
+  <div class="col-6">
+    <div class="container">
+      <div class="card">
+        <div class="card-body p-1">
+          <div class="col-6">
+            <table class="table table-borderless">
+              <tbody>
+                <form #formularzRejestracji="ngForm">
+                  <h1 class="text-left text-primary ml-5">Zarejestruj się</h1>
+                  <br>
   
-</form>
+                  <div class="form-group">
+                    <input type="text" class="form-control" required name="imie" [(ngModel)]="klient.imie"
+                      placeholder="imię">
+                  </div>
+  
+                  <div class="form-group">
+                    <input type="text" class="form-control" required name="nazwisko" [(ngModel)]="klient.nazwisko"
+                      placeholder="nazwisko">
+                  </div>
+  
+                  <div class="form-group">
+                    <input type="text" class="form-control" required name="adresEmail" [(ngModel)]="klient.adresEmail"
+                      placeholder="adres email">
+                  </div>
+  
+                  <div class="form-group">
+                    <input type="text" class="form-control" name="nrTelStacjonarny" [(ngModel)]="klient.nrTelStacjonarny"
+                      placeholder="nr tel. stacjonarny">
+                  </div>
+  
+                  <div class="form-group">
+                    <input type="text" class="form-control" name="nrTelKomorkowy" [(ngModel)]="klient.nrTelKomorkowy"
+                      placeholder="nr tel. komórkowy">
+                  </div>
+  
+                  <div class="form-group">
+                    <input type="text" class="form-control" required name="kodPocztowy" [(ngModel)]="klient.kodPocztowy"
+                      placeholder="kod pocztowy">
+                  </div>
+  
+                  <div class="form-group">
+                    <input type="text" class="form-control" required name="miejscowosc" [(ngModel)]="klient.miejscowosc"
+                      placeholder="miejscowość">
+                  </div>
+  
+                  <div class="form-group">
+                    <input type="text" class="form-control" name="ulica" [(ngModel)]="klient.ulica" placeholder="ulica">
+                  </div>
+  
+                  <div class="form-group">
+                    <input type="text" class="form-control" name="nrBudynek" [(ngModel)]="klient.nrBudynek"
+                      placeholder="nr budynku">
+                  </div>
+  
+                  <div class="form-group">
+                    <input type="text" class="form-control" name="nrMieszkanie" [(ngModel)]="klient.nrMieszkanie"
+                      placeholder="nr mieszkania">
+                  </div>
+  
+                  <div class="form-group">
+                    <input type="password" class="form-control" required name="haslo" [(ngModel)]="klient.haslo"
+                      placeholder="hasło">
+                  </div>
+  
+                  <div class="form-group text-center">
+                    <button class="btn btn-success" type="button" (click)="zarejestruj()">Zarejestruj się</button>
+                    <button class="btn btn-primary" type="button" (click)="anuluj()">Anuluj</button>
+                  </div>
+  
+                </form>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+</div>

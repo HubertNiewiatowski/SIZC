@@ -1,3 +1,79 @@
-<p>
-  menu-zamow works!
-</p>
+<div class="container ml-5">
+  <h1 class="text-left text-primary ml-5">Zamów pozycję</h1>
+  <br>
+
+  <div class="container">
+    <div class="card">
+      <div class="card-body p-1">
+        <div class="row">
+          <div class="col-6">
+            <img class="img-fluid" src={{pozycjaMenu.obrazekUrl}} alt="">
+          </div>
+          <div class="col-4">
+            <table class="table table-borderless">
+              <tbody>
+                <tr>
+                  <td><strong>Składnik</strong></td>
+                  <td><strong>Masa</strong></td>
+                  <td><strong>wegański</strong></td>
+                  <td><strong>wegetariański</strong></td>
+                </tr>	
+                <tr *ngFor="let skladnik of pozycjaMenu.skladnik">
+                  <td>{{skladnik.nazwaSkladnik}}</td>
+                  <td>{{skladnik.masaSkladnik}} g</td>
+                  <td>{{skladnik.czyWeganski}}</td>
+                  <td>{{skladnik.czyWegetarianski}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-10">
+            <button class="btn btn-primary" type="button" [routerLink]="['/zamow/', this.pozycjaMenu.pozycjaMenuID]">Zamów</button>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-10">
+            <form #formularzZamowienia="ngForm">
+              <hr>
+          
+              <p class="card-text text-center">{{zamowienie.koszt}}</p>
+          
+              <div class="form-group">
+                <input type="text" class="form-control" required name="kodPocztowy" [(ngModel)]="zamowienie.kodPocztowy"
+                  placeholder="kod pocztowy">
+              </div>
+          
+              <div class="form-group">
+                <input type="text" class="form-control" required name="miejscowosc" [(ngModel)]="zamowienie.miejscowosc"
+                  placeholder="miejscowość">
+              </div>
+          
+              <div class="form-group">
+                <input type="text" class="form-control" name="ulica" [(ngModel)]="zamowienie.ulica" placeholder="ulica">
+              </div>
+          
+              <div class="form-group">
+                <input type="text" class="form-control" name="nrBudynek" [(ngModel)]="zamowienie.nrBudynek"
+                  placeholder="nr budynku">
+              </div>
+          
+              <div class="form-group">
+                <input type="text" class="form-control" required name="nrMieszkanie" [(ngModel)]="zamowienie.nrMieszkanie"
+                  placeholder="nr mieszkania">
+              </div>
+          
+              <div class="form-group text-center">
+                <button class="btn btn-success" type="button" (click)="zamowPozycje()">Złóż zamówienie</button>
+                <button class="btn btn-primary" type="button" (click)="anuluj()">Anuluj</button>
+              </div>          
+            </form>
+          </div>          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

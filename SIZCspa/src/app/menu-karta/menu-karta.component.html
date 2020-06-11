@@ -1,17 +1,28 @@
-<div class="card mb-4">
-  <div>
-    <img class="card-img-top" src={{pozycjaMenu.obrazekUrl}} alt="">
-  </div>
-  <div class="card-body p-1">
-    <button class="btn btn-primary" [routerLink]="['/zamow/', pozycjaMenu.pozycjaMenuID]">Zamów</button>    
-    <p class="card-text text-center">{{pozycjaMenu.nazwaPozycja}}</p>
-    <p class="card-text text-center">{{pozycjaMenu.cena}}</p>
-    <p class="card-text text-center">{{pozycjaMenu.opis}}</p>
-    <div *ngFor="let skladnik of skladniki">
-      <p class="card-text text-center">{{skladnik.nazwaSkladnik}}</p>
-      <p class="card-text text-center">{{skladnik.czyWeganski}}</p>
-      <p class="card-text text-center">{{skladnik.czyWegetarianski}}</p>
-      <p class="card-text text-center">{{skladnik.masaSkladnik}}</p>
+<div class="container">
+  <div class="card">
+    <div class="card-body p-1">
+      <div class="row">
+        <div class="col-6">
+          <img class="img-fluid" src={{pozycjaMenu.obrazekUrl}} alt="">
+        </div>
+        <div class="col-4">
+          <table class="table table-borderless">
+            <tbody>
+              <tr>
+                <td><strong>Składnik</strong></td>
+                <td><strong>Masa</strong></td>	  
+              </tr>	
+              <tr *ngFor="let skladnik of pozycjaMenu.skladnik">
+                <td>{{skladnik.nazwaSkladnik}}</td>
+                <td>{{skladnik.masaSkladnik}} g</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="row">
+        <button class="btn btn-primary" type="button" [routerLink]="['/zamow/', this.pozycjaMenu.pozycjaMenuID]">Zamów</button>
+      </div>
     </div>
   </div>
 </div>

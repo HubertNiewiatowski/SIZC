@@ -14,7 +14,7 @@ export class ZamowieniaComponent implements OnInit {
   zamowienia: PobierzZamowienie[];
   nameId: any;
 
-  constructor(private http: HttpClient, private alertService: AlertService,
+  constructor(private alertService: AlertService,
               private zamowieniaService: ZamowieniaService, private autoryzacja: AutoryzacjaService) { }
 
   ngOnInit() {

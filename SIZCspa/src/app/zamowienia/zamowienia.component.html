@@ -1,8 +1,12 @@
-<div class="container">
+<div class="container ml-5">
+  <h1 class="text-left text-primary ml-5">Zamówienia</h1>
+  <br>
   <div class="row">
-    <div *ngFor="let zamowienie of zamowienia" class="col-sm-4 offset-sm-4 col-md-4 offset-md-4 col-lg-4 offset-lg-4">
+    <div *ngFor="let zamowienie of zamowienia">
+      <br>
       <app-zamowienia-karta [zamowienie]="zamowienie" [pozycjaMenu]="zamowienie.pozycjaMenu" 
         [platnoscTyp]="zamowienie.platnoscTyp" [zamowienieStatus]="zamowienie.zamowienieStatus"></app-zamowienia-karta>
+      <br>
     </div>
   </div>
 </div>

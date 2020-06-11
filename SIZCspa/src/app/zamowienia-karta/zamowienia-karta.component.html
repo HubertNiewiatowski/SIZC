@@ -1,20 +1,68 @@
-<div class="card mb-4">
-  <div>
-
-  </div>
-  <div class="card-body p-1">
-    <p class="card-text text-center">{{zamowienie.koszt}}</p>
-    <p class="card-text text-center">{{zamowienie.kodPocztowy}}</p>
-    <p class="card-text text-center">{{zamowienie.miejscowosc}}</p>
-    <p class="card-text text-center">{{zamowienie.ulica}}</p>
-    <p class="card-text text-center">{{zamowienie.nrBudynek}}</p>
-    <p class="card-text text-center">{{zamowienie.nrMieszkanie}}</p>
-    <p class="card-text text-center">{{zamowienie.dataRealizacji}}</p>
-    <p class="card-text text-center">{{zamowienie.dataZlozenia}}</p>
-    <p class="card-text text-center">{{pozycjaMenu.nazwaPozycja}}</p>
-    <p class="card-text text-center">{{pozycjaMenu.cena}}</p>
-    <p class="card-text text-center">{{pozycjaMenu.opis}}</p>
-    <p class="card-text text-center">{{platnoscTyp.nazwaPlatnosc}}</p>
-    <p class="card-text text-center">{{zamowienieStatus.nazwaStatus}}</p>
+<div class="container">
+  <div class="card">
+    <div class="card-body p-1">
+      <div class="col-10">
+        <table class="table table-borderless">
+          <tbody>
+            <tr>
+              <td><strong>koszt</strong></td>
+              <td>{{zamowienie.koszt}}</td>
+            </tr>
+            <tr>
+              <td><strong>kod pocztowy</strong></td>
+              <td>{{zamowienie.kodPocztowy}}</td>
+            </tr>
+            <tr>
+              <td><strong>miejscowość</strong></td>
+              <td>{{zamowienie.miejscowosc}}</td>
+            </tr>
+            <tr>
+              <td><strong>ulica</strong></td>
+              <td>{{zamowienie.ulica}}</td>
+            </tr>
+            <tr>
+              <td><strong>nr budynku</strong></td>
+              <td>{{zamowienie.nrBudynek}}</td>
+            </tr>
+            <tr>
+              <td><strong>nr mieszkania</strong></td>
+              <td>{{zamowienie.nrMieszkanie}}</td>
+            </tr>
+            <tr>
+              <td><strong>nr mieszkania</strong></td>
+              <td>{{zamowienie.nrMieszkanie}}</td>
+            </tr>
+            <tr>
+              <td><strong>data relizacji</strong></td>
+              <td>{{zamowienie.dataRealizacji}}</td>
+            </tr>
+            <tr>
+              <td><strong>data złożenia</strong></td>
+              <td>{{zamowienie.dataZlozenia}}</td>
+            </tr>
+            <tr>
+              <td><strong>nazwa pozycji</strong></td>
+              <td>{{pozycjaMenu.nazwaPozycja}}</td>
+            </tr>
+            <tr>
+              <td><strong>cena pozycji</strong></td>
+              <td>{{pozycjaMenu.cena}}</td>
+            </tr>
+            <tr>
+              <td><strong>opis pozycji</strong></td>
+              <td>{{pozycjaMenu.opis}}</td>
+            </tr>
+            <tr>
+              <td><strong>typ płatności</strong></td>
+              <td>{{platnoscTyp.nazwaPlatnosc}}</td>
+            </tr>
+            <tr>
+              <td><strong>status zamówienia</strong></td>
+              <td>{{zamowienieStatus.nazwaStatus}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 </div>

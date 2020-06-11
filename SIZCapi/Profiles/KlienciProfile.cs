@@ -12,7 +12,7 @@ namespace SIZCapi.Profiles
 
             CreateMap<Klient, PobierzKlientDto>();
 
-            CreateMap<AktualizujKlient, Klient>();
+            CreateMap<PobierzKlientDto, Klient>();
         }
         
     }

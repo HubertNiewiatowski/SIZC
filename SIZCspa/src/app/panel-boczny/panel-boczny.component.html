@@ -1,9 +1,7 @@
 <ng-sidebar-container> 
 
-  <!-- A sidebar -->
   <ng-sidebar [(opened)] = "opened">
-    <p>Sidebar Contents</p>
-    <button class="btn btn-primary" (click)="toggleSidebar()">Close Sidebar</button>
+    <button class="btn btn-primary" (click)="toggleSidebar()">Zamknij menu</button>
     <ul class="menu">
       <li><a [routerLink]="['/stronaGlowna']">
         <i class="fa fa-home"></i>
@@ -18,9 +16,15 @@
   </ng-sidebar>
 
   <div ng-sidebar-content>
-    <!-- Page content -->
-    <button class="btn btn-primary" (click)="toggleSidebar()">Open Sidebar</button>
-    <router-outlet></router-outlet>
+    <button class="btn btn-primary" (click)="toggleSidebar()">Pokaż menu</button>
+    <div class="row">
+      <div class="col-sm-5 col-md-4 col-lg-3">
+        <div></div>
+      </div>
+      <div class="col-sm-7 col-md-8 col-lg-9">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
   </div>
 
 </ng-sidebar-container>

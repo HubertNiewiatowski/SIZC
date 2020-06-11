@@ -12,7 +12,7 @@ import { PozycjeMenuService } from '../_serwisy/pozycjeMenu.service';
 export class MenuComponent implements OnInit {
   pozycjeMenu: PobierzPozycjaMenu[];
 
-  constructor(private http: HttpClient, private alertService: AlertService,
+  constructor(private alertService: AlertService,
               private pozycjeMenuService: PozycjeMenuService) { }
 
   ngOnInit() {

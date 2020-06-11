@@ -1,7 +1,11 @@
-<div class="container">
+<div class="container ml-5">
+  <h1 class="text-left text-primary ml-5">Menu</h1>
+  <br>
   <div class="row">
-    <div *ngFor="let pozycja of pozycjeMenu" class="col-sm-4 offset-sm-4 col-md-4 offset-md-4 col-lg-4 offset-lg-4">
+    <div *ngFor="let pozycja of pozycjeMenu">
+      <br>
       <app-menu-karta [pozycjaMenu]="pozycja" [skladniki]="pozycja.skladnik"></app-menu-karta>
+      <br>
     </div>
   </div>
 </div>

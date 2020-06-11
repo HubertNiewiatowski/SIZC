@@ -1,9 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
 import { AlertService } from 'ngx-alerts';
 import { ZamowieniaService } from '../_serwisy/zamowienia.service';
 import { DodajZamowienie } from '../_models/dodajZamowienie';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AutoryzacjaService } from '../_serwisy/autoryzacja.service';
+import { PozycjeMenuService } from '../_serwisy/pozycjeMenu.service';
+import { PobierzPozycjaMenu } from '../_models/pobierzPozycjaMenu';
+import { DlaPozycjaMenuSkladnik } from '../_models/dlaPozycjaMenuSkladnik';
 
 
 @Component({
@@ -11,45 +14,67 @@ import { AutoryzacjaService } from '../_serwisy/autoryzacja.service';
   templateUrl: './menu-zamow.component.html',
   styleUrls: ['./menu-zamow.component.css']
 })
-export class MenuZamowComponent implements OnInit {
-  zamowienie: DodajZamowienie;
+export class MenuZamowComponent implements OnInit , DoCheck{
+  pozycjaMenu: PobierzPozycjaMenu = {} as PobierzPozycjaMenu;
+  zamowienie: DodajZamowienie = {} as DodajZamowienie;
   nameId: any;
 
 
-constructor(private zamowieniaService: ZamowieniaService, private alertService: AlertService,
-            private route: ActivatedRoute, private router: Router, private autoryzacja: AutoryzacjaService) { }
+  constructor(private zamowieniaService: ZamowieniaService, private alertService: AlertService,
+              private route: ActivatedRoute, private router: Router, private autoryzacja: AutoryzacjaService,
+              private pozycjeMenuService: PozycjeMenuService) {  }
 
-ngOnInit() {
+  ngOnInit() {
+    this.pobierzPozycjeMenu();
 
-  this.nameId = this.autoryzacja.decodedToken.nameid;
+    //console.log(this.pozycjaMenu.nazwaPozycja);
 
-  this.zamowienie = {
-    koszt: 40,
-    kodPocztowy: '12345',
-    miejscowosc: 'miasto',
-    ulica: 'ulica',
-    nrBudynek: '1a',
-    nrMieszkanie: '-',
-    dataRealizacji: new Date(2020, 6, 21, 8, 41, 1),
-    pozycjaMenuID: this.route.snapshot.params.id,
-    klientID: this.nameId,
-    platnoscTypID: 1,
-  };
+    this.nameId = this.autoryzacja.decodedToken.nameid;
 
-  this.zamowPozycje();
+
   }
 
+  ngDoCheck()
+  {
+    console.log(this.pozycjaMenu.nazwaPozycja);
+
+    this.zamowienie.koszt = this.pozycjaMenu.cena + 5;
+
+    this.zamowienie.pozycjaMenuID = this.route.snapshot.params.id;
+
+    this.zamowienie.klientID = this.nameId;
+
+    this.zamowienie.dataRealizacji = new Date(2020, 6, 21, 8, 41, 1);
+
+    this.zamowienie.pracownikID = 1;
+
+    this.zamowienie.platnoscTypID = 2;
+
+    this.zamowienie.zamowienieStatusID = 1;
+
+  }
+
+  pobierzPozycjeMenu() {
+    this.pozycjeMenuService.pobierzPozycjeMenuPoId(+this.route.snapshot.params.id).subscribe((pozycjaMenu: PobierzPozycjaMenu) => {
+      this.pozycjaMenu = pozycjaMenu;
+    }, error => {
+      this.alertService.danger('Błąd przy pobieraniu pozycji');
+    });
+  }
 
   zamowPozycje() {
     this.zamowieniaService.dodajZamowienie(this.zamowienie).subscribe(next => {
-      this.alertService.success('Zalogowano pomyślnie');
+      this.alertService.success('Złożono zamówienie');
     }, error => {
-      this.alertService.warning('Nie udało się zalogować');
+      this.alertService.warning('Błąd w trakcie składania zamówienia');
     }, () => {
       this.router.navigate(['/zamowienia']);
     });
   }
 
-
+  anuluj() {
+    this.alertService.info('Anulowano składanie zamówienia');
+    this.router.navigate(['/menu']);
+  }
 
 }

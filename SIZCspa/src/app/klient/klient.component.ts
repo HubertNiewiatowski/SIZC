@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PobierzKlient } from '../_models/pobierzKlient';
 import { AlertService } from 'ngx-alerts';
-import { HttpClient } from '@angular/common/http';
 import { AutoryzacjaService } from '../_serwisy/autoryzacja.service';
 import { KlienciService } from '../_serwisy/klienci.service';
-import { AktualizujKlient } from '../_models/aktualizujKlient';
 import { Router } from '@angular/router';
 
 @Component({
@@ -14,11 +12,10 @@ import { Router } from '@angular/router';
 })
 export class KlientComponent implements OnInit {
   opened = false;
-  klientDoPobrania: PobierzKlient;
-  klientDoAktualizacji: AktualizujKlient = {} as AktualizujKlient;
+  klientDoPobrania: PobierzKlient = {} as PobierzKlient;
   nameId: any;
 
-  constructor(private http: HttpClient, private alertService: AlertService,
+  constructor(private alertService: AlertService,
               private klientService: KlienciService, private autoryzacja: AutoryzacjaService,
               private router: Router) { }
 
@@ -36,8 +33,8 @@ export class KlientComponent implements OnInit {
   }
 
   aktualizujProfilKlienta() {
-    this.klientService.aktualizujProfilKlienta(this.klientDoAktualizacji, this.nameId).subscribe(next => {
-      this.alertService.success('Zalogowano pomyślnie');
+    this.klientService.aktualizujProfilKlienta(this.klientDoPobrania, this.nameId).subscribe(next => {
+      this.alertService.success('Zaktualizowano profil');
     }, error => {
       this.alertService.warning('Błąd w trakcie aktualizowania profilu');
     }, () => {
@@ -47,7 +44,7 @@ export class KlientComponent implements OnInit {
 
   usunProfilKlienta() {
     this.klientService.usunProfilKlienta(this.nameId).subscribe(next => {
-      this.alertService.success('Usunięto profil pomyślnie');
+      this.alertService.success('Usunięto profil');
     }, error => {
       this.alertService.warning('Błąd w trakcie usuwania profilu');
     }, () => {

@@ -49,7 +49,7 @@ namespace SIZCapi.Controllers
 
         // PUT http://localhost:5000/api/ProfilKlienta/{id}
         [HttpPut("{id}")]
-        public async Task<IActionResult> AktualizujProfilKlienta(int id, AktualizujKlient profilDoAktualizacji)
+        public async Task<IActionResult> AktualizujProfilKlienta(int id, PobierzKlientDto profilDoAktualizacji)
         {
             var profilModel = await _repozytorium.PobierzProfilKlienta(id);
 

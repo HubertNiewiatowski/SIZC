@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { PobierzKlient } from '../_models/pobierzKlient';
-import { AktualizujKlient } from '../_models/aktualizujKlient';
 
 @Injectable({
   providedIn: 'root'
@@ -17,8 +16,8 @@ constructor(private http: HttpClient) { }
     return this.http.get<PobierzKlient>(this.baseUrl + id);
   }
 
-  aktualizujProfilKlienta(klient: AktualizujKlient, id): Observable<AktualizujKlient> {
-    return this.http.put<AktualizujKlient>(this.baseUrl + id, klient);
+  aktualizujProfilKlienta(klient: PobierzKlient, id): Observable<PobierzKlient> {
+    return this.http.put<PobierzKlient>(this.baseUrl + id, klient);
   }
 
   usunProfilKlienta(id): Observable<{}> {
