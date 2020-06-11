@@ -3,7 +3,7 @@
   <!-- A sidebar -->
   <ng-sidebar [(opened)] = "opened">
     <p>Sidebar Contents</p>
-    <button (click)="toggleSidebar()">Close Sidebar</button>
+    <button class="btn btn-primary" (click)="toggleSidebar()">Close Sidebar</button>
     <ul class="menu">
       <li><a [routerLink]="['/stronaGlowna']">
         <i class="fa fa-home"></i>
@@ -19,7 +19,7 @@
 
   <div ng-sidebar-content>
     <!-- Page content -->
-    <button (click)="toggleSidebar()">Open Sidebar</button>
+    <button class="btn btn-primary" (click)="toggleSidebar()">Open Sidebar</button>
     <router-outlet></router-outlet>
   </div>
 

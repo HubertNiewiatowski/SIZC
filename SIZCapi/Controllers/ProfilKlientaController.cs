@@ -21,6 +21,17 @@ namespace SIZCapi.Controllers
             _mapper = mapper;
         }
 
+        private void HaszujHaslo(string haslo, out byte[] hasloHash, out byte[] hasloSalt)
+        {
+            using (var kodUwierzytelniania = new System.Security.Cryptography.HMACSHA512())
+            {
+                hasloSalt = kodUwierzytelniania.Key;
+
+                hasloHash = kodUwierzytelniania.ComputeHash(System.Text.Encoding.Unicode.GetBytes(haslo));
+
+            }    
+        }
+
         // GET http://localhost:5000/api/ProfilKlienta/{id}
         [HttpGet("{id}")]
         public async Task<IActionResult> PobierzProfilKlienta(int id)
@@ -34,6 +45,41 @@ namespace SIZCapi.Controllers
                 return Ok(profilKlientaDoPobrania);
             }
             return NotFound();
+        }
+
+        // PUT http://localhost:5000/api/ProfilKlienta/{id}
+        [HttpPut("{id}")]
+        public async Task<IActionResult> AktualizujProfilKlienta(int id, AktualizujKlient profilDoAktualizacji)
+        {
+            var profilModel = await _repozytorium.PobierzProfilKlienta(id);
+
+            if (profilModel == null)
+            {
+                return NotFound();
+            }
+
+            _mapper.Map(profilDoAktualizacji, profilModel);
+
+            await _repozytorium.ZapiszZasob();
+
+            return NoContent();
+        }
+
+        // DELETE http://localhost:5000/api/ProfilKlienta/{id}
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> UsunProfilKlienta(int id)
+        {
+            var profilModel = await _repozytorium.PobierzProfilKlienta(id);
+
+            if (profilModel == null)
+            {
+                return NotFound();
+            }
+
+            _repozytorium.UsunZasob(profilModel);
+            await _repozytorium.ZapiszZasob();
+
+            return NoContent();
         }
         
     }

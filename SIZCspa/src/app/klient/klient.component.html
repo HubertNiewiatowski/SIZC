@@ -1,18 +1,77 @@
-<div class="card mb-4">
+<div *ngIf="!opened" class="card mb-4">
   <div>
 
   </div>
   <div class="card-body p-1">
-    <p class="card-text text-center">{{klient.imie}}</p>
-    <p class="card-text text-center">{{klient.nazwisko}}</p>
-    <p class="card-text text-center">{{klient.adresEmail}}</p>
-    <p class="card-text text-center">{{klient.nrTelStacjonarny}}</p>
-    <p class="card-text text-center">{{klient.nrTelKomorkowy}}</p>
-    <p class="card-text text-center">{{klient.kodPocztowy}}</p>
-    <p class="card-text text-center">{{klient.miejscowosc}}</p>
-    <p class="card-text text-center">{{klient.ulica}}</p>
-    <p class="card-text text-center">{{klient.nrBudynek}}</p>
-    <p class="card-text text-center">{{klient.nrMieszkanie}}</p>
-    <p class="card-text text-center">{{klient.dataRejestracji}}</p>
+    <p class="card-text text-center">{{klientDoPobrania.imie}}</p>
+    <p class="card-text text-center">{{klientDoPobrania.nazwisko}}</p>
+    <p class="card-text text-center">{{klientDoPobrania.adresEmail}}</p>
+    <p class="card-text text-center">{{klientDoPobrania.nrTelStacjonarny}}</p>
+    <p class="card-text text-center">{{klientDoPobrania.nrTelKomorkowy}}</p>
+    <p class="card-text text-center">{{klientDoPobrania.kodPocztowy}}</p>
+    <p class="card-text text-center">{{klientDoPobrania.miejscowosc}}</p>
+    <p class="card-text text-center">{{klientDoPobrania.ulica}}</p>
+    <p class="card-text text-center">{{klientDoPobrania.nrBudynek}}</p>
+    <p class="card-text text-center">{{klientDoPobrania.nrMieszkanie}}</p>
+    <p class="card-text text-center">{{klientDoPobrania.dataRejestracji}}</p>
   </div>
+  <div>
+    <button class="btn btn-primary" (click)="toggleSidebar()">Edytuj dane</button>
+    <button class="btn btn-primary" type="button" (click)="usunProfilKlienta()">Usuń konto</button>
+  </div>
+</div>
+
+
+<div *ngIf="opened">
+  <form #formularzRejestracji="ngForm" (ngSubmit)="aktualizujProfilKlienta()">
+    <h2 class="text-center text-primary">Aktualizuj dane</h2>
+    <hr>
+  
+    <div class="form-group">
+      <input type="text" class="form-control" required name="imie" [(ngModel)]="klientDoAktualizacji.imie" placeholder="imię">
+    </div>
+  
+    <div class="form-group">
+      <input type="text" class="form-control" required name="nazwisko" [(ngModel)]="klientDoAktualizacji.nazwisko" placeholder="nazwisko">
+    </div>
+  
+    <div class="form-group">
+      <input type="text" class="form-control" required name="adresEmail" [(ngModel)]="klientDoAktualizacji.adresEmail" placeholder="adres email">
+    </div>
+  
+    <div class="form-group">
+      <input type="text" class="form-control" name="nrTelStacjonarny" [(ngModel)]="klientDoAktualizacji.nrTelStacjonarny" placeholder="nr tel. stacjonarny">
+    </div>
+  
+    <div class="form-group">
+      <input type="text" class="form-control" name="nrTelKomorkowy" [(ngModel)]="klientDoAktualizacji.nrTelKomorkowy" placeholder="nr tel. komórkowy">
+    </div>
+  
+    <div class="form-group">
+      <input type="text" class="form-control" required name="kodPocztowy" [(ngModel)]="klientDoAktualizacji.kodPocztowy" placeholder="kod pocztowy">
+    </div>
+  
+    <div class="form-group">
+      <input type="text" class="form-control" required name="miejscowosc" [(ngModel)]="klientDoAktualizacji.miejscowosc" placeholder="miejscowość">
+    </div>
+  
+    <div class="form-group">
+      <input type="text" class="form-control" name="ulica" [(ngModel)]="klientDoAktualizacji.ulica" placeholder="ulica">
+    </div>
+  
+    <div class="form-group">
+      <input type="text" class="form-control" name="nrBudynek" [(ngModel)]="klientDoAktualizacji.nrBudynek" placeholder="nr budynku">
+    </div>
+  
+    <div class="form-group">
+      <input type="text" class="form-control" name="nrMieszkanie" [(ngModel)]="klientDoAktualizacji.nrMieszkanie" placeholder="nr mieszkania">
+    </div>
+  
+    <div class="form-group text-center">
+      <button class="btn btn-success" type="submit">Aktualizuj dane</button>
+      <button class="btn btn-primary" type="button" (click)="anuluj()">Anuluj</button>
+    </div>
+    
+  </form>
+
 </div>
