@@ -1,0 +1,23 @@
+<nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap shadow">
+
+  <a class="navbar-brand h1 ml-4" [routerLink]="['/stronaGlowna']">Firma Cateringowa Panel Dla Pracowników</a>
+
+  <a *ngIf="!zalogowany()" class="nav-link text-light" [routerLink]="['/logowanie']">Zaloguj</a>
+
+
+
+  <div *ngIf="zalogowany()" class="dropdown show mr-4" dropdown>
+    <a class="btn btn-secondary dropdown-toggle text-light" dropdownToggle>
+      Zarządzaj kontem
+    </a>
+  
+    <div class="dropdown-menu" *dropdownMenu>
+      <a class="dropdown-item" [routerLink]="['/klient']">
+        <i class="fa fa-user"></i>Twoje dane</a>
+      <div class="dropdown-divider"></div>
+      <a class="dropdown-item" (click)="wyloguj()">
+        <i class="fa fa-sign-out"></i>Wyloguj</a>
+    </div>
+  </div>
+
+</nav>

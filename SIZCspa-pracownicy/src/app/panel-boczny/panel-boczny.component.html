@@ -1,0 +1,30 @@
+<ng-sidebar-container> 
+
+  <ng-sidebar [(opened)] = "opened">
+    <button class="btn btn-primary" (click)="toggleSidebar()">Zamknij menu</button>
+    <ul class="menu">
+      <li><a [routerLink]="['/stronaGlowna']">
+        <i class="fa fa-home"></i>
+        Strona główna</a></li>
+      <li><a >
+        <i class="fa fa-list"></i>
+        Zamówienia</a></li>
+      <li><a >
+        <i class="fa fa-shopping-cart"></i>
+        Menu</a></li>
+    </ul>
+  </ng-sidebar>
+
+  <div ng-sidebar-content>
+    <button class="btn btn-primary" (click)="toggleSidebar()">Pokaż menu</button>
+    <div class="row">
+      <div class="col-sm-5 col-md-4 col-lg-3">
+        <div></div>
+      </div>
+      <div class="col-sm-7 col-md-8 col-lg-9">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+
+</ng-sidebar-container>
