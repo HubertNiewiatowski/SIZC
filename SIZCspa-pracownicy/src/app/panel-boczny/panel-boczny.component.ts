@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AutoryzacjaService } from '../_serwisy/autoryzacja.service';
 
 @Component({
   selector: 'app-panel-boczny',
@@ -9,9 +10,13 @@ export class PanelBocznyComponent implements OnInit {
 
   opened = true;
 
-  constructor() { }
+  constructor(public autoryzacja: AutoryzacjaService) { }
 
   ngOnInit() {
+  }
+
+  zalogowany() {
+    return this.autoryzacja.zalogowany();
   }
 
   toggleSidebar() {

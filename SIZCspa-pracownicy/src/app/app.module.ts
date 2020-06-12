@@ -22,6 +22,8 @@ import { ZamowieniaKartaComponent } from './zamowienia-karta/zamowienia-karta.co
 import { MenuComponent } from './menu/menu.component';
 import { MenuKartaComponent } from './menu-karta/menu-karta.component';
 import { MenuEdytujComponent } from './menu-edytuj/menu-edytuj.component';
+import { PracownikKartaComponent } from './pracownik-karta/pracownik-karta.component';
+import { PracownikEdytujComponent } from './pracownik-edytuj/pracownik-edytuj.component';
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -39,7 +41,9 @@ export function tokenGetter() {
       ZamowieniaKartaComponent,
       MenuComponent,
       MenuKartaComponent,
-      MenuEdytujComponent
+      MenuEdytujComponent,
+      PracownikKartaComponent,
+      PracownikEdytujComponent
    ],
    imports: [
       BrowserModule,
@@ -47,9 +51,7 @@ export function tokenGetter() {
       FormsModule,
       SidebarModule.forRoot(),
       BrowserAnimationsModule,
-      AlertModule.forRoot(maxMessages
-   ]
-}),
+      AlertModule.forRoot({maxMessages: 5, timeout: 2000, position: 'right'}),
       BsDropdownModule.forRoot(),
       RouterModule.forRoot(appRoutes),
       JwtModule.forRoot({

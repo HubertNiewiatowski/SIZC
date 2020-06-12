@@ -1,3 +1,14 @@
-<p>
-  zamowienia works!
-</p>
+<div class="container-fluid ml-5">
+  <h1 class="text-left text-primary ml-5">Zamówienia</h1>
+  <br>
+
+  <div class="col-sm-10 col-md-8 col-lg-6">
+    <div class="row">
+      <div *ngFor="let zamowienie of zamowienia">
+        <br>
+        <app-zamowienia-karta [zamowienie]="zamowienie" [pozycjaMenu]="zamowienie.pozycjaMenu" [platnoscTyp]="zamowienie.platnoscTyp" [zamowienieStatus]="zamowienie.zamowienieStatus"></app-zamowienia-karta>
+        <br>
+      </div>
+    </div>
+  </div>
+</div>

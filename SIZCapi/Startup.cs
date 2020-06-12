@@ -67,6 +67,18 @@ namespace SIZCapi
                         ValidateAudience = false
                     };
                 });
+            
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("WymaganeUprawnieniaKucharza",
+                    policy => policy.RequireClaim("UprawnieniaKucharz"));
+                
+                options.AddPolicy("WymaganeUprawnieniaDostawcy",
+                    policy => policy.RequireClaim("UprawnieniaKucharz"));
+
+                options.AddPolicy("WymaganeUprawnieniaAdministartora",
+                    policy => policy.RequireClaim("UprawnieniaKucharz"));
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

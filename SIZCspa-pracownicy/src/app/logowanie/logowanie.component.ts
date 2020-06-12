@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AutoryzacjaService } from '../_serwisy/autoryzacja.service';
+import { AlertService } from 'ngx-alerts';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-logowanie',
@@ -6,10 +9,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./logowanie.component.css']
 })
 export class LogowanieComponent implements OnInit {
+  pracownik: any = {};
 
-  constructor() { }
+  constructor(public autoryzacja: AutoryzacjaService, private alertService: AlertService, private router: Router) { }
 
   ngOnInit() {
+  }
+
+  zaloguj() {
+    this.autoryzacja.zaloguj(this.pracownik).subscribe(next => {
+      this.alertService.success('Zalogowano pomyślnie');
+    }, error => {
+      this.alertService.warning('Nie udało się zalogować');
+    }, () => {
+      this.router.navigate(['/menu']);
+    });
   }
 
 }

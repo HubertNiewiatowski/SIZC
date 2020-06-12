@@ -52,16 +52,26 @@ namespace SIZCapi.Controllers
         {
             var pracownikModel = await _repozytorium.Zaloguj(pracownikLogowanie.Login.ToLower(), pracownikLogowanie.Haslo);
 
-            if (pracownikModel == null)
-            {
-                return Unauthorized();
-            }
+            var claims = new Claim [3];
 
-            var claims = new[]
+            switch(pracownikModel.PracownikRolaID) 
             {
-                new Claim(ClaimTypes.NameIdentifier, pracownikModel.PracownikID.ToString()),
-                new Claim(ClaimTypes.Name, pracownikModel.Login)
-            };
+                case 1:
+                    claims [0] = new Claim(ClaimTypes.NameIdentifier, pracownikModel.PracownikID.ToString());
+                    claims [1] = new Claim("UprawnieniaKucharz", "");
+                    claims [2] = new Claim(ClaimTypes.Name, pracownikModel.Login);
+                    break;
+                case 2:
+                    claims [0] = new Claim(ClaimTypes.NameIdentifier, pracownikModel.PracownikID.ToString());
+                    claims [1] = new Claim("UprawnieniaDostawca", "");
+                    claims [2] = new Claim(ClaimTypes.Name, pracownikModel.Login);
+                    break;
+                case 3:
+                    claims [0] = new Claim(ClaimTypes.NameIdentifier, pracownikModel.PracownikID.ToString());
+                    claims [1] = new Claim("UprawnieniaAdministrator", "");
+                    claims [2] = new Claim(ClaimTypes.Name, pracownikModel.Login);
+                    break;
+            }
 
             var key = new SymmetricSecurityKey(Encoding.Unicode.GetBytes(_konfiguracja.GetSection("AppSettings:Token").Value));
 

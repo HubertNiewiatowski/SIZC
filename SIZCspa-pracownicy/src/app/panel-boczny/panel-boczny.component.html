@@ -6,10 +6,10 @@
       <li><a [routerLink]="['/stronaGlowna']">
         <i class="fa fa-home"></i>
         Strona główna</a></li>
-      <li><a >
+      <li *ngIf="zalogowany()"><a [routerLink]="['/zamowienia']">
         <i class="fa fa-list"></i>
         Zamówienia</a></li>
-      <li><a >
+      <li><a [routerLink]="['/menu']">
         <i class="fa fa-shopping-cart"></i>
         Menu</a></li>
     </ul>

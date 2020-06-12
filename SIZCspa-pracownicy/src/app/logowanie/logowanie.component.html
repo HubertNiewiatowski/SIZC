@@ -1,3 +1,19 @@
-<p>
-  logowanie works!
-</p>
+<div class="container">
+  <form #formularzLogowania="ngForm" (ngSubmit)="zaloguj()">
+
+    <div class="row">
+      <input class="form-control form-control-dark mr-2" type="text" name="adresEmail"
+      placeholder="Adres email" required [(ngModel)]="pracownik.login">
+    </div>
+
+    <div class="row">
+      <input class="form-control form-control-dark mr-2" type="password" name="haslo"
+      placeholder="Hasło" required [(ngModel)]="pracownik.haslo">
+    </div>
+
+    <div class="row">
+      <button [disabled]="!formularzLogowania.valid" class="btn btn-success" type="submit">Zaloguj</button>
+    </div>    
+  
+  </form>
+</div>

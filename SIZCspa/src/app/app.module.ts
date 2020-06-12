@@ -15,7 +15,6 @@ import { PanelGornyComponent } from './panel-gorny/panel-gorny.component';
 import { PanelBocznyComponent } from './panel-boczny/panel-boczny.component';
 import { AutoryzacjaService } from './_serwisy/autoryzacja.service';
 import { StronaGlownaComponent } from './strona-glowna/strona-glowna.component';
-import { RejestracjaComponent } from './rejestracja/rejestracja.component';
 import { ZamowieniaComponent } from './zamowienia/zamowienia.component';
 import { LogowanieComponent } from './logowanie/logowanie.component';
 import { appRoutes } from './routes';
@@ -23,6 +22,8 @@ import { KlientComponent } from './klient/klient.component';
 import { MenuKartaComponent } from './menu-karta/menu-karta.component';
 import { ZamowieniaKartaComponent } from './zamowienia-karta/zamowienia-karta.component';
 import { MenuZamowComponent } from './menu-zamow/menu-zamow.component';
+import { RejestracjaComponent } from './rejestracja/rejestracja.component';
+
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -35,13 +36,14 @@ export function tokenGetter() {
       PanelGornyComponent,
       PanelBocznyComponent,
       StronaGlownaComponent,
-      RejestracjaComponent,
       ZamowieniaComponent,
       LogowanieComponent,
       KlientComponent,
+      LogowanieComponent,
       MenuKartaComponent,
       ZamowieniaKartaComponent,
-      MenuZamowComponent
+      MenuZamowComponent,
+      RejestracjaComponent
    ],
    imports: [
       BrowserModule,

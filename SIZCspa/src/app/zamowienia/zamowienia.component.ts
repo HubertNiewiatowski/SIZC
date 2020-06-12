@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { AlertService } from 'ngx-alerts';
 import { PobierzZamowienie } from '../_models/pobierzZamowienie';
 import { ZamowieniaService } from '../_serwisy/zamowienia.service';

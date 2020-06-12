@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { AlertService } from 'ngx-alerts';
 import { PobierzPozycjaMenu } from '../_models/pobierzPozycjaMenu';
 import { PozycjeMenuService } from '../_serwisy/pozycjeMenu.service';
