@@ -1,13 +1,14 @@
-<div class="container ml-5">
+<div class="container-fluid ml-5">
   <h1 class="text-left text-primary ml-5">Twoje dane</h1>
   <br>
 
-  <div class="col-6">
+  <div class="col-sm-10 col-md-8 col-lg-6">
+
     <div *ngIf="!opened" class="card">
       <div class="card-body p-1">
-        <div class="col-2">
+        <div class="col-10">
           <table class="table table-borderless">
-            <tbody>  
+            <tbody>
               <tr>
                 <td><strong>imię</strong></td>
                 <td>{{klientDoPobrania.imie}}</td>
@@ -52,77 +53,86 @@
                 <td><strong>data rejestracji</strong></td>
                 <td>{{klientDoPobrania.dataRejestracji}}</td>
               </tr>
-  
-              <div>
-                <button class="btn btn-primary" (click)="toggleSidebar()">Edytuj dane</button>
-                <button class="btn btn-primary" type="button" (click)="usunProfilKlienta()">Usuń konto</button>
-              </div>
             </tbody>
           </table>
+
+          <div>
+            <button class="btn btn-success mr-4" (click)="toggleSidebar()">Edytuj dane</button>
+            <button class="btn btn-primary" type="button" (click)="usunProfilKlienta()">Usuń konto</button>
+          </div>
         </div>
       </div>
     </div>
-    
-    
+
+
     <div *ngIf="opened" class="card">
       <div class="card-body p-1">
-        <div class="col-6">
-          <table class="table table-borderless">
-            <tbody>
-              <form #formularzRejestracji="ngForm" (ngSubmit)="aktualizujProfilKlienta()">      
-              </form>
-              <div class="form-group">
-                <input type="text" class="form-control" required name="imie" [(ngModel)]="klientDoPobrania.imie" placeholder="imię">
-              </div>
-            
-              <div class="form-group">
-                <input type="text" class="form-control" required name="nazwisko" [(ngModel)]="klientDoPobrania.nazwisko" placeholder="nazwisko">
-              </div>
-            
-              <div class="form-group">
-                <input type="text" class="form-control" required name="adresEmail" [(ngModel)]="klientDoPobrania.adresEmail" placeholder="adres email">
-              </div>
-            
-              <div class="form-group">
-                <input type="text" class="form-control" name="nrTelStacjonarny" [(ngModel)]="klientDoPobrania.nrTelStacjonarny" placeholder="nr tel. stacjonarny">
-              </div>
-            
-              <div class="form-group">
-                <input type="text" class="form-control" name="nrTelKomorkowy" [(ngModel)]="klientDoPobrania.nrTelKomorkowy" placeholder="nr tel. komórkowy">
-              </div>
-            
-              <div class="form-group">
-                <input type="text" class="form-control" required name="kodPocztowy" [(ngModel)]="klientDoPobrania.kodPocztowy" placeholder="kod pocztowy">
-              </div>
-            
-              <div class="form-group">
-                <input type="text" class="form-control" required name="miejscowosc" [(ngModel)]="klientDoPobrania.miejscowosc" placeholder="miejscowość">
-              </div>
-            
-              <div class="form-group">
-                <input type="text" class="form-control" name="ulica" [(ngModel)]="klientDoPobrania.ulica" placeholder="ulica">
-              </div>
-            
-              <div class="form-group">
-                <input type="text" class="form-control" name="nrBudynek" [(ngModel)]="klientDoPobrania.nrBudynek" placeholder="nr budynku">
-              </div>
-            
-              <div class="form-group">
-                <input type="text" class="form-control" name="nrMieszkanie" [(ngModel)]="klientDoPobrania.nrMieszkanie" placeholder="nr mieszkania">
-              </div>
-            
-              <div class="form-group text-center">
-                <button class="btn btn-success" type="submit">Aktualizuj dane</button>
-                <button class="btn btn-primary" type="button" (click)="anuluj()">Anuluj</button>
-              </div>
-            </tbody>
-          </table>
+        <div class="col-10">
+          <form #formularzRejestracji="ngForm" (ngSubmit)="aktualizujProfilKlienta()">
+            <br>
+            <table class="table table-borderless">
+              <tbody>
+                <tr>
+                  <td><strong>imię</strong></td>
+                  <td><input type="text" class="form-control" required name="imie" [(ngModel)]="klientDoPobrania.imie"
+                      placeholder="imię"></td>
+                </tr>
+                <tr>
+                  <td><strong>nazwisko</strong></td>
+                  <td><input type="text" class="form-control" required name="nazwisko"
+                      [(ngModel)]="klientDoPobrania.nazwisko" placeholder="nazwisko"></td>
+                </tr>
+                <tr>
+                  <td><strong>adres email</strong></td>
+                  <input type="text" class="form-control" required name="adresEmail"
+                    [(ngModel)]="klientDoPobrania.adresEmail" placeholder="adres email">
+                </tr>
+                <tr>
+                  <td><strong>nr tel. stacjonarny</strong></td>
+                  <input type="text" class="form-control" name="nrTelStacjonarny"
+                    [(ngModel)]="klientDoPobrania.nrTelStacjonarny" placeholder="nr tel. stacjonarny">
+                </tr>
+                <tr>
+                  <td><strong>nr tel. komórkowy</strong></td>
+                  <input type="text" class="form-control" name="nrTelKomorkowy"
+                    [(ngModel)]="klientDoPobrania.nrTelKomorkowy" placeholder="nr tel. komórkowy">
+                </tr>
+                <tr>
+                  <td><strong>kod pocztowy</strong></td>
+                  <input type="text" class="form-control" required name="kodPocztowy"
+                    [(ngModel)]="klientDoPobrania.kodPocztowy" placeholder="kod pocztowy">
+                </tr>
+                <tr>
+                  <td><strong>miejscowość</strong></td>
+                  <input type="text" class="form-control" required name="miejscowosc"
+                    [(ngModel)]="klientDoPobrania.miejscowosc" placeholder="miejscowość">
+                </tr>
+                <tr>
+                  <td><strong>ulica</strong></td>
+                  <input type="text" class="form-control" name="ulica" [(ngModel)]="klientDoPobrania.ulica"
+                    placeholder="ulica">
+                </tr>
+                <tr>
+                  <td><strong>nr budynku</strong></td>
+                  <input type="text" class="form-control" name="nrBudynek" [(ngModel)]="klientDoPobrania.nrBudynek"
+                    placeholder="nr budynku">
+                </tr>
+                <tr>
+                  <td><strong>nr mieszkania</strong></td>
+                  <input type="text" class="form-control" name="nrMieszkanie"
+                    [(ngModel)]="klientDoPobrania.nrMieszkanie" placeholder="nr mieszkania">
+                </tr>
+
+              </tbody>
+            </table>
+
+            <div class="form-group text-center">
+              <button class="btn btn-success mr-4" type="submit">Aktualizuj dane</button>
+              <button class="btn btn-primary" type="button" (click)="anuluj()">Anuluj</button>
+            </div>
+          </form>
         </div>
-      </div>  
+      </div>
     </div>
   </div>
-
-
 </div>
-
-
