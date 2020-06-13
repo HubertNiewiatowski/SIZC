@@ -39,7 +39,7 @@ namespace SIZCapi.Controllers
         }
 
         // GET http://localhost:5000/api/ProfilPracownika/
-        [Authorize(Policy = "WymaganeUprawnieniaAdministartora")]
+        [Authorize(Policy = "WymaganeUprawnieniaAdministratora")]
         [HttpGet]
         public async Task<IActionResult> PobierzProfileKlientowWszystkie()
         {
@@ -55,7 +55,7 @@ namespace SIZCapi.Controllers
         }
 
         // PUT http://localhost:5000/api/ProfilPracownika/{id}
-        [Authorize(Policy = "WymaganeUprawnieniaAdministartora")]
+        [Authorize(Policy = "WymaganeUprawnieniaAdministratora")]
         [HttpPut("{id}")]
         public async Task<IActionResult> AktualizujProfilPracownika(int id, PobierzPracownikDto profilDoAktualizacji)
         {
@@ -74,7 +74,7 @@ namespace SIZCapi.Controllers
         }
 
         // DELETE http://localhost:5000/api/ProfilPracownika/{id}
-        [Authorize(Policy = "WymaganeUprawnieniaAdministartora")]
+        [Authorize(Policy = "WymaganeUprawnieniaAdministratora")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> UsunProfilPracownika(int id)
         {

@@ -39,7 +39,7 @@ namespace SIZCapi.Controllers
         }
 
         // GET http://localhost:5000/api/ProfilKlienta/
-        [Authorize(Policy = "WymaganeUprawnieniaAdministartora")]
+        [Authorize(Policy = "WymaganeUprawnieniaAdministratora")]
         [HttpGet]
         public async Task<IActionResult> PobierzProfileKlientowWszystkie()
         {

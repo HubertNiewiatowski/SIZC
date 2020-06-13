@@ -73,8 +73,8 @@ namespace SIZCapi
                 options.AddPolicy("WymaganeUprawnieniaPracownika",
                     policy => policy.RequireClaim("UprawnieniaPracownik"));
 
-                options.AddPolicy("WymaganeUprawnieniaAdministartora",
-                    policy => policy.RequireClaim("UprawnieniaAdministartor"));
+                options.AddPolicy("WymaganeUprawnieniaAdministratora",
+                    policy => policy.RequireClaim("UprawnieniaAdministrator"));
 
                 options.AddPolicy("WymaganeUprawnieniaKlienta",
                     policy => policy.RequireClaim("UprawnieniaKlient"));

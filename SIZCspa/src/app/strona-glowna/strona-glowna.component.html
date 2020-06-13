@@ -3,10 +3,16 @@
     <h1 class="text-left text-primary ml-5">Catering dietetyczny</h1>
     <h1 class="text-left text-primary ml-5">Zamawiaj posiłki z dostawą</h1>
     <br>
-    <p class="lead text-left ml-5">Zarejestruj się by złożyć zamówienie</p>
-    <div class="text-left text-primary ml-5">
-      <button class="btn btn-primary btn-lg mr-4" [routerLink]="['/rejestracja']">Zarejestruj się</button>
-      <button class="btn btn-info btn-lg" [routerLink]="['/logowanie']">Zaloguj się</button>
+    <div *ngIf="!zalogowany()">
+      <h2 class="lead text-left ml-5">Zarejestruj się by złożyć zamówienie</h2>
+      <div class="text-left text-primary ml-5">
+        <button class="btn btn-primary btn-lg mr-4" [routerLink]="['/rejestracja']">Zarejestruj się</button>
+        <button class="btn btn-info btn-lg" [routerLink]="['/logowanie']">Zaloguj się</button>
+      </div>
+    </div>
+    <div *ngIf="zalogowany()">
+      <h2 class="lead text-left ml-5">Jesteś zalogowany jako - {{klientImie}}</h2>
+      <h2 class="lead text-left ml-5">Wybierz zakładkę z menu po lewej stronie</h2>
     </div>
   </div>
 </div>

@@ -4,6 +4,6 @@
 
   <a *ngIf="!zalogowany()" class="nav-link text-light" [routerLink]="['/logowanie']">Zaloguj</a>
 
-  <a *ngIf="zalogowany()" class="nav-link text-light" [routerLink]="['/stronaGlowna']">Wyloguj</a>
+  <a *ngIf="zalogowany()" class="nav-link text-light" (click)="wyloguj()" [routerLink]="['/stronaGlowna']">Wyloguj</a>
   
 </nav>

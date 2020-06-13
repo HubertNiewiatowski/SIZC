@@ -25,6 +25,8 @@ import { MenuEdytujComponent } from './menu-edytuj/menu-edytuj.component';
 import { PracownikKartaComponent } from './pracownik-karta/pracownik-karta.component';
 import { PracownikEdytujComponent } from './pracownik-edytuj/pracownik-edytuj.component';
 import { ZamowienieEdytujComponent } from './zamowienie-edytuj/zamowienie-edytuj.component';
+import { RejestracjaPracownikComponent } from './rejestracja-pracownik/rejestracja-pracownik.component';
+import { MenuDodajComponent } from './menu-dodaj/menu-dodaj.component';
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -45,7 +47,9 @@ export function tokenGetter() {
       MenuEdytujComponent,
       PracownikKartaComponent,
       PracownikEdytujComponent,
-      ZamowienieEdytujComponent
+      ZamowienieEdytujComponent,
+      RejestracjaPracownikComponent,
+      MenuDodajComponent
    ],
    imports: [
       BrowserModule,

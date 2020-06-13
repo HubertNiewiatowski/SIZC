@@ -636,7 +636,7 @@ namespace SIZCapi.Data
                 new Pracownik
                 {
                     PracownikID = 3,
-                    Login = "administartor1",
+                    Login = "administrator1",
                     HasloHash = hasloHash,
                     HasloSalt = hasloSalt,
                     PracownikRolaID = 3

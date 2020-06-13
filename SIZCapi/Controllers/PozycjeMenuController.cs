@@ -57,7 +57,7 @@ namespace SIZCapi.Controllers
         }
 
         // POST http://localhost:5000/api/PozycjeMenu/
-        [Authorize(Policy = "WymaganeUprawnieniaAdministartora")]
+        [Authorize(Policy = "WymaganeUprawnieniaAdministratora")]
         [HttpPost]
         public async Task<IActionResult> DodajPozycjeMenu(PobierzPozycjaMenuDto pozycjaDoDodania)
         {
@@ -70,7 +70,7 @@ namespace SIZCapi.Controllers
         }
 
         // PUT http://localhost:5000/api/PozycjeMenu/{id}
-        [Authorize(Policy = "WymaganeUprawnieniaAdministartora")]
+        [Authorize(Policy = "WymaganeUprawnieniaAdministratora")]
         [HttpPut("{id}")]
         public async Task<IActionResult> AktualizujPozycjeMenu(int id, PobierzPozycjaMenuDto pozycjaDoAktualizacji)
         {
@@ -91,7 +91,7 @@ namespace SIZCapi.Controllers
 
 
         // DELETE http://localhost:5000/api/PozycjeMenu/{id}
-        [Authorize(Policy = "WymaganeUprawnieniaAdministartora")]
+        [Authorize(Policy = "WymaganeUprawnieniaAdministratora")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> UsunPozycjeMenu(int id)
         {

@@ -12,7 +12,7 @@ import { AutoryzacjaService } from '../_serwisy/autoryzacja.service';
 export class ZamowieniaComponent implements OnInit {
   zamowienia: PobierzZamowienie[];
   nameId: any;
-  pracownikRolaId: any;
+  pracownikRolaId: string;
 
   constructor(private alertService: AlertService,
               private zamowieniaService: ZamowieniaService, private autoryzacja: AutoryzacjaService) { }
@@ -29,6 +29,28 @@ export class ZamowieniaComponent implements OnInit {
     }, error => {
       this.alertService.danger('Błąd przy pobieraniu zamowień');
     });
+  }
+
+  rolaKucharz() {
+    if (this.pracownikRolaId === '1')
+    {
+      return true;
+    }
+    else
+    {
+      return false;
+    }
+  }
+
+  rolaDostawca() {
+    if (this.pracownikRolaId === '2')
+    {
+      return true;
+    }
+    else
+    {
+      return false;
+    }
   }
 
 }

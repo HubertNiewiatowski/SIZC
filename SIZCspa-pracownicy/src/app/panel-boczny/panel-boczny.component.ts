@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
 import { AutoryzacjaService } from '../_serwisy/autoryzacja.service';
 
 @Component({
@@ -8,17 +8,19 @@ import { AutoryzacjaService } from '../_serwisy/autoryzacja.service';
 })
 export class PanelBocznyComponent implements OnInit {
 
+  pracownikRolaId: string;
   opened = true;
-  pracownikRolaId: any;
 
   constructor(public autoryzacja: AutoryzacjaService) { }
 
   ngOnInit() {
-    this.pracownikRolaId = this.autoryzacja.decodedToken.PracownikRolaId;
+    this.pracownikRolaId = this.autoryzacja.decodedToken?.PracownikRolaId;
+    this.rolaPracownik();
+    this.rolaAdministrator();
   }
 
-  rolaAdministartor() {
-    if (this.pracownikRolaId == 3)
+  rolaPracownik() {
+    if (this.pracownikRolaId === '1' || this.pracownikRolaId === '2')
     {
       return true;
     }
@@ -28,9 +30,23 @@ export class PanelBocznyComponent implements OnInit {
     }
   }
 
+  rolaAdministrator() {
+    if (this.pracownikRolaId === '3')
+    {
+      return true;
+    }
+    else
+    {
+      return false;
+    }
+  }
+
+
+
   zalogowany() {
     return this.autoryzacja.zalogowany();
   }
+
 
   toggleSidebar() {
     this.opened = !this.opened;

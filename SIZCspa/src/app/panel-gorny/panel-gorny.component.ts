@@ -20,7 +20,7 @@ export class PanelGornyComponent implements OnInit {
   }
 
   wyloguj() {
-    localStorage.removeItem('token');
+    this.autoryzacja.wyloguj();
     this.alertService.info('Nastąpiło wylogowanie');
     this.router.navigate(['/stronaGlowna']);
   }

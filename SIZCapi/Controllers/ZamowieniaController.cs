@@ -57,7 +57,7 @@ namespace SIZCapi.Controllers
         }
 
         // GET http://localhost:5000/api/Zamowienia/
-        [Authorize(Policy = "WymaganeUprawnieniaAdministartora")]
+        [Authorize(Policy = "WymaganeUprawnieniaAdministratora")]
         [HttpGet]
         public async Task<IActionResult> PobierzZamowieniaWszystkie()
         {

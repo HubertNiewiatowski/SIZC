@@ -30,7 +30,7 @@ namespace SIZCapi.Controllers
         }
 
         // POST api/AutoryzacjaPracownik/zarejestruj/
-        [Authorize(Policy = "WymaganeUprawnieniaAdministartora")]
+        [Authorize(Policy = "WymaganeUprawnieniaAdministratora")]
         [HttpPost("zarejestruj")]
         public async Task<IActionResult> Zarejestruj(PracownikDoRejestracjiDto pracownikRejestracja)
         {
@@ -53,6 +53,11 @@ namespace SIZCapi.Controllers
         public async Task<IActionResult> Zaloguj(PracownikDoLogowaniaDto pracownikLogowanie)
         {
             var pracownikModel = await _repozytorium.Zaloguj(pracownikLogowanie.Login.ToLower(), pracownikLogowanie.Haslo);
+
+            if (pracownikModel == null)
+            {
+                return Unauthorized();
+            }
 
             var claims = new Claim [4];
 

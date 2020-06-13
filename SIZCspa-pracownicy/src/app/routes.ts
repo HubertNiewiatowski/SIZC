@@ -5,12 +5,14 @@ import { MenuComponent } from './menu/menu.component';
 import { ZamowieniaComponent } from './zamowienia/zamowienia.component';
 import { AutoryzacjaGuard } from './_guards/autoryzacja.guard';
 import { MenuEdytujComponent } from './menu-edytuj/menu-edytuj.component';
+import { PracownikComponent } from './pracownik/pracownik.component';
 
 
 export const appRoutes: Routes = [
     { path: 'stronaGlowna', component: StronaGlownaComponent },
     { path: 'logowanie', component: LogowanieComponent },
-    { path: 'menu', component: MenuComponent },
+    { path: 'pracownicy', component: PracownikComponent, canActivate: [AutoryzacjaGuard]},
+    { path: 'menu', component: MenuComponent, canActivate: [AutoryzacjaGuard]},
     { path: 'edytuj/:id', component: MenuEdytujComponent, canActivate: [AutoryzacjaGuard]},
     { path: 'zamowienia', component: ZamowieniaComponent, canActivate: [AutoryzacjaGuard]},
     { path: '**', redirectTo: 'stronaGlowna', pathMatch: 'full' }

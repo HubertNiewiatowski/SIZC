@@ -1,0 +1,38 @@
+<div class="container-fluid ml-5">
+  <h1 class="text-left text-primary ml-5">Zarejestruj nowego pracownika</h1>
+  <br>
+  <div class="col-sm-10 col-md-8 col-lg-6">
+
+    <div class="card">
+      <div class="card-body p-1">
+        <div class="col-10">
+          <form #formularzRejestracji="ngForm">
+            <table class="table table-borderless">
+              <tbody>
+                <tr>
+                  <td><strong>login</strong></td>
+                  <td><input type="text" class="form-control" required name="login" [(ngModel)]="pracownik.login"
+                    placeholder="login"></td>
+                </tr>
+                <tr>
+                  <td><strong>hasło</strong></td>
+                  <td><input type="password" class="form-control" required name="haslo" [(ngModel)]="pracownik.haslo"
+                    placeholder="hasło"></td>
+                </tr>
+                <tr>
+                  <td><strong>ID roli pracownika</strong></td>
+                  <td><input type="text" class="form-control" required name="pracownikRolaID" [(ngModel)]="pracownik.pracownikRolaID"
+                    placeholder="ID roli pracownika"></td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="form-group text-center">
+              <button class="btn btn-success mr-4" type="button" (click)="zarejestruj()">Zarejestruj się</button>
+              <button class="btn btn-primary" type="button" (click)="anuluj()">Anuluj</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -6,16 +6,15 @@
       <li><a [routerLink]="['/stronaGlowna']">
         <i class="fa fa-home"></i>
         Strona główna</a></li>
-      <li *ngIf="zalogowany()"><a [routerLink]="['/zamowienia']">
+      <li *ngIf="rolaPracownik()"><a [routerLink]="['/zamowienia']">
         <i class="fa fa-list"></i>
         Zamówienia</a></li>
-      <li *ngIf="rolaAdministartor()"><a [routerLink]="['/menu']">
+      <li *ngIf="rolaAdministrator()"><a [routerLink]="['/menu']">
         <i class="fa fa-shopping-cart"></i>
         Menu</a></li>
-
-      <li *ngIf="rolaAdministartor()"><a [routerLink]="['/menu']">
-        <i class="fa fa-shopping-cart"></i>
-        Menu</a></li>
+      <li *ngIf="rolaAdministrator()"><a [routerLink]="['/pracownicy']">
+        <i class="fa fa-user"></i>
+        Pracownicy</a></li>
     </ul>
   </ng-sidebar>
 

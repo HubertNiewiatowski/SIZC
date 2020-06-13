@@ -13,28 +13,34 @@ export class AutoryzacjaService {
 
 constructor(private http: HttpClient) { }
 
-zaloguj(pracownikLogowanie: any) {
-  return this.http.post(this.baseUrl + 'zaloguj', pracownikLogowanie)
-    .pipe(
-      map((response: any) => {
-        const pracownikModel = response;
-        if (pracownikModel) {
-          localStorage.setItem('token', pracownikModel.token);
-          this.decodedToken = this.jwtHelper.decodeToken(pracownikModel.token);
-          console.log(this.decodedToken);
-      }
-    })
-  );
-}
+  zaloguj(pracownikLogowanie: any) {
+    return this.http.post(this.baseUrl + 'zaloguj', pracownikLogowanie)
+      .pipe(
+        map((response: any) => {
+          const pracownikModel = response;
+          if (pracownikModel) {
+            localStorage.setItem('token', pracownikModel.token);
+            this.decodedToken = this.jwtHelper.decodeToken(pracownikModel.token);
+            console.log(this.decodedToken);
+        }
+      })
+    );
+  }
 
-zarejestruj(pracownikRejestracja: any) {
-  return this.http.post(this.baseUrl + 'zarejestruj', pracownikRejestracja);
-}
+  zarejestruj(pracownikRejestracja: any) {
+    return this.http.post(this.baseUrl + 'zarejestruj', pracownikRejestracja);
+  }
 
-zalogowany() {
-  const token = localStorage.getItem('token');
+  zalogowany() {
+    const token = localStorage.getItem('token');
 
-  return !this.jwtHelper.isTokenExpired(token);
-}
+    return !this.jwtHelper.isTokenExpired(token);
+  }
+
+  wyloguj() {
+    localStorage.removeItem('token');
+  }
+
+
 
 }

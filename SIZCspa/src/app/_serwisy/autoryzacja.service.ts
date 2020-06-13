@@ -37,4 +37,8 @@ export class AutoryzacjaService {
 
     return !this.jwtHelper.isTokenExpired(token);
   }
+
+  wyloguj() {
+    localStorage.removeItem('token');
+  }
 }

@@ -6,7 +6,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AutoryzacjaService } from '../_serwisy/autoryzacja.service';
 import { PozycjeMenuService } from '../_serwisy/pozycjeMenu.service';
 import { PobierzPozycjaMenu } from '../_models/pobierzPozycjaMenu';
-import { DlaPozycjaMenuSkladnik } from '../_models/dlaPozycjaMenuSkladnik';
 
 
 @Component({
