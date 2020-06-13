@@ -12,7 +12,11 @@ export class ZamowieniaService {
   constructor(private http: HttpClient) { }
 
   pobierzZamowienia(id): Observable<PobierzZamowienie[]> {
-    return this.http.get<PobierzZamowienie[]>(this.baseUrl + 'klient/' + id);
+    return this.http.get<PobierzZamowienie[]>(this.baseUrl + 'pracownik/' + id);
+  }
+
+  pobierzZamowieniaWszystkie(): Observable<PobierzZamowienie[]> {
+    return this.http.get<PobierzZamowienie[]>(this.baseUrl );
   }
 
 }

@@ -19,4 +19,16 @@ export class PozycjeMenuService {
     return this.http.get<PobierzPozycjaMenu>(this.baseUrl + id);
   }
 
+  dodajPozycjeMenu(pozycja: PobierzPozycjaMenu): Observable<PobierzPozycjaMenu> {
+    return this.http.post<PobierzPozycjaMenu>(this.baseUrl, pozycja);
+  }
+
+  aktualizujPozycjeMenu(pozycja: PobierzPozycjaMenu, id): Observable<PobierzPozycjaMenu> {
+    return this.http.put<PobierzPozycjaMenu>(this.baseUrl + id, pozycja);
+  }
+
+  usunPozycjeMenu(id): Observable<{}> {
+    return this.http.delete(this.baseUrl + id);
+  }
+
 }

@@ -16,10 +16,16 @@ namespace SIZCapi.Data
 
         Task<IEnumerable<PozycjaMenu>> PobierzPozycjeMenuWszystkie();
 
+        Task<Zamowienie> PobierzZamowieniePoId(int id);
+
         Task<IEnumerable<Zamowienie>> PobierzZamowieniaKlienta(int id);
+
+        Task<IEnumerable<Zamowienie>> PobierzZamowieniaPracownika(int id);
 
         Task<IEnumerable<Zamowienie>> PobierzZamowieniaWszystkie();
 
         Task<Klient> PobierzProfilKlienta(int id);
+
+        Task<IEnumerable<Klient>> PobierzProfileKlientowWszystkie();
     }
 }

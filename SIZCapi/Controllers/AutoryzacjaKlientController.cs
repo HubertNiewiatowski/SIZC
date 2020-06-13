@@ -62,6 +62,7 @@ namespace SIZCapi.Controllers
             var claims = new[]
             {
                 new Claim(ClaimTypes.NameIdentifier, klientModel.KlientID.ToString()),
+                new Claim("UprawnieniaKlient", ""),
                 new Claim(ClaimTypes.Email, klientModel.AdresEmail),
                 new Claim(ClaimTypes.Name, klientModel.Imie)
             };

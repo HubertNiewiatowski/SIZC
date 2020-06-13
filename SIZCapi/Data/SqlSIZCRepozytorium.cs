@@ -40,6 +40,13 @@ namespace SIZCapi.Data
             return pozycjeMenu;
         }
 
+        public async Task<IEnumerable<Klient>> PobierzProfileKlientowWszystkie()
+        {
+            var profileKlientow = await _kontekst.Klient.ToListAsync();
+
+            return profileKlientow;
+        }
+
         public async Task<Klient> PobierzProfilKlienta(int id)
         {
             var profilKlienta = await _kontekst.Klient.FirstOrDefaultAsync(e => e.KlientID == id);
@@ -54,11 +61,25 @@ namespace SIZCapi.Data
             return zamowienia;
         }
 
-        public async Task<IEnumerable<Zamowienie>> PobierzZamowieniaWszystkie()
+        public async Task<IEnumerable<Zamowienie>> PobierzZamowieniaPracownika(int id)
         {
-            var zamowienia = await _kontekst.Zamowienie.ToListAsync();
+            var zamowienia = await _kontekst.Zamowienie.Include(e => e.PozycjaMenu).Include(e => e.PlatnoscTyp).Include(e => e.ZamowienieStatus).Where(e => e.PracownikID == id).ToListAsync();
 
             return zamowienia;
+        }
+
+        public async Task<IEnumerable<Zamowienie>> PobierzZamowieniaWszystkie()
+        {
+            var zamowienia = await _kontekst.Zamowienie.Include(e => e.PozycjaMenu).Include(e => e.PlatnoscTyp).Include(e => e.ZamowienieStatus).ToListAsync();
+
+            return zamowienia;
+        }
+
+        public async Task<Zamowienie> PobierzZamowieniePoId(int id)
+        {
+            var zamowienie = await _kontekst.Zamowienie.Include(e => e.PozycjaMenu).Include(e => e.PlatnoscTyp).Include(e => e.ZamowienieStatus).FirstOrDefaultAsync(e => e.ZamowienieID == id);
+
+            return zamowienie;
         }
 
         public void UsunZasob<T>(T encja) where T : class

@@ -70,14 +70,14 @@ namespace SIZCapi
             
             services.AddAuthorization(options =>
             {
-                options.AddPolicy("WymaganeUprawnieniaKucharza",
-                    policy => policy.RequireClaim("UprawnieniaKucharz"));
-                
-                options.AddPolicy("WymaganeUprawnieniaDostawcy",
-                    policy => policy.RequireClaim("UprawnieniaKucharz"));
+                options.AddPolicy("WymaganeUprawnieniaPracownika",
+                    policy => policy.RequireClaim("UprawnieniaPracownik"));
 
                 options.AddPolicy("WymaganeUprawnieniaAdministartora",
                     policy => policy.RequireClaim("UprawnieniaKucharz"));
+
+                options.AddPolicy("WymaganeUprawnieniaKlienta",
+                    policy => policy.RequireClaim("UprawnieniaKlient"));
             });
         }
 

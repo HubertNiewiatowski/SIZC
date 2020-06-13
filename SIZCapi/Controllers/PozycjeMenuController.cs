@@ -24,7 +24,7 @@ namespace SIZCapi.Controllers
             _mapper = mapper;
         }
 
-        // GET http://localhost:5000/api/PozycjeMenuController/
+        // GET http://localhost:5000/api/PozycjeMenu/
         [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> PobierzPozycjeMenuWszystkie()
@@ -40,7 +40,7 @@ namespace SIZCapi.Controllers
             return NotFound();
         }
         
-        // GET http://localhost:5000/api/PozycjeMenuController/{id}
+        // GET http://localhost:5000/api/PozycjeMenu/{id}
         [AllowAnonymous]
         [HttpGet("{id}")]
         public async Task<IActionResult> PobierzPozycjeMenuPoId(int id)
@@ -56,10 +56,10 @@ namespace SIZCapi.Controllers
             return NotFound();
         }
 
-        // POST http://localhost:5000/api/PozycjeMenuController/
+        // POST http://localhost:5000/api/PozycjeMenu/
         [Authorize(Policy = "WymaganeUprawnieniaAdministartora")]
         [HttpPost]
-        public async Task<IActionResult> DodajPozycjaMenu(DodajPozycjaMenuDto pozycjaDoDodania)
+        public async Task<IActionResult> DodajPozycjaMenu(PobierzPozycjaMenuDto pozycjaDoDodania)
         {
             var pozycjaModel = _mapper.Map<PozycjaMenu>(pozycjaDoDodania);
 
@@ -69,10 +69,10 @@ namespace SIZCapi.Controllers
             return Ok();
         }
 
-        // PUT http://localhost:5000/api/PozycjeMenuController/{id}
+        // PUT http://localhost:5000/api/PozycjeMenu/{id}
         [Authorize(Policy = "WymaganeUprawnieniaAdministartora")]
         [HttpPut("{id}")]
-        public async Task<IActionResult> AktualizujPozycjeMenu(int id, DodajPozycjaMenuDto pozycjaDoAktualizacji)
+        public async Task<IActionResult> AktualizujPozycjeMenu(int id, PobierzPozycjaMenuDto pozycjaDoAktualizacji)
         {
             var pozycjaModel = await _repozytorium.PobierzPozycjeMenuPoId(id);
 
@@ -88,34 +88,9 @@ namespace SIZCapi.Controllers
             return NoContent();
         }
 
-        // PATCH http://localhost:5000/api/PozycjeMenuController/{id}
-        [HttpPatch("{id}")]
-        public async Task<IActionResult> AktualizujCzesciowoPozycjeMenu(int id, JsonPatchDocument<DodajPozycjaMenuDto> dokumentAktualizacji)
-        {
-            var pozycjaModel = await _repozytorium.PobierzPozycjeMenuPoId(id);
 
-            if (pozycjaModel == null)
-            {
-                return NotFound();
-            }
 
-            var pozycjaDoAktualizacji = _mapper.Map<DodajPozycjaMenuDto>(pozycjaModel);
-
-            dokumentAktualizacji.ApplyTo(pozycjaDoAktualizacji, ModelState);
-
-            if (!TryValidateModel(pozycjaDoAktualizacji))
-            {
-                return ValidationProblem(ModelState);
-            }
-
-            _mapper.Map(pozycjaDoAktualizacji, pozycjaModel);
-
-            await _repozytorium.ZapiszZasob();
-
-            return NoContent();
-        }
-
-        // DELETE http://localhost:5000/api/PozycjeMenuController/{id}
+        // DELETE http://localhost:5000/api/PozycjeMenu/{id}
         [Authorize(Policy = "WymaganeUprawnieniaAdministartora")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> UsunPozycjeMenu(int id)

@@ -58,12 +58,12 @@ namespace SIZCapi.Controllers
             {
                 case 1:
                     claims [0] = new Claim(ClaimTypes.NameIdentifier, pracownikModel.PracownikID.ToString());
-                    claims [1] = new Claim("UprawnieniaKucharz", "");
+                    claims [1] = new Claim("UprawnieniaPracownik", "");
                     claims [2] = new Claim(ClaimTypes.Name, pracownikModel.Login);
                     break;
                 case 2:
                     claims [0] = new Claim(ClaimTypes.NameIdentifier, pracownikModel.PracownikID.ToString());
-                    claims [1] = new Claim("UprawnieniaDostawca", "");
+                    claims [1] = new Claim("UprawnieniaPracownik", "");
                     claims [2] = new Claim(ClaimTypes.Name, pracownikModel.Login);
                     break;
                 case 3:

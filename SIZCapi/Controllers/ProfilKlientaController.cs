@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
@@ -33,6 +34,7 @@ namespace SIZCapi.Controllers
         }
 
         // GET http://localhost:5000/api/ProfilKlienta/{id}
+        [Authorize(Policy = "WymaganeUprawnieniaKlienta")]
         [HttpGet("{id}")]
         public async Task<IActionResult> PobierzProfilKlienta(int id)
         {
@@ -47,7 +49,24 @@ namespace SIZCapi.Controllers
             return NotFound();
         }
 
+        // GET http://localhost:5000/api/ProfilKlienta/
+        [Authorize(Policy = "WymaganeUprawnieniaAdministartora")]
+        [HttpGet]
+        public async Task<IActionResult> PobierzProfileKlientowWszystkie()
+        {
+            var profileKlientow = await _repozytorium.PobierzProfileKlientowWszystkie();
+
+            var profileKlientowDoPobrania = _mapper.Map<IEnumerable<PobierzKlientDto>>(profileKlientow);
+
+            if (profileKlientow != null)
+            {
+                return Ok(profileKlientowDoPobrania);
+            }
+            return NotFound();
+        }
+
         // PUT http://localhost:5000/api/ProfilKlienta/{id}
+        [Authorize(Policy = "WymaganeUprawnieniaKlienta")]
         [HttpPut("{id}")]
         public async Task<IActionResult> AktualizujProfilKlienta(int id, PobierzKlientDto profilDoAktualizacji)
         {
@@ -66,6 +85,7 @@ namespace SIZCapi.Controllers
         }
 
         // DELETE http://localhost:5000/api/ProfilKlienta/{id}
+        [Authorize(Policy = "WymaganeUprawnieniaKlienta")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> UsunProfilKlienta(int id)
         {
