@@ -22,17 +22,6 @@ namespace SIZCapi.Controllers
             _mapper = mapper;
         }
 
-        private void HaszujHaslo(string haslo, out byte[] hasloHash, out byte[] hasloSalt)
-        {
-            using (var kodUwierzytelniania = new System.Security.Cryptography.HMACSHA512())
-            {
-                hasloSalt = kodUwierzytelniania.Key;
-
-                hasloHash = kodUwierzytelniania.ComputeHash(System.Text.Encoding.Unicode.GetBytes(haslo));
-
-            }    
-        }
-
         // GET http://localhost:5000/api/ProfilKlienta/{id}
         [Authorize(Policy = "WymaganeUprawnieniaKlienta")]
         [HttpGet("{id}")]

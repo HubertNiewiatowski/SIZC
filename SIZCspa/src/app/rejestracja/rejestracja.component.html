@@ -2,84 +2,77 @@
   <h1 class="text-left text-primary ml-5">Zarejestruj się</h1>
   <br>
   <div class="col-sm-10 col-md-8 col-lg-6">
-    <div class="container">
-      <div class="card">
-        <div class="card-body p-1">
-          <div class="col-10">
+
+    <div class="card">
+      <div class="card-body p-1">
+        <div class="col-10">
+          <form #formularzRejestracji="ngForm">
             <table class="table table-borderless">
               <tbody>
-                <form #formularzRejestracji="ngForm">
-                  <h1 class="text-left text-primary ml-5">Zarejestruj się</h1>
-                  <br>
-  
-                  <div class="form-group">
-                    <input type="text" class="form-control" required name="imie" [(ngModel)]="klient.imie"
-                      placeholder="imię">
-                  </div>
-  
-                  <div class="form-group">
-                    <input type="text" class="form-control" required name="nazwisko" [(ngModel)]="klient.nazwisko"
-                      placeholder="nazwisko">
-                  </div>
-  
-                  <div class="form-group">
-                    <input type="text" class="form-control" required name="adresEmail" [(ngModel)]="klient.adresEmail"
-                      placeholder="adres email">
-                  </div>
-  
-                  <div class="form-group">
-                    <input type="text" class="form-control" name="nrTelStacjonarny" [(ngModel)]="klient.nrTelStacjonarny"
-                      placeholder="nr tel. stacjonarny">
-                  </div>
-  
-                  <div class="form-group">
-                    <input type="text" class="form-control" name="nrTelKomorkowy" [(ngModel)]="klient.nrTelKomorkowy"
-                      placeholder="nr tel. komórkowy">
-                  </div>
-  
-                  <div class="form-group">
-                    <input type="text" class="form-control" required name="kodPocztowy" [(ngModel)]="klient.kodPocztowy"
-                      placeholder="kod pocztowy">
-                  </div>
-  
-                  <div class="form-group">
-                    <input type="text" class="form-control" required name="miejscowosc" [(ngModel)]="klient.miejscowosc"
-                      placeholder="miejscowość">
-                  </div>
-  
-                  <div class="form-group">
-                    <input type="text" class="form-control" name="ulica" [(ngModel)]="klient.ulica" placeholder="ulica">
-                  </div>
-  
-                  <div class="form-group">
-                    <input type="text" class="form-control" name="nrBudynek" [(ngModel)]="klient.nrBudynek"
-                      placeholder="nr budynku">
-                  </div>
-  
-                  <div class="form-group">
-                    <input type="text" class="form-control" name="nrMieszkanie" [(ngModel)]="klient.nrMieszkanie"
-                      placeholder="nr mieszkania">
-                  </div>
-  
-                  <div class="form-group">
-                    <input type="password" class="form-control" required name="haslo" [(ngModel)]="klient.haslo"
-                      placeholder="hasło">
-                  </div>
-  
-                  <div class="form-group text-center">
-                    <button class="btn btn-success" type="button" (click)="zarejestruj()">Zarejestruj się</button>
-                    <button class="btn btn-primary" type="button" (click)="anuluj()">Anuluj</button>
-                  </div>
-  
-                </form>
+                <tr>
+                  <td><strong>imię</strong></td>
+                  <td><input type="text" class="form-control" required name="imie" [(ngModel)]="klient.imie"
+                    placeholder="imię"></td>
+                </tr>
+                <tr>
+                  <td><strong>nazwisko</strong></td>
+                  <td><input type="text" class="form-control" required name="nazwisko" [(ngModel)]="klient.nazwisko"
+                    placeholder="nazwisko"></td>
+                </tr>
+                <tr>
+                  <td><strong>adres email</strong></td>
+                  <td><input type="text" class="form-control" required name="adresEmail" [(ngModel)]="klient.adresEmail"
+                    placeholder="adres email"></td>
+                </tr>
+                <tr>
+                  <td><strong>nr tel. stacjonarny</strong></td>
+                  <td><input type="text" class="form-control" name="nrTelStacjonarny" [(ngModel)]="klient.nrTelStacjonarny"
+                    placeholder="nr tel. stacjonarny"></td>
+                </tr>
+                <tr>
+                  <td><strong>nr tel. komórkowy</strong></td>
+                  <td><input type="text" class="form-control" name="nrTelKomorkowy" [(ngModel)]="klient.nrTelKomorkowy"
+                    placeholder="nr tel. komórkowy"></td>
+                </tr>
+                <tr>
+                  <td><strong>kod pocztowy</strong></td>
+                  <td><input type="text" class="form-control" required name="kodPocztowy" [(ngModel)]="klient.kodPocztowy"
+                    placeholder="kod pocztowy"></td>
+                </tr>
+                <tr>
+                  <td><strong>miejscowość</strong></td>
+                  <td><input type="text" class="form-control" required name="miejscowosc" [(ngModel)]="klient.miejscowosc"
+                    placeholder="miejscowość"></td>
+                </tr>
+                <tr>
+                  <td><strong>ulica</strong></td>
+                  <td><input type="text" class="form-control" name="ulica" [(ngModel)]="klient.ulica" placeholder="ulica"></td>
+                </tr>
+                <tr>
+                  <td><strong>nr budynku</strong></td>
+                  <td><input type="text" class="form-control" name="nrBudynek" [(ngModel)]="klient.nrBudynek"
+                    placeholder="nr budynku"></td>
+                </tr>
+                <tr>
+                  <td><strong>nr mieszkania</strong></td>
+                  <td><input type="text" class="form-control" name="nrMieszkanie" [(ngModel)]="klient.nrMieszkanie"
+                    placeholder="nr mieszkania"></td>
+                </tr>
+                <tr>
+                  <td><strong>hasło</strong></td>
+                  <td><input type="password" class="form-control" required name="haslo" [(ngModel)]="klient.haslo"
+                    placeholder="hasło"></td>
+                </tr>
+
               </tbody>
             </table>
-          </div>
+            <div class="form-group text-center">
+              <button class="btn btn-success mr-4" type="button" (click)="zarejestruj()">Zarejestruj się</button>
+              <button class="btn btn-primary" type="button" (click)="anuluj()">Anuluj</button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
   </div>
-
-
-
 </div>

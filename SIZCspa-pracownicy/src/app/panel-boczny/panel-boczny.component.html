@@ -9,7 +9,11 @@
       <li *ngIf="zalogowany()"><a [routerLink]="['/zamowienia']">
         <i class="fa fa-list"></i>
         Zamówienia</a></li>
-      <li><a [routerLink]="['/menu']">
+      <li *ngIf="rolaAdministartor()"><a [routerLink]="['/menu']">
+        <i class="fa fa-shopping-cart"></i>
+        Menu</a></li>
+
+      <li *ngIf="rolaAdministartor()"><a [routerLink]="['/menu']">
         <i class="fa fa-shopping-cart"></i>
         Menu</a></li>
     </ul>

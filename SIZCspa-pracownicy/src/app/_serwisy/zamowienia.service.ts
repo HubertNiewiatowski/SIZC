@@ -11,12 +11,20 @@ export class ZamowieniaService {
 
   constructor(private http: HttpClient) { }
 
-  pobierzZamowienia(id): Observable<PobierzZamowienie[]> {
+  pobierzZamowieniaPracownika(id): Observable<PobierzZamowienie[]> {
     return this.http.get<PobierzZamowienie[]>(this.baseUrl + 'pracownik/' + id);
   }
 
   pobierzZamowieniaWszystkie(): Observable<PobierzZamowienie[]> {
-    return this.http.get<PobierzZamowienie[]>(this.baseUrl );
+    return this.http.get<PobierzZamowienie[]>(this.baseUrl);
+  }
+
+  pobierzZamowieniePoId(id): Observable<PobierzZamowienie> {
+    return this.http.get<PobierzZamowienie>(this.http + id);
+  }
+
+  aktualizujZamowienie(zamowienie: PobierzZamowienie, id) {
+    return this.http.put<PobierzZamowienie>(this.http + id, zamowienie);
   }
 
 }

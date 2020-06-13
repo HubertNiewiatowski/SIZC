@@ -1,19 +1,35 @@
-<div class="container">
-  <form #formularzLogowania="ngForm" (ngSubmit)="zaloguj()">
+<div class="container-fluid ml-5">
 
-    <div class="row">
-      <input class="form-control form-control-dark mr-2" type="text" name="adresEmail"
-      placeholder="Adres email" required [(ngModel)]="pracownik.login">
+  <h1 class="text-left text-primary ml-5">Zaloguj się</h1>
+  <br>
+
+  <div class="col-sm-10 col-md-8 col-lg-6">
+
+    <div class="card">
+      <div class="card-body p-1">
+        <div class="col-10">
+          <form #formularzLogowania="ngForm" (ngSubmit)="zaloguj()">
+            <br>
+            <table class="table table-borderless">
+              <tbody>
+                <tr>
+                  <td><strong>login</strong></td>
+                  <td><input class="form-control form-control-dark mr-2" type="text" name="adresEmail"
+                      placeholder="Adres email" required [(ngModel)]="pracownik.login"></td>
+                </tr>
+                <tr>
+                  <td><strong>hasło</strong></td>
+                  <td><input class="form-control form-control-dark mr-2" type="password" name="haslo"
+                      placeholder="Hasło" required [(ngModel)]="pracownik.haslo"></td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="form-group text-center">
+              <button [disabled]="!formularzLogowania.valid" class="btn btn-success" type="submit">Zaloguj</button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
-
-    <div class="row">
-      <input class="form-control form-control-dark mr-2" type="password" name="haslo"
-      placeholder="Hasło" required [(ngModel)]="pracownik.haslo">
-    </div>
-
-    <div class="row">
-      <button [disabled]="!formularzLogowania.valid" class="btn btn-success" type="submit">Zaloguj</button>
-    </div>    
-  
-  </form>
+  </div>
 </div>

@@ -19,7 +19,7 @@ export class RejestracjaComponent implements OnInit {
   zarejestruj() {
     this.autoryzacjaService.zarejestruj(this.klient).subscribe(() => {
       this.alertService.success('Rejestracja przebiegła pomyślnie');
-      this.router.navigate(['/zamowienia']);
+      this.router.navigate(['/stronaGlowna']);
     }, error => {
       this.alertService.danger('Błąd przy rejestracji');
     });

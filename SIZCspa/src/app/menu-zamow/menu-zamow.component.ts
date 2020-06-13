@@ -27,7 +27,7 @@ export class MenuZamowComponent implements OnInit , DoCheck{
   ngOnInit() {
     this.pobierzPozycjeMenu();
 
-    //console.log(this.pozycjaMenu.nazwaPozycja);
+    // console.log(this.pozycjaMenu.nazwaPozycja);
 
     this.nameId = this.autoryzacja.decodedToken.nameid;
 
@@ -63,7 +63,7 @@ export class MenuZamowComponent implements OnInit , DoCheck{
   }
 
   zamowPozycje() {
-    this.zamowieniaService.dodajZamowienie(this.zamowienie).subscribe(next => {
+    this.zamowieniaService.dodajZamowienieKlienta(this.zamowienie).subscribe(next => {
       this.alertService.success('Złożono zamówienie');
     }, error => {
       this.alertService.warning('Błąd w trakcie składania zamówienia');

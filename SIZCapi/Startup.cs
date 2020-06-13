@@ -74,10 +74,11 @@ namespace SIZCapi
                     policy => policy.RequireClaim("UprawnieniaPracownik"));
 
                 options.AddPolicy("WymaganeUprawnieniaAdministartora",
-                    policy => policy.RequireClaim("UprawnieniaKucharz"));
+                    policy => policy.RequireClaim("UprawnieniaAdministartor"));
 
                 options.AddPolicy("WymaganeUprawnieniaKlienta",
                     policy => policy.RequireClaim("UprawnieniaKlient"));
+
             });
         }
 

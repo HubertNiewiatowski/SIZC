@@ -4,6 +4,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -29,6 +30,7 @@ namespace SIZCapi.Controllers
         }
 
         // POST api/AutoryzacjaPracownik/zarejestruj/
+        [Authorize(Policy = "WymaganeUprawnieniaAdministartora")]
         [HttpPost("zarejestruj")]
         public async Task<IActionResult> Zarejestruj(PracownikDoRejestracjiDto pracownikRejestracja)
         {
@@ -52,7 +54,7 @@ namespace SIZCapi.Controllers
         {
             var pracownikModel = await _repozytorium.Zaloguj(pracownikLogowanie.Login.ToLower(), pracownikLogowanie.Haslo);
 
-            var claims = new Claim [3];
+            var claims = new Claim [4];
 
             switch(pracownikModel.PracownikRolaID) 
             {
@@ -60,16 +62,19 @@ namespace SIZCapi.Controllers
                     claims [0] = new Claim(ClaimTypes.NameIdentifier, pracownikModel.PracownikID.ToString());
                     claims [1] = new Claim("UprawnieniaPracownik", "");
                     claims [2] = new Claim(ClaimTypes.Name, pracownikModel.Login);
+                    claims [3] = new Claim("PracownikRolaId", pracownikModel.PracownikRolaID.ToString());
                     break;
                 case 2:
                     claims [0] = new Claim(ClaimTypes.NameIdentifier, pracownikModel.PracownikID.ToString());
                     claims [1] = new Claim("UprawnieniaPracownik", "");
                     claims [2] = new Claim(ClaimTypes.Name, pracownikModel.Login);
+                    claims [3] = new Claim("PracownikRolaId", pracownikModel.PracownikRolaID.ToString());
                     break;
                 case 3:
                     claims [0] = new Claim(ClaimTypes.NameIdentifier, pracownikModel.PracownikID.ToString());
                     claims [1] = new Claim("UprawnieniaAdministrator", "");
                     claims [2] = new Claim(ClaimTypes.Name, pracownikModel.Login);
+                    claims [3] = new Claim("PracownikRolaId", pracownikModel.PracownikRolaID.ToString());
                     break;
             }
 

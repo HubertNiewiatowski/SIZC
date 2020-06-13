@@ -9,6 +9,8 @@ namespace SIZCapi.Profiles
         public PracownicyProfile()
         {
             CreateMap<PracownikDoRejestracjiDto, Pracownik>();
+
+            CreateMap<Pracownik, PobierzPracownikDto>();
         }    
     }
 }

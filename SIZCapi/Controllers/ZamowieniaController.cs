@@ -41,6 +41,7 @@ namespace SIZCapi.Controllers
         }
 
         // GET http://localhost:5000/api/Zamowienia/pracownik/{id}
+        [Authorize(Policy = "WymaganeUprawnieniaPracownika")]
         [HttpGet("pracownik/{id}")]
         public async Task<IActionResult> PobierzZamowieniaPracownika(int id)
         {
@@ -71,6 +72,22 @@ namespace SIZCapi.Controllers
             return NotFound();
         }
 
+        // GET http://localhost:5000/api/Zamowienia/{id}
+        [Authorize(Policy = "WymaganeUprawnieniaPracownika")]
+        [HttpGet("{id}")]
+        public async Task<IActionResult> PobierzZamowieniePoId(int id)
+        {
+            var zamowienie = await _repozytorium.PobierzZamowieniePoId(id);
+
+            var zamowienieDoPobrania = _mapper.Map<PobierzZamowienieDto>(zamowienie);
+
+            if (zamowienie != null)
+            {
+                return Ok(zamowienieDoPobrania);
+            }
+            return NotFound();
+        }
+
         // POST http://localhost:5000/api/Zamowienia/klient
         [Authorize(Policy = "WymaganeUprawnieniaKlienta")]
         [HttpPost("klient")]
@@ -93,7 +110,7 @@ namespace SIZCapi.Controllers
         // PUT http://localhost:5000/api/Zamowienia/{id}
         [Authorize(Policy = "WymaganeUprawnieniaPracownika")]
         [HttpPut("{id}")]
-        public async Task<IActionResult> AktualizujZamowienie(int id, DodajZamowienieDto zamowienieDoAktualizacji)
+        public async Task<IActionResult> AktualizujZamowienie(int id, PobierzZamowienieDto zamowienieDoAktualizacji)
         {
             var zamowienieModel = await _repozytorium.PobierzZamowieniePoId(id);
 

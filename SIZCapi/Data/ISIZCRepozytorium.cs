@@ -27,5 +27,9 @@ namespace SIZCapi.Data
         Task<Klient> PobierzProfilKlienta(int id);
 
         Task<IEnumerable<Klient>> PobierzProfileKlientowWszystkie();
+
+        Task<Pracownik> PobierzProfilPracownika(int id);
+
+        Task<IEnumerable<Pracownik>> PobierzProfilePracownikowWszystkie();
     }
 }

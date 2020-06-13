@@ -11,6 +11,8 @@ namespace SIZCapi.Profiles
             CreateMap<Zamowienie, PobierzZamowienieDto>();
 
             CreateMap<DodajZamowienieDto, Zamowienie>();
+
+            CreateMap<PobierzZamowienieDto, Zamowienie>();
         }
     }
 }

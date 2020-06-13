@@ -59,7 +59,7 @@ namespace SIZCapi.Controllers
         // POST http://localhost:5000/api/PozycjeMenu/
         [Authorize(Policy = "WymaganeUprawnieniaAdministartora")]
         [HttpPost]
-        public async Task<IActionResult> DodajPozycjaMenu(PobierzPozycjaMenuDto pozycjaDoDodania)
+        public async Task<IActionResult> DodajPozycjeMenu(PobierzPozycjaMenuDto pozycjaDoDodania)
         {
             var pozycjaModel = _mapper.Map<PozycjaMenu>(pozycjaDoDodania);
 

@@ -12,7 +12,7 @@ export class PozycjeMenuService {
 
   constructor(private http: HttpClient) { }
 
-  pobierzPozycjeMenu(): Observable<PobierzPozycjaMenu[]> {
+  pobierzPozycjeMenuWszystkie(): Observable<PobierzPozycjaMenu[]> {
     return this.http.get<PobierzPozycjaMenu[]>(this.baseUrl);
   }
 

@@ -22,7 +22,7 @@ export class ZamowieniaComponent implements OnInit {
   }
 
   pobierzZamowienia() {
-    this.zamowieniaService.pobierzZamowienia(this.nameId).subscribe((zamowienia: PobierzZamowienie[]) => {
+    this.zamowieniaService.pobierzZamowieniaKlienta(this.nameId).subscribe((zamowienia: PobierzZamowienie[]) => {
       this.zamowienia = zamowienia;
     }, error => {
       this.alertService.danger('Błąd przy pobieraniu zamowień');

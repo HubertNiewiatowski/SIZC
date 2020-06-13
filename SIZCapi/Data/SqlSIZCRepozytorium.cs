@@ -47,11 +47,25 @@ namespace SIZCapi.Data
             return profileKlientow;
         }
 
+        public async Task<IEnumerable<Pracownik>> PobierzProfilePracownikowWszystkie()
+        {
+            var profilePracownikow = await _kontekst.Pracownik.ToListAsync();
+
+            return profilePracownikow;
+        }
+
         public async Task<Klient> PobierzProfilKlienta(int id)
         {
             var profilKlienta = await _kontekst.Klient.FirstOrDefaultAsync(e => e.KlientID == id);
 
             return profilKlienta;
+        }
+
+        public async Task<Pracownik> PobierzProfilPracownika(int id)
+        {
+            var profilPracownika = await _kontekst.Pracownik.FirstOrDefaultAsync(e => e.PracownikID == id);
+
+            return profilPracownika;
         }
 
         public async Task<IEnumerable<Zamowienie>> PobierzZamowieniaKlienta(int id)
@@ -96,6 +110,5 @@ namespace SIZCapi.Data
         {
             return await _kontekst.SaveChangesAsync() > 0;
         }
-
     }
 }

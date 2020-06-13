@@ -24,6 +24,7 @@ import { MenuKartaComponent } from './menu-karta/menu-karta.component';
 import { MenuEdytujComponent } from './menu-edytuj/menu-edytuj.component';
 import { PracownikKartaComponent } from './pracownik-karta/pracownik-karta.component';
 import { PracownikEdytujComponent } from './pracownik-edytuj/pracownik-edytuj.component';
+import { ZamowienieEdytujComponent } from './zamowienie-edytuj/zamowienie-edytuj.component';
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -43,7 +44,8 @@ export function tokenGetter() {
       MenuKartaComponent,
       MenuEdytujComponent,
       PracownikKartaComponent,
-      PracownikEdytujComponent
+      PracownikEdytujComponent,
+      ZamowienieEdytujComponent
    ],
    imports: [
       BrowserModule,

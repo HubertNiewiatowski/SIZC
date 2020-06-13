@@ -9,10 +9,23 @@ import { AutoryzacjaService } from '../_serwisy/autoryzacja.service';
 export class PanelBocznyComponent implements OnInit {
 
   opened = true;
+  pracownikRolaId: any;
 
   constructor(public autoryzacja: AutoryzacjaService) { }
 
   ngOnInit() {
+    this.pracownikRolaId = this.autoryzacja.decodedToken.PracownikRolaId;
+  }
+
+  rolaAdministartor() {
+    if (this.pracownikRolaId == 3)
+    {
+      return true;
+    }
+    else
+    {
+      return false;
+    }
   }
 
   zalogowany() {

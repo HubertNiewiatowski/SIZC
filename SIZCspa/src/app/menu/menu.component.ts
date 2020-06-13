@@ -19,7 +19,7 @@ export class MenuComponent implements OnInit {
   }
 
   pobierzMenu() {
-    this.pozycjeMenuService.pobierzPozycjeMenu().subscribe((pozycjeMenu: PobierzPozycjaMenu[]) => {
+    this.pozycjeMenuService.pobierzPozycjeMenuWszystkie().subscribe((pozycjeMenu: PobierzPozycjaMenu[]) => {
       this.pozycjeMenu = pozycjeMenu;
     }, error => {
       this.alertService.danger('Błąd przy pobieraniu menu');
