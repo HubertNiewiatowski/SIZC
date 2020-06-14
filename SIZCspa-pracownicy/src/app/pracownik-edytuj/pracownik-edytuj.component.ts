@@ -16,6 +16,7 @@ export class PracownikEdytujComponent implements OnInit {
               private pracownicyService: PracownicyService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
+    this.pobierzProfilPracownika();
   }
 
   pobierzProfilPracownika() {

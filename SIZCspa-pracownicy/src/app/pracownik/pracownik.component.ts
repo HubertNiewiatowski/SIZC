@@ -15,6 +15,7 @@ export class PracownikComponent implements OnInit {
               private pracownicyService: PracownicyService) { }
 
   ngOnInit() {
+    this.pobierzPracownikow();
   }
 
   pobierzPracownikow() {

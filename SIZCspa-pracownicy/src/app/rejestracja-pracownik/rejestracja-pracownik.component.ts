@@ -19,7 +19,7 @@ export class RejestracjaPracownikComponent implements OnInit {
   zarejestruj() {
     this.autoryzacjaService.zarejestruj(this.pracownik).subscribe(() => {
       this.alertService.success('Rejestracja przebiegła pomyślnie');
-      this.router.navigate(['/stronaGlowna']);
+      this.router.navigate(['/pracownicy']);
     }, error => {
       this.alertService.danger('Błąd przy rejestracji');
     });
@@ -27,7 +27,7 @@ export class RejestracjaPracownikComponent implements OnInit {
 
   anuluj() {
     this.alertService.info('Anulowano rejestrację');
-    this.router.navigate(['/stronaGlowna']);
+    this.router.navigate(['/pracownicy']);
   }
 
 }
