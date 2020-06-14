@@ -6,68 +6,112 @@
     <div class="card">
       <div class="card-body p-1">
         <div class="col-10">
-          <form #formularzRejestracji="ngForm">
+          <form [formGroup]="formularzRejestracji" (ngSubmit)="zarejestruj()">
             <table class="table table-borderless">
               <tbody>
                 <tr>
                   <td><strong>imię</strong></td>
-                  <td><input type="text" class="form-control" required name="imie" [(ngModel)]="klient.imie"
-                    placeholder="imię"></td>
+                  <td class="form-group">
+                    <input type="text" 
+                      [ngClass]="{'is-invalid': formularzRejestracji.get('imie').errors && formularzRejestracji.get('imie').touched}"
+                      class="form-control" 
+                      formControlName="imie">
+                    <div class="invalid-feedback">Pole imię jest wymagane</div></td>                      
                 </tr>
                 <tr>
                   <td><strong>nazwisko</strong></td>
-                  <td><input type="text" class="form-control" required name="nazwisko" [(ngModel)]="klient.nazwisko"
-                    placeholder="nazwisko"></td>
+                  <td class="form-group">
+                    <input type="text"
+                      [ngClass]="{'is-invalid': formularzRejestracji.get('nazwisko').errors && formularzRejestracji.get('nazwisko').touched}"
+                      class="form-control" 
+                      formControlName="nazwisko">
+                    <div class="invalid-feedback">Pole nazwisko jest wymagane</div></td>
                 </tr>
                 <tr>
                   <td><strong>adres email</strong></td>
-                  <td><input type="text" class="form-control" required name="adresEmail" [(ngModel)]="klient.adresEmail"
-                    placeholder="adres email"></td>
+                  <td class="form-group">
+                    <input type="text"
+                      [ngClass]="{'is-invalid': formularzRejestracji.get('adresEmail').errors && formularzRejestracji.get('adresEmail').touched}"
+                      class="form-control"
+                      formControlName="adresEmail">
+                    <div class="invalid-feedback">Pole adres email jest wymagane</div></td>
                 </tr>
                 <tr>
                   <td><strong>nr tel. stacjonarny</strong></td>
-                  <td><input type="text" class="form-control" name="nrTelStacjonarny" [(ngModel)]="klient.nrTelStacjonarny"
-                    placeholder="nr tel. stacjonarny"></td>
+                  <td class="form-group">
+                    <input type="text"
+                      class="form-control" 
+                      formControlName="nrTelStacjonarny"></td>
                 </tr>
                 <tr>
                   <td><strong>nr tel. komórkowy</strong></td>
-                  <td><input type="text" class="form-control" name="nrTelKomorkowy" [(ngModel)]="klient.nrTelKomorkowy"
-                    placeholder="nr tel. komórkowy"></td>
+                  <td class="form-group">                    
+                    <input type="text"   
+                      class="form-control"
+                      formControlName="nrTelKomorkowy"></td>
                 </tr>
                 <tr>
                   <td><strong>kod pocztowy</strong></td>
-                  <td><input type="text" class="form-control" required name="kodPocztowy" [(ngModel)]="klient.kodPocztowy"
-                    placeholder="kod pocztowy"></td>
+                  <td class="form-group">
+                    <input type="text"
+                      [ngClass]="{'is-invalid': formularzRejestracji.get('kodPocztowy').errors && formularzRejestracji.get('kodPocztowy').touched}"  
+                      class="form-control"
+                      formControlName="kodPocztowy">
+                    <div class="invalid-feedback">Kod pocztowy musi składać się z 5 znaków</div></td>
                 </tr>
                 <tr>
                   <td><strong>miejscowość</strong></td>
-                  <td><input type="text" class="form-control" required name="miejscowosc" [(ngModel)]="klient.miejscowosc"
-                    placeholder="miejscowość"></td>
+                  <td class="form-group">
+                    <input type="text"
+                      [ngClass]="{'is-invalid': formularzRejestracji.get('miejscowosc').errors && formularzRejestracji.get('miejscowosc').touched}"
+                      class="form-control" 
+                      formControlName="miejscowosc">
+                    <div class="invalid-feedback">Pole miejscowość jest wymagane</div></td>
                 </tr>
                 <tr>
                   <td><strong>ulica</strong></td>
-                  <td><input type="text" class="form-control" name="ulica" [(ngModel)]="klient.ulica" placeholder="ulica"></td>
+                  <td class="form-group">
+                    <input type="text" 
+                      class="form-control" 
+                      formControlName="ulica"></td>
                 </tr>
                 <tr>
                   <td><strong>nr budynku</strong></td>
-                  <td><input type="text" class="form-control" name="nrBudynek" [(ngModel)]="klient.nrBudynek"
-                    placeholder="nr budynku"></td>
+                  <td class="form-group">
+                    <input type="text" 
+                      class="form-control" 
+                      formControlName="nrBudynek"></td>
                 </tr>
                 <tr>
                   <td><strong>nr mieszkania</strong></td>
-                  <td><input type="text" class="form-control" name="nrMieszkanie" [(ngModel)]="klient.nrMieszkanie"
-                    placeholder="nr mieszkania"></td>
+                  <td class="form-group">
+                    <input type="text" 
+                      class="form-control" 
+                      formControlName="nrMieszkanie"></td>
                 </tr>
                 <tr>
                   <td><strong>hasło</strong></td>
-                  <td><input type="password" class="form-control" required name="haslo" [(ngModel)]="klient.haslo"
-                    placeholder="hasło"></td>
+                  <td class="form-group">
+                    <input type="password"
+                      [ngClass]="{'is-invalid': formularzRejestracji.get('haslo').errors && formularzRejestracji.get('haslo').touched}"
+                      class="form-control" 
+                      formControlName="haslo">
+                      <div class="invalid-feedback">Hasło musi składać się minimum z 6 znaków</div></td>
+                </tr>
+                <tr>
+                  <td><strong>powtórzone hasło</strong></td>
+                  <td class="form-group">
+                    <input type="password"
+                      [ngClass]="{'is-invalid': formularzRejestracji.hasError('nieprawidłowe') && formularzRejestracji.get('potwierdzHaslo').touched}" 
+                      class="form-control"
+                      formControlName="potwierdzHaslo">
+                      <div class="invalid-feedback">Wprowadzone hasła musza być identyczne</div></td>
                 </tr>
 
               </tbody>
             </table>
             <div class="form-group text-center">
-              <button class="btn btn-success mr-4" type="button" (click)="zarejestruj()">Zarejestruj się</button>
+              <button class="btn btn-success mr-4" type="submit">Zarejestruj się</button>
               <button class="btn btn-primary" type="button" (click)="anuluj()">Anuluj</button>
             </div>
           </form>

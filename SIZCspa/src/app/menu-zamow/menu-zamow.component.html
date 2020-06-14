@@ -58,44 +58,65 @@
 
         <div class="row">
           <div class="col-10">
-            <form #formularzZamowienia="ngForm">
-              <br>
-              <table class="table table-borderless ml-2">
+            <form [formGroup]="formularzZamowienia" (ngSubmit)="zamowPozycje()">
+              <table class="table table-borderless">
                 <tbody>
                   <tr>
                     <td><strong>koszt</strong></td>
                     <td>{{zamowienie.koszt}}</td>
                   </tr>
                   <tr>
+                    <td><strong>data realizacji</strong></td>
+                    <td class="form-group">
+                      <input type="text" bsDatepicker
+                        [ngClass]="{'is-invalid': formularzZamowienia.get('dataRealizacji').errors && formularzZamowienia.get('dataRealizacji').touched}"  
+                        class="form-control"
+                        formControlName="dataRealizacji">
+                      <div class="invalid-feedback">Pole data realizacji jest wymagane</div></td>
+                  </tr>
+                  <tr>
                     <td><strong>kod pocztowy</strong></td>
-                    <td><input type="text" class="form-control" required name="kodPocztowy"
-                        [(ngModel)]="zamowienie.kodPocztowy" placeholder="kod pocztowy"></td>
+                    <td class="form-group">
+                      <input type="text"
+                        [ngClass]="{'is-invalid': formularzZamowienia.get('kodPocztowy').errors && formularzZamowienia.get('kodPocztowy').touched}"  
+                        class="form-control"
+                        formControlName="kodPocztowy">
+                      <div class="invalid-feedback">Kod pocztowy musi składać się z 5 znaków</div></td>
                   </tr>
                   <tr>
                     <td><strong>miejscowość</strong></td>
-                    <td><input type="text" class="form-control" required name="miejscowosc"
-                        [(ngModel)]="zamowienie.miejscowosc" placeholder="miejscowość"></td>
+                    <td class="form-group">
+                      <input type="text"
+                        [ngClass]="{'is-invalid': formularzZamowienia.get('miejscowosc').errors && formularzZamowienia.get('miejscowosc').touched}"
+                        class="form-control" 
+                        formControlName="miejscowosc">
+                      <div class="invalid-feedback">Pole miejscowość jest wymagane</div></td>
                   </tr>
                   <tr>
                     <td><strong>ulica</strong></td>
-                    <td><input type="text" class="form-control" name="ulica" [(ngModel)]="zamowienie.ulica"
-                        placeholder="ulica"></td>
+                    <td class="form-group">
+                      <input type="text" 
+                        class="form-control" 
+                        formControlName="ulica"></td>
                   </tr>
                   <tr>
                     <td><strong>nr budynku</strong></td>
-                    <td><input type="text" class="form-control" name="nrBudynek" [(ngModel)]="zamowienie.nrBudynek"
-                        placeholder="nr budynku"></td>
+                    <td class="form-group">
+                      <input type="text" 
+                        class="form-control" 
+                        formControlName="nrBudynek"></td>
                   </tr>
                   <tr>
                     <td><strong>nr mieszkania</strong></td>
-                    <td><input type="text" class="form-control" required name="nrMieszkanie"
-                        [(ngModel)]="zamowienie.nrMieszkanie" placeholder="nr mieszkania"></td>
-                  </tr>
+                    <td class="form-group">
+                      <input type="text" 
+                        class="form-control" 
+                        formControlName="nrMieszkanie"></td>
+                  </tr>  
                 </tbody>
               </table>
-
-              <div class="text-primary ml-5">
-                <button class="btn btn-success mr-4" type="button" (click)="zamowPozycje()">Złóż zamówienie</button>
+              <div class="form-group text-center">
+                <button class="btn btn-success mr-4" type="submit">Złóż zamówienie</button>
                 <button class="btn btn-primary" type="button" (click)="anuluj()">Anuluj</button>
               </div>
             </form>

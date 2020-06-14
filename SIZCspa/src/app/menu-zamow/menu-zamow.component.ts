@@ -6,6 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AutoryzacjaService } from '../_serwisy/autoryzacja.service';
 import { PozycjeMenuService } from '../_serwisy/pozycjeMenu.service';
 import { PobierzPozycjaMenu } from '../_models/pobierzPozycjaMenu';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 
 @Component({
@@ -17,6 +18,7 @@ export class MenuZamowComponent implements OnInit , DoCheck {
   pozycjaMenu: PobierzPozycjaMenu = {} as PobierzPozycjaMenu;
   zamowienie: DodajZamowienie = {} as DodajZamowienie;
   nameId: any;
+  formularzZamowienia: FormGroup;
 
 
   constructor(private zamowieniaService: ZamowieniaService, private alertService: AlertService,
@@ -30,6 +32,15 @@ export class MenuZamowComponent implements OnInit , DoCheck {
 
     this.nameId = this.autoryzacja.decodedToken.nameid;
 
+    this.formularzZamowienia = new FormGroup({
+      dataRealizacji: new FormControl('', Validators.required),
+      kodPocztowy: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(5)]),
+      miejscowosc: new FormControl('', Validators.required),
+      ulica: new FormControl(),
+      nrBudynek: new FormControl(),
+      nrMieszkanie: new FormControl(),
+    });
+
 
   }
 
@@ -39,11 +50,21 @@ export class MenuZamowComponent implements OnInit , DoCheck {
 
     this.zamowienie.koszt = this.pozycjaMenu.cena + 5;
 
+    this.zamowienie.kodPocztowy = this.formularzZamowienia.get('kodPocztowy').value;
+
+    this.zamowienie.miejscowosc = this.formularzZamowienia.get('miejscowosc').value;
+
+    this.zamowienie.ulica = this.formularzZamowienia.get('ulica').value;
+
+    this.zamowienie.nrBudynek = this.formularzZamowienia.get('nrBudynek').value;
+
+    this.zamowienie.nrMieszkanie = this.formularzZamowienia.get('nrMieszkanie').value;
+
+    this.zamowienie.dataRealizacji = this.formularzZamowienia.get('dataRealizacji').value;
+
     this.zamowienie.pozycjaMenuID = this.route.snapshot.params.id;
 
     this.zamowienie.klientID = this.nameId;
-
-    this.zamowienie.dataRealizacji = new Date(2020, 6, 21, 8, 41, 1);
 
     this.zamowienie.pracownikID = 1;
 
@@ -62,13 +83,19 @@ export class MenuZamowComponent implements OnInit , DoCheck {
   }
 
   zamowPozycje() {
-    this.zamowieniaService.dodajZamowienieKlienta(this.zamowienie).subscribe(next => {
-      this.alertService.success('Złożono zamówienie');
-    }, error => {
-      this.alertService.warning('Błąd w trakcie składania zamówienia');
-    }, () => {
-      this.router.navigate(['/zamowienia']);
-    });
+    if (this.formularzZamowienia.valid) {
+      this.zamowieniaService.dodajZamowienieKlienta(this.zamowienie).subscribe(next => {
+        this.alertService.success('Złożono zamówienie');
+      }, error => {
+        this.alertService.warning('Błąd w trakcie składania zamówienia');
+      }, () => {
+        this.router.navigate(['/zamowienia']);
+      });
+    }
+    else
+    {
+      this.alertService.warning('Błędnie wypełniony formularz składania zamówienia');
+    }
   }
 
   anuluj() {
