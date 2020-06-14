@@ -25,7 +25,7 @@ namespace SIZCapi.Controllers
         // GET http://localhost:5000/api/ProfilPracownika/{id}
         [Authorize(Policy = "WymaganeUprawnieniaAdministatora")]
         [HttpGet("{id}")]
-        public async Task<IActionResult> PobierzProfilPracownika(int id)
+        public async Task<IActionResult> PobierzProfilPracownikaPoId(int id)
         {
             var profilPracownika = await _repozytorium.PobierzProfilPracownika(id);
 
@@ -41,9 +41,9 @@ namespace SIZCapi.Controllers
         // GET http://localhost:5000/api/ProfilPracownika/
         [Authorize(Policy = "WymaganeUprawnieniaAdministratora")]
         [HttpGet]
-        public async Task<IActionResult> PobierzProfileKlientowWszystkie()
+        public async Task<IActionResult> PobierzProfilePracownikowWszystkie()
         {
-            var profilePracownikow = await _repozytorium.PobierzProfileKlientowWszystkie();
+            var profilePracownikow = await _repozytorium.PobierzProfilePracownikowWszystkie();
 
             var profilePracownikowDoPobrania = _mapper.Map<IEnumerable<PobierzPracownikDto>>(profilePracownikow);
 

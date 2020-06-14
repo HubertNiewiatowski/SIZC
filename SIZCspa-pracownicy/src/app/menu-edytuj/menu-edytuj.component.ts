@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck, AfterContentInit } from '@angular/core';
 import { PobierzPozycjaMenu } from '../_models/pobierzPozycjaMenu';
 import { PozycjeMenuService } from '../_serwisy/pozycjeMenu.service';
 import { AlertService } from 'ngx-alerts';
 import { Router, ActivatedRoute } from '@angular/router';
+import { DlaPozycjaMenuSkladnik } from '../_models/dlaPozycjaMenuSkladnik';
 
 @Component({
   selector: 'app-menu-edytuj',
@@ -16,6 +17,7 @@ export class MenuEdytujComponent implements OnInit {
               private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.pobierzPozycjeMenu();
   }
 
   pobierzPozycjeMenu() {
@@ -26,11 +28,11 @@ export class MenuEdytujComponent implements OnInit {
     });
   }
 
-  edytujPozycje() {
-    this.pozycjeMenuService.aktualizujPozycjeMenu(this.pozycjaMenu, this.pozycjaMenu.pozycjaMenuID).subscribe(next => {
-      this.alertService.success('Zaktualizowano pozycję');
+  usunPozycje() {
+    this.pozycjeMenuService.usunPozycjeMenu(+this.route.snapshot.params.id).subscribe(next => {
+      this.alertService.success('Usunięto pozycję menu');
     }, error => {
-      this.alertService.warning('Błąd w trakcie aktualizacji pozycji');
+      this.alertService.warning('Błąd w takcie usuwania pozycji');
     }, () => {
       this.router.navigate(['/menu']);
     });

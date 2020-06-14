@@ -1,15 +1,22 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { AlertService } from 'ngx-alerts';
+import { AutoryzacjaService } from '../_serwisy/autoryzacja.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AutoryzacjaGuard implements CanActivate {
-  canActivate(
-    next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return true;
+  constructor(private autoryzacja: AutoryzacjaService, private router: Router,  private alertService: AlertService) {}
+
+  canActivate(): boolean {
+    if (this.autoryzacja.zalogowany()) {
+      return true;
+    }
+
+    this.alertService.warning('Brak dostępu');
+    this.router.navigate(['/stronaGlowna']);
+    return false;
   }
-  
 }

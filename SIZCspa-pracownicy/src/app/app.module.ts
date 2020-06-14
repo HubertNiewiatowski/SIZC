@@ -10,6 +10,8 @@ import { RouterModule } from '@angular/router';
 import { JwtModule } from '@auth0/angular-jwt';
 
 import { AppComponent } from './app.component';
+import { MenuComponent } from './menu/menu.component';
+import { MenuKartaComponent } from './menu-karta/menu-karta.component';
 import { PanelGornyComponent } from './panel-gorny/panel-gorny.component';
 import { PanelBocznyComponent } from './panel-boczny/panel-boczny.component';
 import { AutoryzacjaService } from './_serwisy/autoryzacja.service';
@@ -19,14 +21,12 @@ import { appRoutes } from './routes';
 import { PracownikComponent } from './pracownik/pracownik.component';
 import { ZamowieniaComponent } from './zamowienia/zamowienia.component';
 import { ZamowieniaKartaComponent } from './zamowienia-karta/zamowienia-karta.component';
-import { MenuComponent } from './menu/menu.component';
-import { MenuKartaComponent } from './menu-karta/menu-karta.component';
-import { MenuEdytujComponent } from './menu-edytuj/menu-edytuj.component';
 import { PracownikKartaComponent } from './pracownik-karta/pracownik-karta.component';
 import { PracownikEdytujComponent } from './pracownik-edytuj/pracownik-edytuj.component';
 import { ZamowienieEdytujComponent } from './zamowienie-edytuj/zamowienie-edytuj.component';
 import { RejestracjaPracownikComponent } from './rejestracja-pracownik/rejestracja-pracownik.component';
-import { MenuDodajComponent } from './menu-dodaj/menu-dodaj.component';
+import { MenuEdytujComponent } from './menu-edytuj/menu-edytuj.component';
+
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -40,16 +40,16 @@ export function tokenGetter() {
       StronaGlownaComponent,
       LogowanieComponent,
       PracownikComponent,
-      ZamowieniaComponent,
-      ZamowieniaKartaComponent,
       MenuComponent,
       MenuKartaComponent,
       MenuEdytujComponent,
+      ZamowieniaComponent,
+      ZamowieniaKartaComponent,
       PracownikKartaComponent,
       PracownikEdytujComponent,
       ZamowienieEdytujComponent,
       RejestracjaPracownikComponent,
-      MenuDodajComponent
+
    ],
    imports: [
       BrowserModule,

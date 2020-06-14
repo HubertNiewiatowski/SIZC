@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { PobierzPracownik } from '../_models/pobierzPracownik';
 
 @Component({
   selector: 'app-pracownik-karta',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pracownik-karta.component.css']
 })
 export class PracownikKartaComponent implements OnInit {
+  @Input() profilPracownika: PobierzPracownik;
 
   constructor() { }
 

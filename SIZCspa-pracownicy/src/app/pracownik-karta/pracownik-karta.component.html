@@ -1,3 +1,28 @@
-<p>
-  pracownik-karta works!
-</p>
+<div class="card">
+  <div class="card-body p-1">
+    <div class="col-10">
+      <table class="table table-borderless ml-2">
+        <tbody>
+          <tr>
+            <td><strong>Id pracownika</strong></td>
+            <td>{{profilPracownika.pracownikID}}</td>
+          </tr>
+          <tr>
+            <td><strong>Login pracownika</strong></td>
+            <td>{{profilPracownika.login}}</td>
+          </tr>
+          <tr>
+            <td><strong>opis</strong></td>
+            <td>{{profilPracownika.pracownikRolaID}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="text-primary ml-5">
+        <button class="btn btn-success mr-2" type="button"
+          [routerLink]="['/pracownicy/edytuj', this.profilPracownika.pracownikRolaID]">Edytuj profil</button>
+        <button class="btn btn-success mr-2" type="button"
+          [routerLink]="['/pracownicy/rejestruj']">Zarejestruj profil pracownika</button>
+      </div>
+    </div>
+  </div>
+</div>

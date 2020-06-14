@@ -13,7 +13,7 @@ import { PobierzPozycjaMenu } from '../_models/pobierzPozycjaMenu';
   templateUrl: './menu-zamow.component.html',
   styleUrls: ['./menu-zamow.component.css']
 })
-export class MenuZamowComponent implements OnInit , DoCheck{
+export class MenuZamowComponent implements OnInit , DoCheck {
   pozycjaMenu: PobierzPozycjaMenu = {} as PobierzPozycjaMenu;
   zamowienie: DodajZamowienie = {} as DodajZamowienie;
   nameId: any;
