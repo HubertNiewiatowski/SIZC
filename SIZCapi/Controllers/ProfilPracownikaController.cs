@@ -23,7 +23,7 @@ namespace SIZCapi.Controllers
         }
 
         // GET http://localhost:5000/api/ProfilPracownika/{id}
-        [Authorize(Policy = "WymaganeUprawnieniaAdministatora")]
+        [Authorize(Policy = "WymaganeUprawnieniaAdministratora")]
         [HttpGet("{id}")]
         public async Task<IActionResult> PobierzProfilPracownikaPoId(int id)
         {

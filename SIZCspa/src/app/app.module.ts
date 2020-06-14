@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID} from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SidebarModule } from 'ng-sidebar';
@@ -9,6 +9,10 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { RouterModule } from '@angular/router';
 import { JwtModule } from '@auth0/angular-jwt';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { registerLocaleData } from '@angular/common';
+import localePl from '@angular/common/locales/pl';
+registerLocaleData(localePl);
+
 
 import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
@@ -24,6 +28,7 @@ import { MenuKartaComponent } from './menu-karta/menu-karta.component';
 import { ZamowieniaKartaComponent } from './zamowienia-karta/zamowienia-karta.component';
 import { MenuZamowComponent } from './menu-zamow/menu-zamow.component';
 import { RejestracjaComponent } from './rejestracja/rejestracja.component';
+
 
 
 export function tokenGetter() {
@@ -66,7 +71,8 @@ export function tokenGetter() {
       })
    ],
    providers: [
-      AutoryzacjaService
+      AutoryzacjaService,
+      { provide: LOCALE_ID, useValue: 'pl-PL' },
    ],
    bootstrap: [
       AppComponent

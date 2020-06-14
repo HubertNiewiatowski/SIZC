@@ -5,7 +5,7 @@
         <tbody>
           <tr>
             <td><strong>koszt</strong></td>
-            <td>{{zamowienie.koszt}}</td>
+            <td>{{zamowienie.koszt | currency:'PLN'}}</td>
           </tr>
           <tr>
             <td><strong>kod pocztowy</strong></td>
@@ -28,16 +28,12 @@
             <td>{{zamowienie.nrMieszkanie}}</td>
           </tr>
           <tr>
-            <td><strong>nr mieszkania</strong></td>
-            <td>{{zamowienie.nrMieszkanie}}</td>
-          </tr>
-          <tr>
             <td><strong>data relizacji</strong></td>
-            <td>{{zamowienie.dataRealizacji}}</td>
+            <td>{{zamowienie.dataRealizacji | date:'fullDate' : '+0200' : 'pl'}}</td>
           </tr>
           <tr>
             <td><strong>data złożenia</strong></td>
-            <td>{{zamowienie.dataZlozenia}}</td>
+            <td>{{zamowienie.dataZlozenia | date:'fullDate' : '+0200' : 'pl'}}</td>
           </tr>
           <tr>
             <td><strong>nazwa pozycji</strong></td>
@@ -45,7 +41,7 @@
           </tr>
           <tr>
             <td><strong>cena pozycji</strong></td>
-            <td>{{pozycjaMenu.cena}}</td>
+            <td>{{pozycjaMenu.cena | currency:'PLN'}}</td>
           </tr>
           <tr>
             <td><strong>opis pozycji</strong></td>

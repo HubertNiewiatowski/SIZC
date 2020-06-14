@@ -26,7 +26,7 @@
               </tr>
               <tr>
                 <td><small>cena</small></td>
-                <td><small class="font-weight-bold">{{pozycjaMenu.cena}}</small></td>
+                <td><small class="font-weight-bold">{{pozycjaMenu.cena | currency:'PLN'}}</small></td>
               </tr>
               <tr>
                 <td><small>opis</small></td>
@@ -63,7 +63,17 @@
                 <tbody>
                   <tr>
                     <td><strong>koszt</strong></td>
-                    <td>{{zamowienie.koszt}}</td>
+                    <td>{{zamowienie.koszt | currency:'PLN'}}</td>
+                  </tr>
+                  <tr>
+                    <td><strong>typ płatności</strong></td>
+                    <td class="form-group">
+                      <select class="form-control" formControlName="platnoscTyp">
+                        <option *ngFor="let typ of typyPlatnosci" [ngValue]='typ.platnoscTypID'>
+                          {{typ.nazwaPlatnosc}}
+                        </option>
+                     </select>
+                    </td>
                   </tr>
                   <tr>
                     <td><strong>data realizacji</strong></td>

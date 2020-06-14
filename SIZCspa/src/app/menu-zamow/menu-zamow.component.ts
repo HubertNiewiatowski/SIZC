@@ -7,6 +7,10 @@ import { AutoryzacjaService } from '../_serwisy/autoryzacja.service';
 import { PozycjeMenuService } from '../_serwisy/pozycjeMenu.service';
 import { PobierzPozycjaMenu } from '../_models/pobierzPozycjaMenu';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { PlatnoscTyp } from '../_models/platnoscTyp';
+import { defineLocale } from 'ngx-bootstrap/chronos';
+import { plLocale } from 'ngx-bootstrap/locale';
+import { BsLocaleService } from 'ngx-bootstrap/datepicker';
 
 
 @Component({
@@ -19,30 +23,36 @@ export class MenuZamowComponent implements OnInit , DoCheck {
   zamowienie: DodajZamowienie = {} as DodajZamowienie;
   nameId: any;
   formularzZamowienia: FormGroup;
+  typyPlatnosci: PlatnoscTyp[] = [];
 
 
   constructor(private zamowieniaService: ZamowieniaService, private alertService: AlertService,
               private route: ActivatedRoute, private router: Router, private autoryzacja: AutoryzacjaService,
-              private pozycjeMenuService: PozycjeMenuService) {  }
+              private pozycjeMenuService: PozycjeMenuService, private localeService: BsLocaleService) {  }
 
   ngOnInit() {
     this.pobierzPozycjeMenu();
+    this.setDatepickerLanguage();
 
-    // console.log(this.pozycjaMenu.nazwaPozycja);
+
+    this.typyPlatnosci.push({platnoscTypID: 1, nazwaPlatnosc: 'gotówka'});
+    this.typyPlatnosci.push({platnoscTypID: 2, nazwaPlatnosc: 'blik'});
+    this.typyPlatnosci.push({platnoscTypID: 3, nazwaPlatnosc: 'przelew'});
+
 
     this.nameId = this.autoryzacja.decodedToken.nameid;
 
     this.formularzZamowienia = new FormGroup({
-      dataRealizacji: new FormControl('', Validators.required),
       kodPocztowy: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(5)]),
       miejscowosc: new FormControl('', Validators.required),
       ulica: new FormControl(),
       nrBudynek: new FormControl(),
       nrMieszkanie: new FormControl(),
+      dataRealizacji: new FormControl('', Validators.required),
+      platnoscTyp: new FormControl()
     });
-
-
   }
+
 
   ngDoCheck()
   {
@@ -68,10 +78,15 @@ export class MenuZamowComponent implements OnInit , DoCheck {
 
     this.zamowienie.pracownikID = 1;
 
-    this.zamowienie.platnoscTypID = 2;
+    this.zamowienie.platnoscTypID = this.formularzZamowienia.get('platnoscTyp').value;
 
     this.zamowienie.zamowienieStatusID = 1;
 
+  }
+
+  setDatepickerLanguage() {
+    defineLocale('pl', plLocale);
+    this.localeService.use('pl');
   }
 
   pobierzPozycjeMenu() {
