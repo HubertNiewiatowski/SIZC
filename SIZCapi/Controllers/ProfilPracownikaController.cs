@@ -22,22 +22,6 @@ namespace SIZCapi.Controllers
             _mapper = mapper;
         }
 
-        // GET http://localhost:5000/api/ProfilPracownika/{id}
-        [Authorize(Policy = "WymaganeUprawnieniaAdministratora")]
-        [HttpGet("{id}")]
-        public async Task<IActionResult> PobierzProfilPracownikaPoId(int id)
-        {
-            var profilPracownika = await _repozytorium.PobierzProfilPracownika(id);
-
-            var profilPracownikaDoPobrania = _mapper.Map<PobierzPracownikDto>(profilPracownika);
-
-            if (profilPracownika != null)
-            {
-                return Ok(profilPracownikaDoPobrania);
-            }
-            return NotFound();
-        }
-
         // GET http://localhost:5000/api/ProfilPracownika/
         [Authorize(Policy = "WymaganeUprawnieniaAdministratora")]
         [HttpGet]
@@ -50,6 +34,22 @@ namespace SIZCapi.Controllers
             if (profilePracownikow != null)
             {
                 return Ok(profilePracownikowDoPobrania);
+            }
+            return NotFound();
+        }
+
+        // GET http://localhost:5000/api/ProfilPracownika/{id}
+        [Authorize(Policy = "WymaganeUprawnieniaAdministratora")]
+        [HttpGet("{id}")]
+        public async Task<IActionResult> PobierzProfilPracownikaPoId(int id)
+        {
+            var profilPracownika = await _repozytorium.PobierzProfilPracownika(id);
+
+            var profilPracownikaDoPobrania = _mapper.Map<PobierzPracownikDto>(profilPracownika);
+
+            if (profilPracownika != null)
+            {
+                return Ok(profilPracownikaDoPobrania);
             }
             return NotFound();
         }

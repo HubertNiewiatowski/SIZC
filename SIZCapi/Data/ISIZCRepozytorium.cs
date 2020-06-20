@@ -12,9 +12,11 @@ namespace SIZCapi.Data
 
         Task<bool> ZapiszZasob();
 
+        Task<IEnumerable<PozycjaMenu>> PobierzPozycjeMenuWszystkie();
+
         Task<PozycjaMenu> PobierzPozycjeMenuPoId(int id);
 
-        Task<IEnumerable<PozycjaMenu>> PobierzPozycjeMenuWszystkie();
+        Task<IEnumerable<Zamowienie>> PobierzZamowieniaWszystkie();
 
         Task<Zamowienie> PobierzZamowieniePoId(int id);
 
@@ -22,14 +24,13 @@ namespace SIZCapi.Data
 
         Task<IEnumerable<Zamowienie>> PobierzZamowieniaPracownika(int id);
 
-        Task<IEnumerable<Zamowienie>> PobierzZamowieniaWszystkie();
+        Task<IEnumerable<Klient>> PobierzProfileKlientowWszystkie();
 
         Task<Klient> PobierzProfilKlienta(int id);
 
-        Task<IEnumerable<Klient>> PobierzProfileKlientowWszystkie();
+        Task<IEnumerable<Pracownik>> PobierzProfilePracownikowWszystkie();
 
         Task<Pracownik> PobierzProfilPracownika(int id);
 
-        Task<IEnumerable<Pracownik>> PobierzProfilePracownikowWszystkie();
     }
 }

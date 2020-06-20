@@ -26,11 +26,19 @@ namespace SIZCapi.Data
             _kontekst.Add(encja);
         }
 
-        public async Task<PozycjaMenu> PobierzPozycjeMenuPoId(int id)
+        public void UsunZasob<T>(T encja) where T : class
         {
-            var pozycjaMenu = await _kontekst.PozycjaMenu.Include(e => e.Skladnik).FirstOrDefaultAsync(e => e.PozycjaMenuID == id);
+            if (encja == null)
+            {
+                throw new ArgumentNullException(nameof(encja));
+            }
 
-            return pozycjaMenu;
+            _kontekst.Remove(encja);
+        }
+
+        public async Task<bool> ZapiszZasob()
+        {
+            return await _kontekst.SaveChangesAsync() > 0;
         }
 
         public async Task<IEnumerable<PozycjaMenu>> PobierzPozycjeMenuWszystkie()
@@ -40,46 +48,11 @@ namespace SIZCapi.Data
             return pozycjeMenu;
         }
 
-        public async Task<IEnumerable<Klient>> PobierzProfileKlientowWszystkie()
+        public async Task<PozycjaMenu> PobierzPozycjeMenuPoId(int id)
         {
-            var profileKlientow = await _kontekst.Klient.ToListAsync();
+            var pozycjaMenu = await _kontekst.PozycjaMenu.Include(e => e.Skladnik).FirstOrDefaultAsync(e => e.PozycjaMenuID == id);
 
-            return profileKlientow;
-        }
-
-        public async Task<IEnumerable<Pracownik>> PobierzProfilePracownikowWszystkie()
-        {
-            var profilePracownikow = await _kontekst.Pracownik.ToListAsync();
-
-            return profilePracownikow;
-        }
-
-        public async Task<Klient> PobierzProfilKlienta(int id)
-        {
-            var profilKlienta = await _kontekst.Klient.FirstOrDefaultAsync(e => e.KlientID == id);
-
-            return profilKlienta;
-        }
-
-        public async Task<Pracownik> PobierzProfilPracownika(int id)
-        {
-            var profilPracownika = await _kontekst.Pracownik.FirstOrDefaultAsync(e => e.PracownikID == id);
-
-            return profilPracownika;
-        }
-
-        public async Task<IEnumerable<Zamowienie>> PobierzZamowieniaKlienta(int id)
-        {
-            var zamowienia = await _kontekst.Zamowienie.Include(e => e.PozycjaMenu).Include(e => e.PlatnoscTyp).Include(e => e.ZamowienieStatus).Where(e => e.KlientID == id).ToListAsync();
-
-            return zamowienia;
-        }
-
-        public async Task<IEnumerable<Zamowienie>> PobierzZamowieniaPracownika(int id)
-        {
-            var zamowienia = await _kontekst.Zamowienie.Include(e => e.PozycjaMenu).Include(e => e.PlatnoscTyp).Include(e => e.ZamowienieStatus).Where(e => e.PracownikID == id).ToListAsync();
-
-            return zamowienia;
+            return pozycjaMenu;
         }
 
         public async Task<IEnumerable<Zamowienie>> PobierzZamowieniaWszystkie()
@@ -96,19 +69,46 @@ namespace SIZCapi.Data
             return zamowienie;
         }
 
-        public void UsunZasob<T>(T encja) where T : class
+        public async Task<IEnumerable<Zamowienie>> PobierzZamowieniaKlienta(int id)
         {
-            if (encja == null)
-            {
-                throw new ArgumentNullException(nameof(encja));
-            }
+            var zamowienia = await _kontekst.Zamowienie.Include(e => e.PozycjaMenu).Include(e => e.PlatnoscTyp).Include(e => e.ZamowienieStatus).Where(e => e.KlientID == id).ToListAsync();
 
-            _kontekst.Remove(encja);
+            return zamowienia;
         }
 
-        public async Task<bool> ZapiszZasob()
+        public async Task<IEnumerable<Zamowienie>> PobierzZamowieniaPracownika(int id)
         {
-            return await _kontekst.SaveChangesAsync() > 0;
+            var zamowienia = await _kontekst.Zamowienie.Include(e => e.PozycjaMenu).Include(e => e.PlatnoscTyp).Include(e => e.ZamowienieStatus).Where(e => e.PracownikID == id).ToListAsync();
+
+            return zamowienia;
+        }
+
+        public async Task<IEnumerable<Klient>> PobierzProfileKlientowWszystkie()
+        {
+            var profileKlientow = await _kontekst.Klient.ToListAsync();
+
+            return profileKlientow;
+        }
+
+        public async Task<Klient> PobierzProfilKlienta(int id)
+        {
+            var profilKlienta = await _kontekst.Klient.FirstOrDefaultAsync(e => e.KlientID == id);
+
+            return profilKlienta;
+        }
+
+        public async Task<IEnumerable<Pracownik>> PobierzProfilePracownikowWszystkie()
+        {
+            var profilePracownikow = await _kontekst.Pracownik.ToListAsync();
+
+            return profilePracownikow;
+        }
+
+        public async Task<Pracownik> PobierzProfilPracownika(int id)
+        {
+            var profilPracownika = await _kontekst.Pracownik.FirstOrDefaultAsync(e => e.PracownikID == id);
+
+            return profilPracownika;
         }
     }
 }

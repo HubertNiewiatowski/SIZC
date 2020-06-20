@@ -14,14 +14,20 @@ namespace SIZCapi.Data
             _kontekst = kontekst;
         }
 
-        public async Task<bool> CzyEmailIstnieje(string email)
+        public async Task<Klient> Zarejestruj(Klient klient, string haslo)
         {
-            if (await _kontekst.Klient.AnyAsync(e => e.AdresEmail == email))
-            {
-                return true;
-            }
+            byte[] hasloHash;
+            byte[] hasloSalt;
 
-            return false;
+            HaszujHaslo(haslo, out hasloHash, out hasloSalt);
+
+            klient.HasloHash = hasloHash;
+            klient.HasloSalt = hasloSalt;
+
+            await _kontekst.Klient.AddAsync(klient);
+            await _kontekst.SaveChangesAsync();
+
+            return klient;
         }
 
         public async Task<Klient> Zaloguj(string email, string haslo)
@@ -41,6 +47,27 @@ namespace SIZCapi.Data
             return klient;
         }
 
+        public async Task<bool> CzyEmailIstnieje(string email)
+        {
+            if (await _kontekst.Klient.AnyAsync(e => e.AdresEmail == email))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        private void HaszujHaslo(string haslo, out byte[] hasloHash, out byte[] hasloSalt)
+        {
+            using (var kodUwierzytelniania = new System.Security.Cryptography.HMACSHA512())
+            {
+                hasloSalt = kodUwierzytelniania.Key;
+
+                hasloHash = kodUwierzytelniania.ComputeHash(System.Text.Encoding.Unicode.GetBytes(haslo));
+
+            }    
+        }
+
         private bool PorowanajZaszyfrowaneHasla(string haslo, byte[] hasloHash, byte[] hasloSalt)
         {
             using (var kodUwierzytelniania = new System.Security.Cryptography.HMACSHA512(hasloSalt))
@@ -57,33 +84,6 @@ namespace SIZCapi.Data
             }
 
             return true;
-        }
-
-        public async Task<Klient> Zarejestruj(Klient klient, string haslo)
-        {
-            byte[] hasloHash;
-            byte[] hasloSalt;
-
-            HaszujHaslo(haslo, out hasloHash, out hasloSalt);
-
-            klient.HasloHash = hasloHash;
-            klient.HasloSalt = hasloSalt;
-
-            await _kontekst.Klient.AddAsync(klient);
-            await _kontekst.SaveChangesAsync();
-
-            return klient;
-        }
-
-        private void HaszujHaslo(string haslo, out byte[] hasloHash, out byte[] hasloSalt)
-        {
-            using (var kodUwierzytelniania = new System.Security.Cryptography.HMACSHA512())
-            {
-                hasloSalt = kodUwierzytelniania.Key;
-
-                hasloHash = kodUwierzytelniania.ComputeHash(System.Text.Encoding.Unicode.GetBytes(haslo));
-
-            }    
         }
     }
 }

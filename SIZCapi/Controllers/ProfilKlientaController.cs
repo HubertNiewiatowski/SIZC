@@ -22,22 +22,6 @@ namespace SIZCapi.Controllers
             _mapper = mapper;
         }
 
-        // GET http://localhost:5000/api/ProfilKlienta/{id}
-        [Authorize(Policy = "WymaganeUprawnieniaKlienta")]
-        [HttpGet("{id}")]
-        public async Task<IActionResult> PobierzProfilKlienta(int id)
-        {
-            var profilKlienta = await _repozytorium.PobierzProfilKlienta(id);
-
-            var profilKlientaDoPobrania = _mapper.Map<PobierzKlientDto>(profilKlienta);
-
-            if (profilKlienta != null)
-            {
-                return Ok(profilKlientaDoPobrania);
-            }
-            return NotFound();
-        }
-
         // GET http://localhost:5000/api/ProfilKlienta/
         [Authorize(Policy = "WymaganeUprawnieniaAdministratora")]
         [HttpGet]
@@ -50,6 +34,22 @@ namespace SIZCapi.Controllers
             if (profileKlientow != null)
             {
                 return Ok(profileKlientowDoPobrania);
+            }
+            return NotFound();
+        }
+
+        // GET http://localhost:5000/api/ProfilKlienta/{id}
+        [Authorize(Policy = "WymaganeUprawnieniaKlienta")]
+        [HttpGet("{id}")]
+        public async Task<IActionResult> PobierzProfilKlienta(int id)
+        {
+            var profilKlienta = await _repozytorium.PobierzProfilKlienta(id);
+
+            var profilKlientaDoPobrania = _mapper.Map<PobierzKlientDto>(profilKlienta);
+
+            if (profilKlienta != null)
+            {
+                return Ok(profilKlientaDoPobrania);
             }
             return NotFound();
         }

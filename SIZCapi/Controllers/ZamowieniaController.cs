@@ -24,38 +24,6 @@ namespace SIZCapi.Controllers
             _mapper = mapper;
         }
 
-        // GET http://localhost:5000/api/Zamowienia/klient/{id}
-        [Authorize(Policy = "WymaganeUprawnieniaKlienta")]
-        [HttpGet("klient/{id}")]
-        public async Task<IActionResult> PobierzZamowieniaKlienta(int id)
-        {
-            var zamowienia = await _repozytorium.PobierzZamowieniaKlienta(id);
-
-            var zamowieniaDoPobrania = _mapper.Map<IEnumerable<PobierzZamowienieDto>>(zamowienia);
-
-            if (zamowienia != null)
-            {
-                return Ok(zamowieniaDoPobrania);
-            }
-            return NotFound();
-        }
-
-        // GET http://localhost:5000/api/Zamowienia/pracownik/{id}
-        [Authorize(Policy = "WymaganeUprawnieniaPracownika")]
-        [HttpGet("pracownik/{id}")]
-        public async Task<IActionResult> PobierzZamowieniaPracownika(int id)
-        {
-            var zamowienia = await _repozytorium.PobierzZamowieniaPracownika(id);
-
-            var zamowieniaDoPobrania = _mapper.Map<IEnumerable<PobierzZamowienieDto>>(zamowienia);
-
-            if (zamowienia != null)
-            {
-                return Ok(zamowieniaDoPobrania);
-            }
-            return NotFound();
-        }
-
         // GET http://localhost:5000/api/Zamowienia/
         [Authorize(Policy = "WymaganeUprawnieniaAdministratora")]
         [HttpGet]
@@ -84,6 +52,38 @@ namespace SIZCapi.Controllers
             if (zamowienie != null)
             {
                 return Ok(zamowienieDoPobrania);
+            }
+            return NotFound();
+        }
+
+        // GET http://localhost:5000/api/Zamowienia/klient/{id}
+        [Authorize(Policy = "WymaganeUprawnieniaKlienta")]
+        [HttpGet("klient/{id}")]
+        public async Task<IActionResult> PobierzZamowieniaKlienta(int id)
+        {
+            var zamowienia = await _repozytorium.PobierzZamowieniaKlienta(id);
+
+            var zamowieniaDoPobrania = _mapper.Map<IEnumerable<PobierzZamowienieDto>>(zamowienia);
+
+            if (zamowienia != null)
+            {
+                return Ok(zamowieniaDoPobrania);
+            }
+            return NotFound();
+        }
+
+        // GET http://localhost:5000/api/Zamowienia/pracownik/{id}
+        [Authorize(Policy = "WymaganeUprawnieniaPracownika")]
+        [HttpGet("pracownik/{id}")]
+        public async Task<IActionResult> PobierzZamowieniaPracownika(int id)
+        {
+            var zamowienia = await _repozytorium.PobierzZamowieniaPracownika(id);
+
+            var zamowieniaDoPobrania = _mapper.Map<IEnumerable<PobierzZamowienieDto>>(zamowienia);
+
+            if (zamowienia != null)
+            {
+                return Ok(zamowieniaDoPobrania);
             }
             return NotFound();
         }
