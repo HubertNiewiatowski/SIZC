@@ -10,7 +10,7 @@
             <table class="table table-borderless">
               <tbody>
                 <tr>
-                  <td><strong>imię</strong></td>
+                  <td><strong>Imię</strong></td>
                   <td class="form-group">
                     <input type="text" 
                       [ngClass]="{'is-invalid': formularzRejestracji.get('imie').errors && formularzRejestracji.get('imie').touched}"
@@ -19,7 +19,7 @@
                     <div class="invalid-feedback">Pole imię jest wymagane</div></td>                      
                 </tr>
                 <tr>
-                  <td><strong>nazwisko</strong></td>
+                  <td><strong>Nazwisko</strong></td>
                   <td class="form-group">
                     <input type="text"
                       [ngClass]="{'is-invalid': formularzRejestracji.get('nazwisko').errors && formularzRejestracji.get('nazwisko').touched}"
@@ -28,7 +28,7 @@
                     <div class="invalid-feedback">Pole nazwisko jest wymagane</div></td>
                 </tr>
                 <tr>
-                  <td><strong>adres email</strong></td>
+                  <td><strong>Adres email</strong></td>
                   <td class="form-group">
                     <input type="text"
                       [ngClass]="{'is-invalid': formularzRejestracji.get('adresEmail').errors && formularzRejestracji.get('adresEmail').touched}"
@@ -37,21 +37,21 @@
                     <div class="invalid-feedback">Pole adres email jest wymagane</div></td>
                 </tr>
                 <tr>
-                  <td><strong>nr tel. stacjonarny</strong></td>
+                  <td><strong>Nr tel. stacjonarny</strong></td>
                   <td class="form-group">
                     <input type="text"
                       class="form-control" 
                       formControlName="nrTelStacjonarny"></td>
                 </tr>
                 <tr>
-                  <td><strong>nr tel. komórkowy</strong></td>
+                  <td><strong>Nr tel. komórkowy</strong></td>
                   <td class="form-group">                    
                     <input type="text"   
                       class="form-control"
                       formControlName="nrTelKomorkowy"></td>
                 </tr>
                 <tr>
-                  <td><strong>kod pocztowy</strong></td>
+                  <td><strong>Kod pocztowy</strong></td>
                   <td class="form-group">
                     <input type="text"
                       [ngClass]="{'is-invalid': formularzRejestracji.get('kodPocztowy').errors && formularzRejestracji.get('kodPocztowy').touched}"  
@@ -60,7 +60,7 @@
                     <div class="invalid-feedback">Kod pocztowy musi składać się z 5 znaków</div></td>
                 </tr>
                 <tr>
-                  <td><strong>miejscowość</strong></td>
+                  <td><strong>Miejscowość</strong></td>
                   <td class="form-group">
                     <input type="text"
                       [ngClass]="{'is-invalid': formularzRejestracji.get('miejscowosc').errors && formularzRejestracji.get('miejscowosc').touched}"
@@ -69,28 +69,28 @@
                     <div class="invalid-feedback">Pole miejscowość jest wymagane</div></td>
                 </tr>
                 <tr>
-                  <td><strong>ulica</strong></td>
+                  <td><strong>Ulica</strong></td>
                   <td class="form-group">
                     <input type="text" 
                       class="form-control" 
                       formControlName="ulica"></td>
                 </tr>
                 <tr>
-                  <td><strong>nr budynku</strong></td>
+                  <td><strong>Nr budynku</strong></td>
                   <td class="form-group">
                     <input type="text" 
                       class="form-control" 
                       formControlName="nrBudynek"></td>
                 </tr>
                 <tr>
-                  <td><strong>nr mieszkania</strong></td>
+                  <td><strong>Nr mieszkania</strong></td>
                   <td class="form-group">
                     <input type="text" 
                       class="form-control" 
                       formControlName="nrMieszkanie"></td>
                 </tr>
                 <tr>
-                  <td><strong>hasło</strong></td>
+                  <td><strong>Hasło</strong></td>
                   <td class="form-group">
                     <input type="password"
                       [ngClass]="{'is-invalid': formularzRejestracji.get('haslo').errors && formularzRejestracji.get('haslo').touched}"
@@ -99,7 +99,7 @@
                       <div class="invalid-feedback">Hasło musi składać się minimum z 6 znaków</div></td>
                 </tr>
                 <tr>
-                  <td><strong>powtórzone hasło</strong></td>
+                  <td><strong>Powtórzone hasło</strong></td>
                   <td class="form-group">
                     <input type="password"
                       [ngClass]="{'is-invalid': formularzRejestracji.hasError('nieprawidłowe') && formularzRejestracji.get('potwierdzHaslo').touched}" 

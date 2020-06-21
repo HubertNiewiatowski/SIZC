@@ -10,48 +10,48 @@
           <table class="table table-borderless">
             <tbody>
               <tr>
-                <td><strong>imię</strong></td>
+                <td><strong>Imię</strong></td>
                 <td>{{klientDoPobrania.imie}}</td>
               </tr>
               <tr>
-                <td><strong>nazwisko</strong></td>
+                <td><strong>Nazwisko</strong></td>
                 <td>{{klientDoPobrania.nazwisko}}</td>
               </tr>
               <tr>
-                <td><strong>adres email</strong></td>
+                <td><strong>Adres email</strong></td>
                 <td>{{klientDoPobrania.adresEmail}}</td>
               </tr>
               <tr>
-                <td><strong>nr tel. stacjonarny</strong></td>
+                <td><strong>Nr tel. stacjonarny</strong></td>
                 <td>{{klientDoPobrania.nrTelStacjonarny}}</td>
               </tr>
               <tr>
-                <td><strong>nr tel. komórkowy</strong></td>
+                <td><strong>Nr tel. komórkowy</strong></td>
                 <td>{{klientDoPobrania.nrTelKomorkowy}}</td>
               </tr>
               <tr>
-                <td><strong>kod pocztowy</strong></td>
+                <td><strong>Kod pocztowy</strong></td>
                 <td>{{klientDoPobrania.kodPocztowy}}</td>
               </tr>
               <tr>
-                <td><strong>miejscowość</strong></td>
+                <td><strong>Miejscowość</strong></td>
                 <td>{{klientDoPobrania.miejscowosc}}</td>
               </tr>
               <tr>
-                <td><strong>ulica</strong></td>
+                <td><strong>Ulica</strong></td>
                 <td>{{klientDoPobrania.ulica}}</td>
               </tr>
               <tr>
-                <td><strong>nr budynku</strong></td>
+                <td><strong>Nr budynku</strong></td>
                 <td>{{klientDoPobrania.nrBudynek}}</td>
               </tr>
               <tr>
-                <td><strong>nr mieszkania</strong></td>
+                <td><strong>Nr mieszkania</strong></td>
                 <td>{{klientDoPobrania.nrMieszkanie}}</td>
               </tr>
               <tr>
-                <td><strong>data rejestracji</strong></td>
-                <td>{{klientDoPobrania.dataRejestracji}}</td>
+                <td><strong>Data rejestracji</strong></td>
+                <td>{{klientDoPobrania.dataRejestracji | date:'fullDate' : '+0200' : 'pl'}}</td>
               </tr>
             </tbody>
           </table>
@@ -73,52 +73,52 @@
             <table class="table table-borderless">
               <tbody>
                 <tr>
-                  <td><strong>imię</strong></td>
+                  <td><strong>Imię</strong></td>
                   <td><input type="text" class="form-control" required name="imie" [(ngModel)]="klientDoPobrania.imie"
                       placeholder="imię"></td>
                 </tr>
                 <tr>
-                  <td><strong>nazwisko</strong></td>
+                  <td><strong>Nazwisko</strong></td>
                   <td><input type="text" class="form-control" required name="nazwisko"
                       [(ngModel)]="klientDoPobrania.nazwisko" placeholder="nazwisko"></td>
                 </tr>
                 <tr>
-                  <td><strong>adres email</strong></td>
+                  <td><strong>Adres email</strong></td>
                   <input type="text" class="form-control" required name="adresEmail"
                     [(ngModel)]="klientDoPobrania.adresEmail" placeholder="adres email">
                 </tr>
                 <tr>
-                  <td><strong>nr tel. stacjonarny</strong></td>
+                  <td><strong>Nr tel. stacjonarny</strong></td>
                   <input type="text" class="form-control" name="nrTelStacjonarny"
                     [(ngModel)]="klientDoPobrania.nrTelStacjonarny" placeholder="nr tel. stacjonarny">
                 </tr>
                 <tr>
-                  <td><strong>nr tel. komórkowy</strong></td>
+                  <td><strong>Nr tel. komórkowy</strong></td>
                   <input type="text" class="form-control" name="nrTelKomorkowy"
                     [(ngModel)]="klientDoPobrania.nrTelKomorkowy" placeholder="nr tel. komórkowy">
                 </tr>
                 <tr>
-                  <td><strong>kod pocztowy</strong></td>
+                  <td><strong>Kod pocztowy</strong></td>
                   <input type="text" class="form-control" required name="kodPocztowy"
                     [(ngModel)]="klientDoPobrania.kodPocztowy" placeholder="kod pocztowy">
                 </tr>
                 <tr>
-                  <td><strong>miejscowość</strong></td>
+                  <td><strong>Miejscowość</strong></td>
                   <input type="text" class="form-control" required name="miejscowosc"
                     [(ngModel)]="klientDoPobrania.miejscowosc" placeholder="miejscowość">
                 </tr>
                 <tr>
-                  <td><strong>ulica</strong></td>
+                  <td><strong>Ulica</strong></td>
                   <input type="text" class="form-control" name="ulica" [(ngModel)]="klientDoPobrania.ulica"
                     placeholder="ulica">
                 </tr>
                 <tr>
-                  <td><strong>nr budynku</strong></td>
+                  <td><strong>Nr budynku</strong></td>
                   <input type="text" class="form-control" name="nrBudynek" [(ngModel)]="klientDoPobrania.nrBudynek"
                     placeholder="nr budynku">
                 </tr>
                 <tr>
-                  <td><strong>nr mieszkania</strong></td>
+                  <td><strong>Nr mieszkania</strong></td>
                   <input type="text" class="form-control" name="nrMieszkanie"
                     [(ngModel)]="klientDoPobrania.nrMieszkanie" placeholder="nr mieszkania">
                 </tr>

@@ -21,15 +21,15 @@
           <table class="table table-borderless ml-2">
             <tbody>
               <tr>
-                <td><small>nazwa</small></td>
+                <td><small>Nazwa</small></td>
                 <td><small class="font-weight-bold">{{pozycjaMenu.nazwaPozycja}}</small></td>
               </tr>
               <tr>
-                <td><small>cena</small></td>
+                <td><small>Cena</small></td>
                 <td><small class="font-weight-bold">{{pozycjaMenu.cena | currency:'PLN'}}</small></td>
               </tr>
               <tr>
-                <td><small>opis</small></td>
+                <td><small>Opis</small></td>
                 <td><small class="font-weight-bold">{{pozycjaMenu.opis}}</small></td>
               </tr>
             </tbody>
@@ -48,8 +48,8 @@
               <tr *ngFor="let skladnik of pozycjaMenu.skladnik">
                 <td><small>{{skladnik.nazwaSkladnik}}</small></td>
                 <td><small>{{skladnik.masaSkladnik}}g</small></td>
-                <td><small>{{skladnik.czyWeganski}}</small></td>
-                <td><small>{{skladnik.czyWegetarianski}}</small></td>
+                <td><small>{{skladnik.czyWeganski ? 'tak':'nie'}}</small></td>
+                <td><small>{{skladnik.czyWegetarianski ? 'tak':'nie'}}</small></td>
               </tr>
             </tbody>
           </table>
@@ -62,11 +62,11 @@
               <table class="table table-borderless">
                 <tbody>
                   <tr>
-                    <td><strong>koszt</strong></td>
-                    <td>{{zamowienie.koszt | currency:'PLN'}}</td>
+                    <td><strong>Koszt zamówienia</strong></td>
+                    <td>{{zamowienie.koszt | currency:'PLN'}} w tym koszt dostawy 5 zł</td>
                   </tr>
                   <tr>
-                    <td><strong>typ płatności</strong></td>
+                    <td><strong>Typ płatności</strong></td>
                     <td class="form-group">
                       <select class="form-control" formControlName="platnoscTyp">
                         <option *ngFor="let typ of typyPlatnosci" [ngValue]='typ.platnoscTypID'>
@@ -76,7 +76,7 @@
                     </td>
                   </tr>
                   <tr>
-                    <td><strong>data realizacji</strong></td>
+                    <td><strong>Data realizacji</strong></td>
                     <td class="form-group">
                       <input type="text" bsDatepicker
                         [ngClass]="{'is-invalid': formularzZamowienia.get('dataRealizacji').errors && formularzZamowienia.get('dataRealizacji').touched}"  
@@ -85,7 +85,7 @@
                       <div class="invalid-feedback">Pole data realizacji jest wymagane</div></td>
                   </tr>
                   <tr>
-                    <td><strong>kod pocztowy</strong></td>
+                    <td><strong>Kod pocztowy</strong></td>
                     <td class="form-group">
                       <input type="text"
                         [ngClass]="{'is-invalid': formularzZamowienia.get('kodPocztowy').errors && formularzZamowienia.get('kodPocztowy').touched}"  
@@ -94,7 +94,7 @@
                       <div class="invalid-feedback">Kod pocztowy musi składać się z 5 znaków</div></td>
                   </tr>
                   <tr>
-                    <td><strong>miejscowość</strong></td>
+                    <td><strong>Miejscowość</strong></td>
                     <td class="form-group">
                       <input type="text"
                         [ngClass]="{'is-invalid': formularzZamowienia.get('miejscowosc').errors && formularzZamowienia.get('miejscowosc').touched}"
@@ -103,21 +103,21 @@
                       <div class="invalid-feedback">Pole miejscowość jest wymagane</div></td>
                   </tr>
                   <tr>
-                    <td><strong>ulica</strong></td>
+                    <td><strong>Ulica</strong></td>
                     <td class="form-group">
                       <input type="text" 
                         class="form-control" 
                         formControlName="ulica"></td>
                   </tr>
                   <tr>
-                    <td><strong>nr budynku</strong></td>
+                    <td><strong>Nr budynku</strong></td>
                     <td class="form-group">
                       <input type="text" 
                         class="form-control" 
                         formControlName="nrBudynek"></td>
                   </tr>
                   <tr>
-                    <td><strong>nr mieszkania</strong></td>
+                    <td><strong>Nr mieszkania</strong></td>
                     <td class="form-group">
                       <input type="text" 
                         class="form-control" 

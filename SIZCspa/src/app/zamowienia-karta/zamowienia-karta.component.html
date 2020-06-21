@@ -4,55 +4,59 @@
       <table class="table table-borderless">
         <tbody>
           <tr>
-            <td><strong>koszt</strong></td>
+            <td><strong>Id zamówienia</strong></td>
+            <td>{{zamowienie.zamowienieID}}</td>
+          </tr>
+          <tr>
+            <td><strong>Koszt</strong></td>
             <td>{{zamowienie.koszt | currency:'PLN'}}</td>
           </tr>
           <tr>
-            <td><strong>kod pocztowy</strong></td>
+            <td><strong>Kod pocztowy</strong></td>
             <td>{{zamowienie.kodPocztowy}}</td>
           </tr>
           <tr>
-            <td><strong>miejscowość</strong></td>
+            <td><strong>Miejscowość</strong></td>
             <td>{{zamowienie.miejscowosc}}</td>
           </tr>
           <tr>
-            <td><strong>ulica</strong></td>
+            <td><strong>Ulica</strong></td>
             <td>{{zamowienie.ulica}}</td>
           </tr>
           <tr>
-            <td><strong>nr budynku</strong></td>
+            <td><strong>Nr budynku</strong></td>
             <td>{{zamowienie.nrBudynek}}</td>
           </tr>
           <tr>
-            <td><strong>nr mieszkania</strong></td>
+            <td><strong>Nr mieszkania</strong></td>
             <td>{{zamowienie.nrMieszkanie}}</td>
           </tr>
           <tr>
-            <td><strong>data relizacji</strong></td>
+            <td><strong>Data relizacji</strong></td>
             <td>{{zamowienie.dataRealizacji | date:'fullDate' : '+0200' : 'pl'}}</td>
           </tr>
           <tr>
-            <td><strong>data złożenia</strong></td>
+            <td><strong>Data złożenia</strong></td>
             <td>{{zamowienie.dataZlozenia | date:'fullDate' : '+0200' : 'pl'}}</td>
           </tr>
           <tr>
-            <td><strong>nazwa pozycji</strong></td>
+            <td><strong>Nazwa pozycji</strong></td>
             <td>{{pozycjaMenu.nazwaPozycja}}</td>
           </tr>
           <tr>
-            <td><strong>cena pozycji</strong></td>
+            <td><strong>Cena pozycji</strong></td>
             <td>{{pozycjaMenu.cena | currency:'PLN'}}</td>
           </tr>
           <tr>
-            <td><strong>opis pozycji</strong></td>
+            <td><strong>Opis pozycji</strong></td>
             <td>{{pozycjaMenu.opis}}</td>
           </tr>
           <tr>
-            <td><strong>typ płatności</strong></td>
+            <td><strong>Typ płatności</strong></td>
             <td>{{platnoscTyp.nazwaPlatnosc}}</td>
           </tr>
           <tr>
-            <td><strong>status zamówienia</strong></td>
+            <td><strong>Status zamówienia</strong></td>
             <td>{{zamowienieStatus.nazwaStatus}}</td>
           </tr>
         </tbody>
