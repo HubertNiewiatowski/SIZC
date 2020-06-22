@@ -33,5 +33,7 @@ namespace SIZCapi.Data
 
         Task<Pracownik> PobierzProfilPracownika(int id);
 
+        Task<string> PobierzAdresEmailKlienta(int id);
+
     }
 }

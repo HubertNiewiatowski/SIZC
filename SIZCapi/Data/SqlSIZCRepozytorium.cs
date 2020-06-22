@@ -115,5 +115,12 @@ namespace SIZCapi.Data
 
             return profilPracownika;
         }
+
+        public async Task<string> PobierzAdresEmailKlienta(int id)
+        {
+            var adresEmail = await _kontekst.Klient.Where(e => e.KlientID == id).Select( e => e.AdresEmail).FirstOrDefaultAsync();
+
+            return adresEmail;
+        }
     }
 }
