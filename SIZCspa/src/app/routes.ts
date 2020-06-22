@@ -13,7 +13,7 @@ export const appRoutes: Routes = [
     { path: 'rejestracja', component: RejestracjaComponent },
     { path: 'logowanie', component: LogowanieComponent },
     { path: 'menu', component: MenuComponent },
-    { path: 'zamow/:id', component: MenuZamowComponent, canActivate: [AutoryzacjaGuard]},
+    { path: 'menu/zamow/:id', component: MenuZamowComponent, canActivate: [AutoryzacjaGuard]},
     { path: 'zamowienia', component: ZamowieniaComponent, canActivate: [AutoryzacjaGuard]},
     { path: 'klient', component: KlientComponent, canActivate: [AutoryzacjaGuard]},
     { path: '**', redirectTo: 'stronaGlowna', pathMatch: 'full' }

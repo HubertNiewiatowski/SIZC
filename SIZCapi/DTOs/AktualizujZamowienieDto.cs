@@ -1,12 +1,9 @@
 using System;
-using System.ComponentModel.DataAnnotations;
-using SIZCapi.Models;
 
 namespace SIZCapi.DTOs
 {
-    public class PobierzZamowienieDto
+    public class AktualizujZamowienieDto
     {
-        [Required]
         public int ZamowienieID { get; set; }
 
         public decimal Koszt { get; set; }
@@ -16,21 +13,23 @@ namespace SIZCapi.DTOs
         public string Miejscowosc { get; set; }
 
         public string Ulica { get; set; }
-        
+
         public string NrBudynek { get; set; }
-        
+
         public string NrMieszkanie { get; set; }
-        
+
         public DateTime DataRealizacji { get; set; }
-        
+
         public DateTime DataZlozenia { get; set; }
 
-        public virtual DlaZamowieniePozycjaMenuDto PozycjaMenu { get; set; }
+        public int PozycjaMenuID { get; set; }
 
-        public virtual DlaZamowieniePlatnoscTypDto PlatnoscTyp { get; set; }
-
-        public virtual DlaZamowienieZamowienieStatusDto ZamowienieStatus { get; set; }
+        public int KlientID { get; set; }
 
         public int PracownikID { get; set; }
+
+        public int PlatnoscTypID { get; set; }
+
+        public int ZamowienieStatusID { get; set; }
     }
 }

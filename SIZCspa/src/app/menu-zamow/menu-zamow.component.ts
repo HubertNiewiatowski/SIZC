@@ -18,7 +18,7 @@ import { BsLocaleService } from 'ngx-bootstrap/datepicker';
   templateUrl: './menu-zamow.component.html',
   styleUrls: ['./menu-zamow.component.css']
 })
-export class MenuZamowComponent implements OnInit , DoCheck {
+export class MenuZamowComponent implements OnInit, DoCheck {
   pozycjaMenu: PobierzPozycjaMenu = {} as PobierzPozycjaMenu;
   zamowienie: DodajZamowienie = {} as DodajZamowienie;
   nameId: any;
@@ -49,15 +49,13 @@ export class MenuZamowComponent implements OnInit , DoCheck {
       nrBudynek: new FormControl(),
       nrMieszkanie: new FormControl(),
       dataRealizacji: new FormControl('', Validators.required),
-      platnoscTyp: new FormControl()
+      platnoscTyp: new FormControl('', Validators.required)
     });
   }
 
 
   ngDoCheck()
   {
-    console.log(this.pozycjaMenu.nazwaPozycja);
-
     this.zamowienie.koszt = this.pozycjaMenu.cena + 5;
 
     this.zamowienie.kodPocztowy = this.formularzZamowienia.get('kodPocztowy').value;

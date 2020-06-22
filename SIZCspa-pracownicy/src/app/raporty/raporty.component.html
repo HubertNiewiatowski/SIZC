@@ -1,0 +1,91 @@
+<div class="container-fluid ml-5">
+  <h1 class="text-left text-primary ml-5">Raporty</h1>
+  <br>
+
+  <div class="col-sm-10 col-md-8 col-lg-6">
+
+    <div class="card">
+      <div class="card-body p-1">
+
+        <div class="row">
+          <div class="col-10">
+            <form [formGroup]="formularzZamowienia" (ngSubmit)="pobierzIloscZamowien()">
+              <table class="table table-borderless">
+                <tbody>
+                  <tr>
+                    <td><strong>Data początkowa</strong></td>
+                    <td class="form-group">
+                      <input type="text" bsDatepicker
+                        [ngClass]="{'is-invalid': formularzZamowienia.get('dataPoczatkowa').errors && formularzZamowienia.get('dataPoczatkowa').touched}"  
+                        class="form-control"
+                        formControlName="dataPoczatkowa"
+                        [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD'}">
+                      <div class="invalid-feedback">Pole data początkowa jest wymagane</div></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Data końcowa</strong></td>
+                    <td class="form-group">
+                      <input type="text" bsDatepicker
+                        [ngClass]="{'is-invalid': formularzZamowienia.get('dataKoncowa').errors && formularzZamowienia.get('dataKoncowa').touched}"  
+                        class="form-control"
+                        formControlName="dataKoncowa"
+                        [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD'}">
+                      <div class="invalid-feedback">Pole data końcowa jest wymagane</div></td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="form-group text-center">
+                <button class="btn btn-success mr-4" type="submit">Zlicz ilość zamówień</button>
+              </div>
+            </form>
+
+            <p>Ilość zamówień</p>
+            <p>{{iloscZamowien}}</p>
+
+          </div>
+        </div>
+
+        <br>
+
+        <div class="row">
+          <div class="col-10">
+            <form [formGroup]="formularzKlienci" (ngSubmit)="pobierzIloscKlientow()">
+              <table class="table table-borderless">
+                <tbody>
+                  <tr>
+                    <td><strong>Data początkowa</strong></td>
+                    <td class="form-group">
+                      <input type="text" bsDatepicker
+                        [ngClass]="{'is-invalid': formularzKlienci.get('dataPoczatkowa').errors && formularzZamowienia.get('dataPoczatkowa').touched}"  
+                        class="form-control"
+                        formControlName="dataPoczatkowa"
+                        [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD'}">
+                      <div class="invalid-feedback">Pole data początkowa jest wymagane</div></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Data końcowa</strong></td>
+                    <td class="form-group">
+                      <input type="text" bsDatepicker
+                        [ngClass]="{'is-invalid': formularzKlienci.get('dataKoncowa').errors && formularzZamowienia.get('dataKoncowa').touched}"  
+                        class="form-control"
+                        formControlName="dataKoncowa"
+                        [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD'}">
+                      <div class="invalid-feedback">Pole data końcowa jest wymagane</div></td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="form-group text-center">
+                <button class="btn btn-success mr-4" type="submit">Zlicz ilość klientów</button>
+              </div>
+            </form>
+
+            <p>Ilość klientów</p>
+            <p>{{iloscKlientow}}</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>

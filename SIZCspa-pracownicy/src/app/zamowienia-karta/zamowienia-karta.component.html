@@ -1,11 +1,50 @@
-<div class="card">
+<div *ngIf="rolaKucharz()" class="card">
   <div class="card-body p-1">
     <div class="col-10">
       <table class="table table-borderless">
         <tbody>
           <tr>
-            <td><strong>koszt</strong></td>
-            <td>{{zamowienie.koszt}}</td>
+            <td><strong>Id zamówienia</strong></td>
+            <td>{{zamowienie.zamowienieID}}</td>
+          </tr>
+          <tr>
+            <td><strong>Data relizacji</strong></td>
+            <td>{{zamowienie.dataRealizacji | date:'fullDate' : '+0200' : 'pl'}}</td>
+          </tr>
+          <tr>
+            <td><strong>Data złożenia</strong></td>
+            <td>{{zamowienie.dataZlozenia | date:'fullDate' : '+0200' : 'pl'}}</td>
+          </tr>
+          <tr>
+            <td><strong>Nazwa pozycji</strong></td>
+            <td>{{pozycjaMenu.nazwaPozycja}}</td>
+          </tr>
+          <tr>
+            <td><strong>Opis pozycji</strong></td>
+            <td>{{pozycjaMenu.opis}}</td>
+          </tr>
+          <tr>
+            <td><strong>Status zamówienia</strong></td>
+            <td>{{zamowienieStatus.nazwaStatus}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="text-primary ml-5">
+      <button class="btn btn-success mr-2" type="button"
+        [routerLink]="['/zamowienia/aktualizuj/', this.zamowienie.zamowienieID]">Przejdż do zamówienia</button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="rolaDostawca()" class="card">
+  <div class="card-body p-1">
+    <div class="col-10">
+      <table class="table table-borderless">
+        <tbody>
+          <tr>
+            <td><strong>Id zamówienia</strong></td>
+            <td>{{zamowienie.zamowienieID}}</td>
           </tr>
           <tr>
             <td><strong>kod pocztowy</strong></td>
@@ -28,32 +67,20 @@
             <td>{{zamowienie.nrMieszkanie}}</td>
           </tr>
           <tr>
-            <td><strong>nr mieszkania</strong></td>
-            <td>{{zamowienie.nrMieszkanie}}</td>
+            <td><strong>Data relizacji</strong></td>
+            <td>{{zamowienie.dataRealizacji | date:'fullDate' : '+0200' : 'pl'}}</td>
           </tr>
           <tr>
-            <td><strong>data relizacji</strong></td>
-            <td>{{zamowienie.dataRealizacji}}</td>
-          </tr>
-          <tr>
-            <td><strong>data złożenia</strong></td>
-            <td>{{zamowienie.dataZlozenia}}</td>
+            <td><strong>Data złożenia</strong></td>
+            <td>{{zamowienie.dataZlozenia | date:'fullDate' : '+0200' : 'pl'}}</td>
           </tr>
           <tr>
             <td><strong>nazwa pozycji</strong></td>
             <td>{{pozycjaMenu.nazwaPozycja}}</td>
           </tr>
           <tr>
-            <td><strong>cena pozycji</strong></td>
-            <td>{{pozycjaMenu.cena}}</td>
-          </tr>
-          <tr>
             <td><strong>opis pozycji</strong></td>
             <td>{{pozycjaMenu.opis}}</td>
-          </tr>
-          <tr>
-            <td><strong>typ płatności</strong></td>
-            <td>{{platnoscTyp.nazwaPlatnosc}}</td>
           </tr>
           <tr>
             <td><strong>status zamówienia</strong></td>
@@ -61,6 +88,10 @@
           </tr>
         </tbody>
       </table>
+    </div>
+    <div class="text-primary ml-5">
+      <button class="btn btn-success mr-2" type="button"
+        [routerLink]="['/zamowienia/aktualizuj/', this.zamowienie.zamowienieID]">Przejdż do zamówienia</button>
     </div>
   </div>
 </div>

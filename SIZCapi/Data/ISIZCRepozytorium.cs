@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using SIZCapi.Models;
@@ -16,7 +17,7 @@ namespace SIZCapi.Data
 
         Task<PozycjaMenu> PobierzPozycjeMenuPoId(int id);
 
-        Task<IEnumerable<Zamowienie>> PobierzZamowieniaWszystkie();
+        Task<int> ZliczZamowieniaDoRaportu(DateTime dataPoczatkowa, DateTime dataKoncowa);
 
         Task<Zamowienie> PobierzZamowieniePoId(int id);
 
@@ -24,7 +25,7 @@ namespace SIZCapi.Data
 
         Task<IEnumerable<Zamowienie>> PobierzZamowieniaPracownika(int id);
 
-        Task<IEnumerable<Klient>> PobierzProfileKlientowWszystkie();
+        Task<int> ZliczProfileKlientowDoRaportu(DateTime dataPoczatkowa, DateTime dataKoncowa);
 
         Task<Klient> PobierzProfilKlienta(int id);
 

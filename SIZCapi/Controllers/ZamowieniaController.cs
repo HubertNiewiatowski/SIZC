@@ -26,18 +26,12 @@ namespace SIZCapi.Controllers
 
         // GET http://localhost:5000/api/Zamowienia/
         [Authorize(Policy = "WymaganeUprawnieniaAdministratora")]
-        [HttpGet]
-        public async Task<IActionResult> PobierzZamowieniaWszystkie()
+        [HttpGet("{dataPoczatkowa:datetime}/{dataKoncowa:datetime}")]
+        public async Task<IActionResult> ZliczZamowieniaDoRaportu(DateTime dataPoczatkowa, DateTime dataKoncowa)
         {
-            var zamowienia = await _repozytorium.PobierzZamowieniaWszystkie();
+            var iloscZamowien = await _repozytorium.ZliczZamowieniaDoRaportu(dataPoczatkowa, dataKoncowa);
 
-            var zamowieniaDoPobrania = _mapper.Map<IEnumerable<PobierzZamowienieDto>>(zamowienia);
-
-            if (zamowienia != null)
-            {
-                return Ok(zamowieniaDoPobrania);
-            }
-            return NotFound();
+            return Ok(iloscZamowien);
         }
 
         // GET http://localhost:5000/api/Zamowienia/{id}
@@ -48,6 +42,22 @@ namespace SIZCapi.Controllers
             var zamowienie = await _repozytorium.PobierzZamowieniePoId(id);
 
             var zamowienieDoPobrania = _mapper.Map<PobierzZamowienieDto>(zamowienie);
+
+            if (zamowienie != null)
+            {
+                return Ok(zamowienieDoPobrania);
+            }
+            return NotFound();
+        }
+
+        // GET http://localhost:5000/api/Zamowienia/{id}
+        [Authorize(Policy = "WymaganeUprawnieniaPracownika")]
+        [HttpGet("aktualizacja/{id}")]
+        public async Task<IActionResult> PobierzZamowienieDoAktualizacji(int id)
+        {
+            var zamowienie = await _repozytorium.PobierzZamowieniePoId(id);
+
+            var zamowienieDoPobrania = _mapper.Map<AktualizujZamowienieDto>(zamowienie);
 
             if (zamowienie != null)
             {
@@ -110,7 +120,7 @@ namespace SIZCapi.Controllers
         // PUT http://localhost:5000/api/Zamowienia/{id}
         [Authorize(Policy = "WymaganeUprawnieniaPracownika")]
         [HttpPut("{id}")]
-        public async Task<IActionResult> AktualizujZamowienie(int id, PobierzZamowienieDto zamowienieDoAktualizacji)
+        public async Task<IActionResult> AktualizujZamowienie(int id, AktualizujZamowienieDto zamowienieDoAktualizacji)
         {
             var zamowienieModel = await _repozytorium.PobierzZamowieniePoId(id);
 

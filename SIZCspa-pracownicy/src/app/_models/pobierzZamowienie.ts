@@ -15,4 +15,5 @@ export interface PobierzZamowienie {
     pozycjaMenu: DlaZamowieniePozycjaMenu;
     platnoscTyp: DlaZamowieniePlatnoscTyp;
     zamowienieStatus: DlaZamowienieZamowienieStatus;
+    pracownikID?: number;
 }

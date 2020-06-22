@@ -6,18 +6,35 @@
     <div class="card">
       <div class="card-body p-1">
         <div class="col-10">
-          <form #formularzRejestracji="ngForm">
+          <form [formGroup]="formularzRejestracji" (ngSubmit)="zarejestruj()">
             <table class="table table-borderless">
               <tbody>
                 <tr>
-                  <td><strong>login</strong></td>
-                  <td><input type="text" class="form-control" required name="login" [(ngModel)]="pracownik.login"
-                    placeholder="login"></td>
+                  <td><strong>Login</strong></td>
+                  <td class="form-group">
+                    <input type="text" 
+                      [ngClass]="{'is-invalid': formularzRejestracji.get('login').errors && formularzRejestracji.get('login').touched}"
+                      class="form-control" 
+                      formControlName="login">
+                    <div class="invalid-feedback">Pole login jest wymagane</div></td>                      
                 </tr>
                 <tr>
-                  <td><strong>hasło</strong></td>
-                  <td><input type="password" class="form-control" required name="haslo" [(ngModel)]="pracownik.haslo"
-                    placeholder="hasło"></td>
+                  <td><strong>Hasło</strong></td>
+                  <td class="form-group">
+                    <input type="password"
+                      [ngClass]="{'is-invalid': formularzRejestracji.get('haslo').errors && formularzRejestracji.get('haslo').touched}"
+                      class="form-control" 
+                      formControlName="haslo">
+                      <div class="invalid-feedback">Hasło musi składać się minimum z 6 znaków</div></td>
+                </tr>
+                <tr>
+                  <td><strong>Powtórzone hasło</strong></td>
+                  <td class="form-group">
+                    <input type="password"
+                      [ngClass]="{'is-invalid': formularzRejestracji.hasError('nieprawidłowe') && formularzRejestracji.get('potwierdzHaslo').touched}" 
+                      class="form-control"
+                      formControlName="potwierdzHaslo">
+                      <div class="invalid-feedback">Wprowadzone hasła musza być identyczne</div></td>
                 </tr>
                 <tr>
                   <td><strong>ID roli pracownika</strong></td>
@@ -27,7 +44,7 @@
               </tbody>
             </table>
             <div class="form-group text-center">
-              <button class="btn btn-success mr-4" type="button" (click)="zarejestruj()">Zarejestruj się</button>
+              <button class="btn btn-success mr-4" type="submit">Zarejestruj pracownika</button>
               <button class="btn btn-primary" type="button" (click)="anuluj()">Anuluj</button>
             </div>
           </form>

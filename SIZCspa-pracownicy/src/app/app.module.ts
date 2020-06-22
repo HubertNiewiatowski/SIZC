@@ -1,13 +1,17 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SidebarModule } from 'ng-sidebar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AlertModule } from 'ngx-alerts';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { RouterModule } from '@angular/router';
 import { JwtModule } from '@auth0/angular-jwt';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { registerLocaleData, DatePipe } from '@angular/common';
+import localePl from '@angular/common/locales/pl';
+registerLocaleData(localePl);
 
 import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
@@ -26,6 +30,7 @@ import { PracownikEdytujComponent } from './pracownik-edytuj/pracownik-edytuj.co
 import { ZamowienieEdytujComponent } from './zamowienie-edytuj/zamowienie-edytuj.component';
 import { RejestracjaPracownikComponent } from './rejestracja-pracownik/rejestracja-pracownik.component';
 import { MenuEdytujComponent } from './menu-edytuj/menu-edytuj.component';
+import { RaportyComponent } from './raporty/raporty.component';
 
 
 export function tokenGetter() {
@@ -49,15 +54,17 @@ export function tokenGetter() {
       PracownikEdytujComponent,
       ZamowienieEdytujComponent,
       RejestracjaPracownikComponent,
-
+      RaportyComponent
    ],
    imports: [
       BrowserModule,
       HttpClientModule,
       FormsModule,
+      ReactiveFormsModule,
       SidebarModule.forRoot(),
       BrowserAnimationsModule,
       AlertModule.forRoot({maxMessages: 5, timeout: 2000, position: 'right'}),
+      BsDatepickerModule.forRoot(),
       BsDropdownModule.forRoot(),
       RouterModule.forRoot(appRoutes),
       JwtModule.forRoot({
@@ -69,7 +76,9 @@ export function tokenGetter() {
       })
    ],
    providers: [
-      AutoryzacjaService
+      AutoryzacjaService,
+      { provide: LOCALE_ID, useValue: 'pl-PL' },
+      [DatePipe]
    ],
    bootstrap: [
       AppComponent

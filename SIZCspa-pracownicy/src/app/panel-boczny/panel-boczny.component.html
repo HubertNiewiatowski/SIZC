@@ -15,6 +15,9 @@
       <li *ngIf="rolaAdministrator()"><a [routerLink]="['/pracownicy']">
         <i class="fa fa-user"></i>
         Pracownicy</a></li>
+      <li *ngIf="rolaAdministrator()"><a [routerLink]="['/raporty']">
+        <i class="fa fa-line-chart"></i>
+        Raporty</a></li>
     </ul>
   </ng-sidebar>
 

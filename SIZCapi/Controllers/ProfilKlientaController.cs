@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -24,18 +25,13 @@ namespace SIZCapi.Controllers
 
         // GET http://localhost:5000/api/ProfilKlienta/
         [Authorize(Policy = "WymaganeUprawnieniaAdministratora")]
-        [HttpGet]
-        public async Task<IActionResult> PobierzProfileKlientowWszystkie()
+        [HttpGet("{dataPoczatkowa:datetime}/{dataKoncowa:datetime}")]
+        public async Task<IActionResult> ZliczProfileKlientowDoRaportu(DateTime dataPoczatkowa, DateTime dataKoncowa)
         {
-            var profileKlientow = await _repozytorium.PobierzProfileKlientowWszystkie();
+            var iloscKlientow = await _repozytorium.ZliczProfileKlientowDoRaportu(dataPoczatkowa, dataKoncowa);
 
-            var profileKlientowDoPobrania = _mapper.Map<IEnumerable<PobierzKlientDto>>(profileKlientow);
+            return Ok(iloscKlientow);
 
-            if (profileKlientow != null)
-            {
-                return Ok(profileKlientowDoPobrania);
-            }
-            return NotFound();
         }
 
         // GET http://localhost:5000/api/ProfilKlienta/{id}

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using SIZCapi.Models;
 
+
 namespace SIZCapi.Data
 {
     public class SqlSIZCRepozytorium : ISIZCRepozytorium
@@ -55,11 +56,13 @@ namespace SIZCapi.Data
             return pozycjaMenu;
         }
 
-        public async Task<IEnumerable<Zamowienie>> PobierzZamowieniaWszystkie()
+        public async Task<int> ZliczZamowieniaDoRaportu(DateTime dataPoczatkowa, DateTime dataKoncowa)
         {
-            var zamowienia = await _kontekst.Zamowienie.Include(e => e.PozycjaMenu).Include(e => e.PlatnoscTyp).Include(e => e.ZamowienieStatus).ToListAsync();
+            var zamowienia = await _kontekst.Zamowienie.Where(e => e.DataZlozenia >= dataPoczatkowa && e.DataZlozenia <= dataKoncowa).ToListAsync();
 
-            return zamowienia;
+            int iloscZamowien = zamowienia.Count();
+            
+            return iloscZamowien;
         }
 
         public async Task<Zamowienie> PobierzZamowieniePoId(int id)
@@ -83,11 +86,13 @@ namespace SIZCapi.Data
             return zamowienia;
         }
 
-        public async Task<IEnumerable<Klient>> PobierzProfileKlientowWszystkie()
+        public async Task<int> ZliczProfileKlientowDoRaportu(DateTime dataPoczatkowa, DateTime dataKoncowa)
         {
-            var profileKlientow = await _kontekst.Klient.ToListAsync();
+            var profileKlientow = await _kontekst.Klient.Where(e => e.DataRejestracji >= dataPoczatkowa && e.DataRejestracji <= dataKoncowa).ToListAsync();
 
-            return profileKlientow;
+            int iloscKlientow = profileKlientow.Count();
+            
+            return iloscKlientow;
         }
 
         public async Task<Klient> PobierzProfilKlienta(int id)
