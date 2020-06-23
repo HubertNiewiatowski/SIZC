@@ -140,7 +140,7 @@ namespace SIZCapi.Data
                     KlientID = 1,
                     Imie = "Jan",
                     Nazwisko = "Kowalski",
-                    AdresEmail = "jan.kowalski@wp.pl",
+                    AdresEmail = "hubertniewiatowski@outlook.com",
                     NrTelStacjonarny = "221234567",
                     NrTelKomorkowy = "123456789",
                     KodPocztowy = "01234",
@@ -150,7 +150,7 @@ namespace SIZCapi.Data
                     NrMieszkanie = "2",
                     HasloHash = hasloHash,
                     HasloSalt = hasloSalt,
-                    DataRejestracji = new DateTime(2020, 6, 1, 7, 47, 0)
+                    DataRejestracji = new DateTime(2020, 6, 1, 11, 47, 3)
                 }
             );
 
@@ -162,7 +162,7 @@ namespace SIZCapi.Data
                     KlientID = 2,
                     Imie = "Elżbieta",
                     Nazwisko = "Zalewska",
-                    AdresEmail = "elzbieta.zalewska@gmail.com",
+                    AdresEmail = "hubertniewiatowski@outlook.com",
                     NrTelStacjonarny = "-",
                     NrTelKomorkowy = "987654321",
                     KodPocztowy = "43210",
@@ -172,7 +172,7 @@ namespace SIZCapi.Data
                     NrMieszkanie = "-",
                     HasloHash = hasloHash,
                     HasloSalt = hasloSalt,
-                    DataRejestracji = new DateTime(2020, 6, 2, 14, 37, 12)
+                    DataRejestracji = new DateTime(2020, 6, 3, 14, 58, 12)
                 }
             );
 
@@ -184,7 +184,7 @@ namespace SIZCapi.Data
                     KlientID = 3,
                     Imie = "Marcin",
                     Nazwisko = "Nowak",
-                    AdresEmail = "marcin.nowak@onet.pl",
+                    AdresEmail = "hubertniewiatowski@outlook.com",
                     NrTelStacjonarny = "221112233",
                     NrTelKomorkowy = "-",
                     KodPocztowy = "11222",
@@ -194,7 +194,7 @@ namespace SIZCapi.Data
                     NrMieszkanie = "2",
                     HasloHash = hasloHash,
                     HasloSalt = hasloSalt,
-                    DataRejestracji = new DateTime(2020, 6, 4, 23, 7, 21)
+                    DataRejestracji = new DateTime(2020, 6, 7, 23, 7, 21)
                 }
             );
 
@@ -654,7 +654,7 @@ namespace SIZCapi.Data
                     NrBudynek = "1",
                     NrMieszkanie = "2",
                     DataRealizacji = new DateTime(2020, 6, 3, 15, 00, 0),
-                    DataZlozenia = new DateTime(2020, 6, 2, 9, 47, 0),
+                    DataZlozenia = new DateTime(2020, 6, 2, 13, 57, 32),
                     PozycjaMenuID = 1,
                     KlientID = 1,
                     PracownikID = 1,
@@ -670,8 +670,8 @@ namespace SIZCapi.Data
                     Ulica = "Miła",
                     NrBudynek = "14c",
                     NrMieszkanie = "-",
-                    DataRealizacji = new DateTime(2020, 6, 6, 9, 00, 0),
-                    DataZlozenia = new DateTime(2020, 6, 5, 9, 47, 0),
+                    DataRealizacji = new DateTime(2020, 6, 5, 9, 00, 0),
+                    DataZlozenia = new DateTime(2020, 6, 4, 17, 47, 42),
                     PozycjaMenuID = 2,
                     KlientID = 2,
                     PracownikID = 1,
@@ -687,8 +687,8 @@ namespace SIZCapi.Data
                     Ulica = "Szeroka",
                     NrBudynek = "12",
                     NrMieszkanie = "2",
-                    DataRealizacji = new DateTime(2020, 6, 4, 18, 00, 0),
-                    DataZlozenia = new DateTime(2020, 6, 3, 9, 7, 5),
+                    DataRealizacji = new DateTime(2020, 6, 9, 18, 00, 0),
+                    DataZlozenia = new DateTime(2020, 6, 8, 9, 7, 5),
                     PozycjaMenuID = 3,
                     KlientID = 3,
                     PracownikID = 1,
