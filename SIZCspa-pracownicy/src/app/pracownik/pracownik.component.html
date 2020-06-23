@@ -1,12 +1,17 @@
 <div class="container-fluid ml-5">
   <h1 class="text-left text-primary ml-5">Profile pracowników</h1>
-  
-  <br>
-  <button class="btn btn-success mr-2" type="button"
-  [routerLink]="['/pracownicy/rejestruj']">Zarejestruj profil pracownika</button>
+
   <br>
 
-  <div class="col-sm-10 col-md-8 col-lg-6">    
+  <div class="col-sm-10 col-md-8 col-lg-6">
+
+    <div>
+      <button class="btn btn-info mr-2" type="button" [routerLink]="['/pracownicy/rejestruj']">Zarejestruj profil
+        pracownika</button>
+    </div>
+
+    <br>
+
     <div class="row">
       <div *ngFor="let profil of profilePracownikow">
         <br>

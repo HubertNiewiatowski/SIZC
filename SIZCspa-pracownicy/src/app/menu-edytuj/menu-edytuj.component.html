@@ -1,52 +1,75 @@
-<div class="card">
-  <div class="card-body p-1">
-    <div class="row">
-      <div class="col-6">
-        <img class="img-fluid" src={{pozycjaMenu.obrazekUrl}} alt="">
+<div class="container-fluid ml-5">
+  <h1 class="text-left text-primary ml-5">Zarządzaj pozycją menu</h1>
+  <br>
+
+  <div class="col-sm-10 col-md-8 col-lg-6">
+
+      <div class="card">
+        <div class="card-body p-1">
+
+          <div class="row">
+
+            <div class="col-6">
+              <img class="img-fluid" src={{pozycjaMenu.obrazekUrl}} alt="">
+            </div>
+            
+            <div class="col-4">
+              <table class="table table-borderless">
+                <tbody>
+                  <tr>
+                    <td><small class="font-weight-bold">Składnik</small></td>
+                    <td><small class="font-weight-bold">Masa</small></td>
+                  </tr>
+                  <tr *ngFor="let skladnik of pozycjaMenu.skladnik">
+                    <td><small>{{skladnik.nazwaSkladnik}}</small></td>
+                    <td><small>{{skladnik.masaSkladnik}} g</small></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+      
+          <div class="row">
+            <table class="table table-borderless ml-2">
+              <tbody>
+                <tr>
+                  <td><small>nazwa</small></td>
+                  <td><small class="font-weight-bold">{{pozycjaMenu.nazwaPozycja}}</small></td>
+                </tr>
+                <tr>
+                  <td><small>cena</small></td>
+                  <td><small class="font-weight-bold">{{pozycjaMenu.cena | currency:'PLN'}}</small></td>
+                </tr>
+                <tr>
+                  <td><small>opis</small></td>
+                  <td><small class="font-weight-bold">{{pozycjaMenu.opis}}</small></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+      
+      
+          <div class="text-primary ml-5">
+  
+  
+            <button class="btn btn-primary mr-2" type="button"
+              >Edytuj pozycję</button>
+  
+            <button class="btn btn-danger mr-2" type="button"
+              (click)="usunPozycje()">Usuń pozycję menu</button>
+  
+            <button class="btn btn-info mr-2" type="button"
+              (click)="anuluj()">Anuluj</button>
+          </div>
+      
+          
+        </div>
       </div>
-      <div class="col-4">
-        <table class="table table-borderless">
-          <tbody>
-            <tr>
-              <td><small class="font-weight-bold">Składnik</small></td>
-              <td><small class="font-weight-bold">Masa</small></td>
-            </tr>
-            <tr *ngFor="let skladnik of pozycjaMenu.skladnik">
-              <td><small>{{skladnik.nazwaSkladnik}}</small></td>
-              <td><small>{{skladnik.masaSkladnik}} g</small></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <div class="row">
-      <table class="table table-borderless ml-2">
-        <tbody>
-          <tr>
-            <td><small>nazwa</small></td>
-            <td><small class="font-weight-bold">{{pozycjaMenu.nazwaPozycja}}</small></td>
-          </tr>
-          <tr>
-            <td><small>cena</small></td>
-            <td><small class="font-weight-bold">{{pozycjaMenu.cena}}</small></td>
-          </tr>
-          <tr>
-            <td><small>opis</small></td>
-            <td><small class="font-weight-bold">{{pozycjaMenu.opis}}</small></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
 
 
-    <div class="text-primary ml-5">
-      <button class="btn btn-success mr-2" type="button"
-        (click)="usunPozycje()">Usuń pozycję menu</button>
-      <button class="btn btn-success mr-2" type="button"
-        (click)="anuluj()">Anuluj</button>
-    </div>
 
-    
+
+
   </div>
 </div>
+

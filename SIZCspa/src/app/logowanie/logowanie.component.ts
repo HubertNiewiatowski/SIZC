@@ -22,7 +22,7 @@ export class LogowanieComponent implements OnInit {
     }, error => {
       this.alertService.warning('Nie udało się zalogować');
     }, () => {
-      this.router.navigate(['/menu']);
+      this.router.navigate(['/stronaGlowna']);
     });
   }
 }

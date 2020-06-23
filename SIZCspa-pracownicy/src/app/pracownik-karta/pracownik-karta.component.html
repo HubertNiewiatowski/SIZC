@@ -1,11 +1,12 @@
 <div class="card">
   <div class="card-body p-1">
-    <div class="col-10">
+
+    <div class="col-12">
       <table class="table table-borderless ml-2">
         <tbody>
           <tr>
-            <td><strong>Id pracownika</strong></td>
-            <td>{{profilPracownika.pracownikID}}</td>
+            <td style="width: 10em" ><strong>Id pracownika</strong></td>
+            <td style="width: 10em">{{profilPracownika.pracownikID}}</td>
           </tr>
           <tr>
             <td><strong>Login pracownika</strong></td>
@@ -17,10 +18,13 @@
           </tr>
         </tbody>
       </table>
-      <div class="text-primary ml-5">
-        <button class="btn btn-success mr-2" type="button"
-          [routerLink]="['/pracownicy/edytuj', this.profilPracownika.pracownikRolaID]">Edytuj profil</button>
-      </div>
+    </div>
+
+
+
+    <div class="text-primary ml-5">
+      <button class="btn btn-primary mr-2" type="button"
+        [routerLink]="['/pracownicy/edytuj', this.profilPracownika.pracownikRolaID]">Edytuj profil</button>
     </div>
   </div>
 </div>
