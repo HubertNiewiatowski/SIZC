@@ -25,7 +25,7 @@
                       [ngClass]="{'is-invalid': formularzRejestracji.get('haslo').errors && formularzRejestracji.get('haslo').touched}"
                       class="form-control" 
                       formControlName="haslo">
-                      <div class="invalid-feedback">Hasło musi składać się minimum z 6 znaków</div></td>
+                    <div class="invalid-feedback">Hasło musi składać się minimum z 6 znaków</div></td>
                 </tr>
                 <tr>
                   <td><strong>Powtórzone hasło</strong></td>
@@ -34,12 +34,16 @@
                       [ngClass]="{'is-invalid': formularzRejestracji.hasError('nieprawidłowe') && formularzRejestracji.get('potwierdzHaslo').touched}" 
                       class="form-control"
                       formControlName="potwierdzHaslo">
-                      <div class="invalid-feedback">Wprowadzone hasła musza być identyczne</div></td>
+                    <div class="invalid-feedback">Wprowadzone hasła musza być identyczne</div></td>
                 </tr>
                 <tr>
                   <td><strong>ID roli pracownika</strong></td>
-                  <td><input type="text" class="form-control" required name="pracownikRolaID" [(ngModel)]="pracownik.pracownikRolaID"
-                    placeholder="ID roli pracownika"></td>
+                  <td class="form-group">
+                    <input type="text"
+                      [ngClass]="{'is-invalid': formularzRejestracji.get('idRoli').errors && formularzRejestracji.get('idRoli').touched}"
+                      class="form-control" 
+                      formControlName="idRoli">
+                    <div class="invalid-feedback">Pole ID roli pracownika jest wymagane</div></td>
                 </tr>
               </tbody>
             </table>

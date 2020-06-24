@@ -10,7 +10,6 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./rejestracja-pracownik.component.css']
 })
 export class RejestracjaPracownikComponent implements OnInit {
-  pracownik: any = {};
   formularzRejestracji: FormGroup;
 
   constructor(private autoryzacjaService: AutoryzacjaService, private alertService: AlertService, private router: Router) { }
@@ -19,7 +18,8 @@ export class RejestracjaPracownikComponent implements OnInit {
     this.formularzRejestracji = new FormGroup({
       login: new FormControl('', Validators.required),
       haslo: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(50)]),
-      potwierdzHaslo: new FormControl('', Validators.required)
+      potwierdzHaslo: new FormControl('', Validators.required),
+      idRoli: new FormControl('', Validators.required),
     }, this.czyHaslaJednakowe);
   }
 
