@@ -5,12 +5,16 @@ namespace SIZCapi.Models
 {
     public class PracownikRola
     {
-        public int PracownikRolaID { get; set; }
+        // klucz główny
+        public int PracownikRolaID { get; set; } // akcesory get set
 
+        // adnotacja danych
         [Column(TypeName = "nvarchar(50)")]
         public string NazwaRola { get; set; }
 
-        // relacja Pracownik
+        // relacja Pracownik - PracownikRola
         public virtual ICollection<Pracownik> Pracownik { get; set; }
     }
 }
+
+
