@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { PobierzZamowienie } from '../_models/pobierzZamowienie';
 import { ZamowieniaService } from '../_serwisy/zamowienia.service';
 import { AlertService } from 'ngx-alerts';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AutoryzacjaService } from '../_serwisy/autoryzacja.service';
 import { FormGroup, FormControl } from '@angular/forms';
 
 import { AktualizujZamowienie } from '../_models/aktualizujZamowienie';
 import { DlaZamowienieZamowienieStatus } from '../_models/dlaZamowienieZamowienieStatus';
+import { AutoryzacjaService } from '../_serwisy/autoryzacja.service';
 
 @Component({
   selector: 'app-zamowienie-edytuj',
@@ -18,14 +17,19 @@ export class ZamowienieEdytujComponent implements OnInit {
   zamowienie: AktualizujZamowienie = {} as AktualizujZamowienie;
   formularzZamowienia: FormGroup;
   statusyZamowien: DlaZamowienieZamowienieStatus[] = [];
+  pracownikRolaId: string;
 
   constructor(private zamowieniaService: ZamowieniaService, private alertService: AlertService,
-              private route: ActivatedRoute, private router: Router, private autoryzacja: AutoryzacjaService) { }
+              private route: ActivatedRoute, private router: Router, public autoryzacja: AutoryzacjaService) { }
 
   ngOnInit() {
     this.pobierzZamowienie();
 
     this.pobierzStatusyZamowien();
+
+    this.pracownikRolaId = this.autoryzacja.decodedToken?.PracownikRolaId;
+    this.rolaKucharz();
+    this.rolaDostawca();
 
 
     // this.statusyZamowien.push({zamowienieStatusID: 1, nazwaStatus: 'zamówione'});
@@ -77,20 +81,50 @@ export class ZamowienieEdytujComponent implements OnInit {
       this.zamowieniaService.aktualizujZamowienie(this.zamowienie, +this.route.snapshot.params.id).subscribe(next => {
         this.alertService.success('Zaktualizowano status zamówienia');
       }, error => {
-        this.alertService.warning('Błąd w trakcie aktualizowania zamówienia');
+        this.alertService.danger('Błąd w trakcie aktualizowania zamówienia');
       }, () => {
         this.router.navigate(['/zamowienia']);
       });
     }
     else
     {
-      this.alertService.warning('Błędnie uzupełniony status zamówienia');
+      this.alertService.danger('Błędnie uzupełniony status zamówienia');
     }
+  }
+
+  wyslijEmail() {
+    this.zamowieniaService.wyslijEmail(this.zamowienie.klientID, this.zamowienie.zamowienieID).subscribe(next => {
+      this.alertService.success('Wysłano powiadomienie mailowe do klienta');
+    }, error => {
+      this.alertService.danger('Błąd w trakcie wysyłania maila do klienta');
+    });
   }
 
   anuluj() {
     this.alertService.info('Anulowano edycję zamówienia');
     this.router.navigate(['/zamowienia']);
+  }
+
+  rolaKucharz() {
+    if (this.pracownikRolaId === '1')
+    {
+      return true;
+    }
+    else
+    {
+      return false;
+    }
+  }
+
+  rolaDostawca() {
+    if (this.pracownikRolaId === '2')
+    {
+      return true;
+    }
+    else
+    {
+      return false;
+    }
   }
 
 }

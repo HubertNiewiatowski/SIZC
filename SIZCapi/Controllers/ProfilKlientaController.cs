@@ -37,7 +37,7 @@ namespace SIZCapi.Controllers
         // GET http://localhost:5000/api/ProfilKlienta/{id}
         [Authorize(Policy = "WymaganeUprawnieniaKlienta")]
         [HttpGet("{id}")]
-        public async Task<IActionResult> PobierzProfilKlienta(int id)
+        public async Task<IActionResult> PobierzProfilKlientaPoId(int id)
         {
             var profilKlienta = await _repozytorium.PobierzProfilKlienta(id);
 

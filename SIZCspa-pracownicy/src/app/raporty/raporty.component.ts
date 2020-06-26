@@ -1,4 +1,4 @@
-import { Component, OnInit, DoCheck } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AlertService } from 'ngx-alerts';
 import { ZamowieniaService } from '../_serwisy/zamowienia.service';
@@ -13,7 +13,7 @@ import { DatePipe } from '@angular/common';
   templateUrl: './raporty.component.html',
   styleUrls: ['./raporty.component.css']
 })
-export class RaportyComponent implements OnInit, DoCheck {
+export class RaportyComponent implements OnInit {
   formularzZamowienia: FormGroup;
   formularzKlienci: FormGroup;
 
@@ -27,6 +27,7 @@ export class RaportyComponent implements OnInit, DoCheck {
 
   ngOnInit() {
 
+    this.setDatepickerLanguage();
 
     this.formularzZamowienia = new FormGroup({
       dataPoczatkowa: new FormControl('', Validators.required),
@@ -39,16 +40,11 @@ export class RaportyComponent implements OnInit, DoCheck {
     });
   }
 
-  ngDoCheck()
-  {
-    this.setDatepickerLanguage();
 
+  setDatepickerLanguage() {
+    defineLocale('pl', plLocale);
+    this.localeService.use('pl');
   }
-
-   setDatepickerLanguage() {
-     defineLocale('pl', plLocale);
-     this.localeService.use('pl');
-   }
 
 
   pobierzIloscZamowien() {

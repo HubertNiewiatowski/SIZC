@@ -140,16 +140,21 @@ namespace SIZCapi.Controllers
             return NoContent();
         }
 
-        // POST http://localhost:5000/api/Zamowienia/mail/{id}
+        // POST http://localhost:5000/api/Zamowienia/mail/{id}/{id}
         [Authorize(Policy = "WymaganeUprawnieniaPracownika")]
-        [HttpPost("mail/{idKlient}/{idZamowienie}")]
+        [HttpPost("email/{idKlient}/{idZamowienie}")]
         public async Task<IActionResult> WyslijEmail(int idKlient, int idZamowienie)
         {
             string adresEmailKlienta = await _repozytorium.PobierzAdresEmailKlienta(idKlient);
 
+            if (adresEmailKlienta == null)
+            {
+                return NotFound();
+            }
+
             var message = new MimeMessage();
 
-            message.From.Add(new MailboxAddress("Dostawca", "api.sizc.8001@gmail.com"));
+            message.From.Add(new MailboxAddress("Dostawca Firmy Cateringowej", "api.sizc.8001@gmail.com"));
 
             message.To.Add(new MailboxAddress("Klient", adresEmailKlienta));
 
@@ -157,7 +162,7 @@ namespace SIZCapi.Controllers
 
             message.Body = new TextPart("plain")
             {
-                Text = "Drogi Kliencie Firmy Cateringowej, chcielibyśmy Cię poinformować o tym, że zamówienie o id " + idZamowienie.ToString() + " jest w trakcie dostawy"
+                Text = "Drogi Kliencie Firmy Cateringowej, chcielibyśmy Cię poinformować o tym, że zamówienie o id " + idZamowienie.ToString() + " jest w trakcie dostawy."
             };
 
             using(var client = new SmtpClient())

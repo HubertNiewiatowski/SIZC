@@ -37,4 +37,8 @@ export class ZamowieniaService {
     return this.http.get<DlaZamowienieZamowienieStatus[]>(this.baseUrl + 'zamowienieStatus/');
   }
 
+  wyslijEmail(idKlient: number, idZamowienie: number): Observable<{}> {
+    return this.http.post(this.baseUrl + 'email/' + idKlient + '/' + idZamowienie, null);
+  }
+
 }

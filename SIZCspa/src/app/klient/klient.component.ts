@@ -63,7 +63,7 @@ export class KlientComponent implements OnInit {
   }
 
   wyloguj() {
-    this.autoryzacja.wyloguj()
+    this.autoryzacja.wyloguj();
     this.alertService.info('Nastąpiło wylogowanie');
     this.router.navigate(['/stronaGlowna']);
   }
