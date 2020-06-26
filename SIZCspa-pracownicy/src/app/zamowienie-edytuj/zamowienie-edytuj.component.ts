@@ -5,8 +5,9 @@ import { AlertService } from 'ngx-alerts';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AutoryzacjaService } from '../_serwisy/autoryzacja.service';
 import { FormGroup, FormControl } from '@angular/forms';
-import { ZamowienieStatus } from '../_models/zamowienieStatus';
+
 import { AktualizujZamowienie } from '../_models/aktualizujZamowienie';
+import { DlaZamowienieZamowienieStatus } from '../_models/dlaZamowienieZamowienieStatus';
 
 @Component({
   selector: 'app-zamowienie-edytuj',
@@ -15,9 +16,8 @@ import { AktualizujZamowienie } from '../_models/aktualizujZamowienie';
 })
 export class ZamowienieEdytujComponent implements OnInit {
   zamowienie: AktualizujZamowienie = {} as AktualizujZamowienie;
-
   formularzZamowienia: FormGroup;
-  statusyZamowien: ZamowienieStatus[] = [];
+  statusyZamowien: DlaZamowienieZamowienieStatus[] = [];
 
   constructor(private zamowieniaService: ZamowieniaService, private alertService: AlertService,
               private route: ActivatedRoute, private router: Router, private autoryzacja: AutoryzacjaService) { }
@@ -25,12 +25,14 @@ export class ZamowienieEdytujComponent implements OnInit {
   ngOnInit() {
     this.pobierzZamowienie();
 
+    this.pobierzStatusyZamowien();
 
-    this.statusyZamowien.push({zamowienieStatusID: 1, nazwaStatus: 'zamówione'});
-    this.statusyZamowien.push({zamowienieStatusID: 2, nazwaStatus: 'w trakcie przygotowywania'});
-    this.statusyZamowien.push({zamowienieStatusID: 3, nazwaStatus: 'przygotowane'});
-    this.statusyZamowien.push({zamowienieStatusID: 4, nazwaStatus: 'w trakcie dostawy'});
-    this.statusyZamowien.push({zamowienieStatusID: 5, nazwaStatus: 'dostarczone'});
+
+    // this.statusyZamowien.push({zamowienieStatusID: 1, nazwaStatus: 'zamówione'});
+    // this.statusyZamowien.push({zamowienieStatusID: 2, nazwaStatus: 'w trakcie przygotowywania'});
+    // this.statusyZamowien.push({zamowienieStatusID: 3, nazwaStatus: 'przygotowane'});
+    // this.statusyZamowien.push({zamowienieStatusID: 4, nazwaStatus: 'w trakcie dostawy'});
+    // this.statusyZamowien.push({zamowienieStatusID: 5, nazwaStatus: 'dostarczone'});
 
     this.formularzZamowienia = new FormGroup({
 
@@ -44,6 +46,14 @@ export class ZamowienieEdytujComponent implements OnInit {
       this.zamowienie = zamowienie;
     }, error => {
       this.alertService.danger('Błąd przy pobieraniu pozycji');
+    });
+  }
+
+  pobierzStatusyZamowien() {
+    this.zamowieniaService.pobierzStatusyZamowien().subscribe((statusyZamowien: DlaZamowienieZamowienieStatus[]) => {
+      this.statusyZamowien = statusyZamowien;
+    }, error => {
+      this.alertService.danger('Błąd przy pobieraniu typów płatności');
     });
   }
 

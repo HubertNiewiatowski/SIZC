@@ -86,10 +86,10 @@
                     <td><strong>Data realizacji</strong></td>
                     <td class="form-group">
                       <input type="text" bsDatepicker
-                        [ngClass]="{'is-invalid': formularzZamowienia.get('dataRealizacji').errors && formularzZamowienia.get('dataRealizacji').touched}"  
+                        [ngClass]="{'is-invalid': formularzZamowienia.get('dataRealizacji').errors && formularzZamowienia.get('dataRealizacji').touched || formularzZamowienia.hasError('nieprawidłowaDataRealizacji') && formularzZamowienia.get('dataRealizacji').touched}"  
                         class="form-control"
                         formControlName="dataRealizacji">
-                      <div class="invalid-feedback">Pole data realizacji jest wymagane</div></td>
+                      <div class="invalid-feedback">Wprowadzona data realizacji jest nieprawidłowa</div></td>
                   </tr>
                   <tr>
                     <td><strong>Kod pocztowy</strong></td>
@@ -133,7 +133,7 @@
                 </tbody>
               </table>
               <div>
-                <button class="btn btn-primary mb-2" type="button">Wypełnij formularz adresem z mojego konta</button>
+                <button class="btn btn-primary mb-2" type="button" (click)="wypelnijFormularz()">Wypełnij formularz adresem z mojego konta</button>
               </div>
               <div class="form-group text-center">
                 <button class="btn btn-success mr-4" type="submit">Złóż zamówienie</button>

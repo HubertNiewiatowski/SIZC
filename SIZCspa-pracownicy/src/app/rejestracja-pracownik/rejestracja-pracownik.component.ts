@@ -35,7 +35,6 @@ export class RejestracjaPracownikComponent implements OnInit {
       }, error => {
         this.alertService.danger('Błąd przy rejestracji');
       });
-      console.log(this.formularzRejestracji.value);
     }
     else
     {

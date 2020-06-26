@@ -1,4 +1,4 @@
-import { Component, OnInit, DoCheck } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AutoryzacjaService } from '../_serwisy/autoryzacja.service';
 
 @Component({

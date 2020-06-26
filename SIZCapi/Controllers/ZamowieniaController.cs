@@ -102,7 +102,7 @@ namespace SIZCapi.Controllers
             return NotFound();
         }
 
-        // POST http://localhost:5000/api/Zamowienia/klient
+        // POST http://localhost:5000/api/Zamowienia/klient/
         [Authorize(Policy = "WymaganeUprawnieniaKlienta")]
         [HttpPost("klient")]
         public async Task<IActionResult> DodajZamowienieKlienta(DodajZamowienieDto zamowienieDoDodania)
@@ -175,6 +175,41 @@ namespace SIZCapi.Controllers
 
             return Ok();
         }
+
+        // GET http://localhost:5000/api/Zamowienia/platnoscTyp/
+        [AllowAnonymous]
+        [HttpGet("platnoscTyp")]
+        public async Task<IActionResult> PobierzTypyPlatnosci()
+        {
+            var typyPlatnosci = await _repozytorium.PobierzTypyPlatnosci();
+
+            var typyPlatnosciDoPobrania = _mapper.Map<IEnumerable<DlaZamowieniePlatnoscTypDto>>(typyPlatnosci);
+
+            if (typyPlatnosci != null)
+            {
+                return Ok(typyPlatnosciDoPobrania);
+            }
+            return NotFound();
+        }
         
+        // GET http://localhost:5000/api/Zamowienia/zamowienieStatus/
+        [AllowAnonymous]
+        [HttpGet("zamowienieStatus")]
+        public async Task<IActionResult> PobierzStatusyZamowien()
+        {
+            var statusyZamowien = await _repozytorium.PobierzStatusyZamowien();
+
+            var statusyZamowienDoPobrania = _mapper.Map<IEnumerable<DlaZamowienieZamowienieStatusDto>>(statusyZamowien);
+
+            if (statusyZamowien != null)
+            {
+                return Ok(statusyZamowienDoPobrania);
+            }
+            return NotFound();
+        }
+
+
+
+
     }
 }

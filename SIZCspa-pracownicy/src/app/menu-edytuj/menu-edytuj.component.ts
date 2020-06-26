@@ -1,4 +1,4 @@
-import { Component, OnInit, DoCheck, AfterContentInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PobierzPozycjaMenu } from '../_models/pobierzPozycjaMenu';
 import { PozycjeMenuService } from '../_serwisy/pozycjeMenu.service';
 import { AlertService } from 'ngx-alerts';

@@ -25,6 +25,10 @@ namespace SIZCapi.Data
 
         Task<IEnumerable<Zamowienie>> PobierzZamowieniaPracownika(int id);
 
+        Task<IEnumerable<PlatnoscTyp>> PobierzTypyPlatnosci();
+
+        Task<IEnumerable<ZamowienieStatus>> PobierzStatusyZamowien();
+
         Task<int> ZliczProfileKlientowDoRaportu(DateTime dataPoczatkowa, DateTime dataKoncowa);
 
         Task<Klient> PobierzProfilKlienta(int id);

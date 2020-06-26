@@ -20,9 +20,9 @@ export class LogowanieComponent implements OnInit {
 
   zaloguj() {
     this.autoryzacja.zaloguj(this.pracownik).subscribe(next => {
-      this.alertService.success('Zalogowano pomyślnie');
+      this.alertService.success('Logowanie przebiegło pomyślnie');
     }, error => {
-      this.alertService.warning('Nie udało się zalogować');
+      this.alertService.warning('Nieprawidłowy login lub hasło');
     }, () => {
       this.router.navigate(['/stronaGlowna']);
       this.panelBoczny.ngOnInit();

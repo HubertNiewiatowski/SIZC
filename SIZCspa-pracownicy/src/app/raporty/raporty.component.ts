@@ -52,8 +52,6 @@ export class RaportyComponent implements OnInit, DoCheck {
 
 
   pobierzIloscZamowien() {
-    // this.dataPoczatkowa = this.formularzZamowienia.get('dataPoczatkowa').value;
-
 
     const dataPoczatkowa = this.formularzZamowienia.get('dataPoczatkowa').value;
 

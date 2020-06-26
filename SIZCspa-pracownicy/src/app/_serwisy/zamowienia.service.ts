@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { PobierzZamowienie } from '../_models/pobierzZamowienie';
 import { AktualizujZamowienie } from '../_models/aktualizujZamowienie';
+import { DlaZamowienieZamowienieStatus } from '../_models/dlaZamowienieZamowienieStatus';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +31,10 @@ export class ZamowieniaService {
 
   aktualizujZamowienie(zamowienie: AktualizujZamowienie, id) {
     return this.http.put<AktualizujZamowienie>(this.baseUrl + id, zamowienie);
+  }
+
+  pobierzStatusyZamowien(): Observable<DlaZamowienieZamowienieStatus[]> {
+    return this.http.get<DlaZamowienieZamowienieStatus[]>(this.baseUrl + 'zamowienieStatus/');
   }
 
 }

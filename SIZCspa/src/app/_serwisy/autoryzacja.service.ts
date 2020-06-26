@@ -22,7 +22,6 @@ export class AutoryzacjaService {
           if (klientModel) {
             localStorage.setItem('token', klientModel.token);
             this.decodedToken = this.jwtHelper.decodeToken(klientModel.token);
-            console.log(this.decodedToken);
         }
       })
     );

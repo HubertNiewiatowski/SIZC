@@ -33,7 +33,7 @@ export class RejestracjaComponent implements OnInit {
   }
 
   czyHaslaJednakowe(fg: FormGroup) {
-    return fg.get('haslo').value === fg.get('potwierdzHaslo').value ? null : {'nieprawidłowe': true};
+    return fg.get('haslo').value === fg.get('potwierdzHaslo').value ? null : {'nieprawidlowePowtorzoneHaslo': true};
   }
 
   zarejestruj() {
@@ -44,7 +44,6 @@ export class RejestracjaComponent implements OnInit {
       }, error => {
         this.alertService.danger('Błąd przy rejestracji');
       });
-      console.log(this.formularzRejestracji.value);
     }
     else
     {

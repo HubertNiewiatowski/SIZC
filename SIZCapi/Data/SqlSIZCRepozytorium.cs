@@ -86,6 +86,21 @@ namespace SIZCapi.Data
             return zamowienia;
         }
 
+        public async Task<IEnumerable<PlatnoscTyp>> PobierzTypyPlatnosci()
+        {
+            var typyPlatnosci = await _kontekst.PlatnoscTyp.ToListAsync();
+
+            return typyPlatnosci;
+        }
+
+        public async Task<IEnumerable<ZamowienieStatus>> PobierzStatusyZamowien()
+        {
+            var statusyZamowinen = await _kontekst.ZamowienieStatus.ToListAsync();
+
+            return statusyZamowinen;
+        }
+
+
         public async Task<int> ZliczProfileKlientowDoRaportu(DateTime dataPoczatkowa, DateTime dataKoncowa)
         {
             var profileKlientow = await _kontekst.Klient.Where(e => e.DataRejestracji >= dataPoczatkowa && e.DataRejestracji <= dataKoncowa).ToListAsync();

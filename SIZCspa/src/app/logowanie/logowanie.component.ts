@@ -18,9 +18,9 @@ export class LogowanieComponent implements OnInit {
 
   zaloguj() {
     this.autoryzacja.zaloguj(this.klient).subscribe(next => {
-      this.alertService.success('Zalogowano pomyślnie');
+      this.alertService.success('Logowanie przebiegło pomyślnie');
     }, error => {
-      this.alertService.warning('Nie udało się zalogować');
+      this.alertService.warning('Nieprawidłowy adres email lub hasło');
     }, () => {
       this.router.navigate(['/stronaGlowna']);
     });

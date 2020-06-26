@@ -21,7 +21,6 @@ constructor(private http: HttpClient) { }
           if (pracownikModel) {
             localStorage.setItem('token', pracownikModel.token);
             this.decodedToken = this.jwtHelper.decodeToken(pracownikModel.token);
-            console.log(this.decodedToken);
         }
       })
     );

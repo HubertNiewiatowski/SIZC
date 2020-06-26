@@ -102,7 +102,7 @@
                   <td><strong>Powtórzone hasło</strong></td>
                   <td class="form-group">
                     <input type="password"
-                      [ngClass]="{'is-invalid': formularzRejestracji.hasError('nieprawidłowe') && formularzRejestracji.get('potwierdzHaslo').touched}" 
+                      [ngClass]="{'is-invalid': formularzRejestracji.hasError('nieprawidlowePowtorzoneHaslo') && formularzRejestracji.get('potwierdzHaslo').touched}" 
                       class="form-control"
                       formControlName="potwierdzHaslo">
                       <div class="invalid-feedback">Wprowadzone hasła musza być identyczne</div></td>
