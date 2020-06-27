@@ -18,8 +18,8 @@
                     <td><strong>Data początkowa</strong></td>
                     <td class="form-group">
                       <input type="text" bsDatepicker
-                        [ngClass]="{'is-invalid': formularzZamowienia.get('dataPoczatkowa').errors && formularzZamowienia.get('dataPoczatkowa').touched}"
-                        class="form-control" formControlName="dataPoczatkowa"
+                        [ngClass]="{'is-invalid': formularzZamowienia.get('dataPoczatkowaZamowienia').errors && formularzZamowienia.get('dataPoczatkowaZamowienia').touched}"
+                        class="form-control" formControlName="dataPoczatkowaZamowienia"
                         [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD'}">
                       <div class="invalid-feedback">Pole data początkowa jest wymagane</div>
                     </td>
@@ -28,8 +28,8 @@
                     <td><strong>Data końcowa</strong></td>
                     <td class="form-group">
                       <input type="text" bsDatepicker
-                        [ngClass]="{'is-invalid': formularzZamowienia.get('dataKoncowa').errors && formularzZamowienia.get('dataKoncowa').touched}"
-                        class="form-control" formControlName="dataKoncowa"
+                        [ngClass]="{'is-invalid': formularzZamowienia.get('dataKoncowaZamowienia').errors && formularzZamowienia.get('dataKoncowaZamowienia').touched}"
+                        class="form-control" formControlName="dataKoncowaZamowienia"
                         [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD'}">
                       <div class="invalid-feedback">Pole data końcowa jest wymagane</div>
                     </td>
@@ -82,8 +82,8 @@
                     <td><strong>Data początkowa</strong></td>
                     <td class="form-group">
                       <input type="text" bsDatepicker
-                        [ngClass]="{'is-invalid': formularzKlienci.get('dataPoczatkowa').errors && formularzZamowienia.get('dataPoczatkowa').touched}"
-                        class="form-control" formControlName="dataPoczatkowa"
+                        [ngClass]="{'is-invalid': formularzKlienci.get('dataPoczatkowaKlienci').errors && formularzKlienci.get('dataPoczatkowaKlienci').touched}"
+                        class="form-control" formControlName="dataPoczatkowaKlienci"
                         [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD'}">
                       <div class="invalid-feedback">Pole data początkowa jest wymagane</div>
                     </td>
@@ -92,8 +92,8 @@
                     <td><strong>Data końcowa</strong></td>
                     <td class="form-group">
                       <input type="text" bsDatepicker
-                        [ngClass]="{'is-invalid': formularzKlienci.get('dataKoncowa').errors && formularzZamowienia.get('dataKoncowa').touched}"
-                        class="form-control" formControlName="dataKoncowa"
+                        [ngClass]="{'is-invalid': formularzKlienci.get('dataKoncowaKlienci').errors && formularzKlienci.get('dataKoncowaKlienci').touched}"
+                        class="form-control" formControlName="dataKoncowaKlienci"
                         [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD'}">
                       <div class="invalid-feedback">Pole data końcowa jest wymagane</div>
                     </td>

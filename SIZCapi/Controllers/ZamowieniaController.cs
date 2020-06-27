@@ -8,9 +8,8 @@ using SIZCapi.Data;
 using SIZCapi.DTOs;
 using SIZCapi.Models;
 using MailKit.Net.Smtp;
-using MailKit;
 using MimeKit;
-
+using Microsoft.Extensions.Configuration;
 
 namespace SIZCapi.Controllers
 {
@@ -21,24 +20,22 @@ namespace SIZCapi.Controllers
     {
         private readonly ISIZCRepozytorium _repozytorium;
         private readonly IMapper _mapper;
+        private readonly IConfiguration _konfiguracja;
 
-        public ZamowieniaController(ISIZCRepozytorium repozytorium, IMapper mapper)
+        // Wstrzykiwanie zależności do konstruktora
+        public ZamowieniaController(ISIZCRepozytorium repozytorium, IMapper mapper, IConfiguration konfiguracja)
         {
+            // Repozytorium SIZC umożliwia wykonywanie operacji na bazie danych
             _repozytorium = repozytorium;
+
+            // Automapper umożliwia mapowanie obiektów z modelu danych na postać wykorzystywaną w akcjach kontrolera
             _mapper = mapper;
+
+            // Konfiguracja aplikacji zapewnia dostęp do appsettings.json
+            _konfiguracja = konfiguracja;
         }
 
-        // GET http://localhost:5000/api/Zamowienia/
-        [Authorize(Policy = "WymaganeUprawnieniaAdministratora")]
-        [HttpGet("{dataPoczatkowa:datetime}/{dataKoncowa:datetime}")]
-        public async Task<IActionResult> ZliczZamowieniaDoRaportu(DateTime dataPoczatkowa, DateTime dataKoncowa)
-        {
-            var iloscZamowien = await _repozytorium.ZliczZamowieniaDoRaportu(dataPoczatkowa, dataKoncowa);
-
-            return Ok(iloscZamowien);
-        }
-
-        // GET http://localhost:5000/api/Zamowienia/{id}
+        // GET /api/Zamowienia/{id}
         [Authorize(Policy = "WymaganeUprawnieniaPracownika")]
         [HttpGet("{id}")]
         public async Task<IActionResult> PobierzZamowieniePoId(int id)
@@ -70,19 +67,29 @@ namespace SIZCapi.Controllers
             return NotFound();
         }
 
-        // GET http://localhost:5000/api/Zamowienia/klient/{id}
+
+        // Metoda wymagająca autoryzacji opartej o poświadczenie uprawnień 
         [Authorize(Policy = "WymaganeUprawnieniaKlienta")]
+
+        // Metoda HTTP Get umożliwiająca pobieranie obiektów z WebAPI
         [HttpGet("klient/{id}")]
+
+        // Metoda przekazuje id klienta w argumencie
         public async Task<IActionResult> PobierzZamowieniaKlienta(int id)
         {
+            // Pobranie z bazy danych zamówień przypisanych do klienta o id przekazanym w argumencie
             var zamowienia = await _repozytorium.PobierzZamowieniaKlienta(id);
 
+            // Mapowanie z klasy modelu na PobierzZamowienieDto
             var zamowieniaDoPobrania = _mapper.Map<IEnumerable<PobierzZamowienieDto>>(zamowienia);
 
+            // Jeśli zamówienia o wskazanym do klienta o wskazanym id istnieją, zostaną zwrócone przez WebAPI
             if (zamowienia != null)
             {
                 return Ok(zamowieniaDoPobrania);
             }
+
+            // W przeciwnym razie zwrócony zostanie status NotFound 
             return NotFound();
         }
 
@@ -102,22 +109,28 @@ namespace SIZCapi.Controllers
             return NotFound();
         }
 
-        // POST http://localhost:5000/api/Zamowienia/klient/
+        // Metoda wymagająca autoryzacji opartej o poświadczenie uprawnień 
         [Authorize(Policy = "WymaganeUprawnieniaKlienta")]
+
+        // Metoda HTTP Post umożliwiająca wysyłanie obiektów do WebAPI
         [HttpPost("klient")]
+
+        // Metoda przekazuje obiekt zamówienia w argumencie
         public async Task<IActionResult> DodajZamowienieKlienta(DodajZamowienieDto zamowienieDoDodania)
         {
-            zamowienieDoDodania.DataZlozenia =  DateTime.Now;
+            // Data złożenia zamówienia ustawiana jest na aktualną datę
+            zamowienieDoDodania.DataZlozenia = DateTime.Now;
 
-            zamowienieDoDodania.PracownikID = 1;
-
-            zamowienieDoDodania.ZamowienieStatusID = 1;
-
+            // Mapowanie z DodajZamowienieDto na klasę modelu - Zamowienie
             var zamowienieModel = _mapper.Map<Zamowienie>(zamowienieDoDodania);
 
-            _repozytorium.DodajZasob(zamowienieModel);
+            // Dodanie w bazie danych rekordu zawierającego zmapowane zamówienie
+             _repozytorium.DodajZasob(zamowienieModel);
+
+            // Zapisanie zmian w bazie danych z wykorzystaniem metody asynchronicznej
             await _repozytorium.ZapiszZasob();
 
+            // Jeśli zamówienie zostało zapisane w bazie danych, zwrócony zostanie status OK
             return Ok();
         }
 
@@ -140,21 +153,36 @@ namespace SIZCapi.Controllers
             return NoContent();
         }
 
-        // POST http://localhost:5000/api/Zamowienia/mail/{id}/{id}
+        // Metoda wymagająca autoryzacji opartej o poświadczenie uprawnień
         [Authorize(Policy = "WymaganeUprawnieniaPracownika")]
+
+        // Metoda HTTP Post umożliwiająca wysyłanie obiektów do WebAPI
         [HttpPost("email/{idKlient}/{idZamowienie}")]
+
+        // Metoda przekazuje w argumencie id klienta oraz id zamówienia
         public async Task<IActionResult> WyslijEmail(int idKlient, int idZamowienie)
         {
+            // Pobranie adresu email skrzynki mailowej nadawcy z konfiguracji aplikacji
+            string adresEmail = _konfiguracja.GetSection("MailKitSettings:Email").Value;
+
+            // Pobranie hasła do skrzynki mailowej nadawcy z konfiguracji aplikacji
+            string haslo = _konfiguracja.GetSection("MailKitSettings:Password").Value;
+
+            // Pobranie z bazy danych adresu email klienta o wskazanym id
             string adresEmailKlienta = await _repozytorium.PobierzAdresEmailKlienta(idKlient);
 
+            // W przypadku gdy adres email klienta o wskazanym id nie istnieje
+            // Zostanie zwrócony status NotFound
             if (adresEmailKlienta == null)
             {
                 return NotFound();
             }
 
+            // Utworzenie obiektu wiadomości
             var message = new MimeMessage();
 
-            message.From.Add(new MailboxAddress("Dostawca Firmy Cateringowej", "api.sizc.8001@gmail.com"));
+            // Ustawienie 
+            message.From.Add(new MailboxAddress("Dostawca Firmy Cateringowej", adresEmail));
 
             message.To.Add(new MailboxAddress("Klient", adresEmailKlienta));
 
@@ -162,27 +190,29 @@ namespace SIZCapi.Controllers
 
             message.Body = new TextPart("plain")
             {
-                Text = "Drogi Kliencie Firmy Cateringowej, chcielibyśmy Cię poinformować o tym, że zamówienie o id " + idZamowienie.ToString() + " jest w trakcie dostawy."
+                Text = "Drogi Kliencie Firmy Cateringowej,"
+                    + " chcielibyśmy Cię poinformować o tym, że zamówienie o id "
+                    + idZamowienie.ToString() + " jest w trakcie dostawy."
             };
 
-            using(var client = new SmtpClient())
+            using (var client = new SmtpClient())
             {
-                client.Connect("smtp.gmail.com", 587);
+                await client.ConnectAsync("smtp.gmail.com", 587);
 
                 client.AuthenticationMechanisms.Remove("XOAUTH2");
 
-                client.Authenticate("api.sizc.8001@gmail.com", "P@$sw0rd!");
+                await client.AuthenticateAsync(adresEmail, haslo);
 
-                client.Send(message);
+                await client.SendAsync(message);
 
-                client.Disconnect(true);
+                await client.DisconnectAsync(true);
             }
 
             return Ok();
         }
 
         // GET http://localhost:5000/api/Zamowienia/platnoscTyp/
-        [AllowAnonymous]
+        [Authorize(Policy = "WymaganeUprawnieniaKlienta")]
         [HttpGet("platnoscTyp")]
         public async Task<IActionResult> PobierzTypyPlatnosci()
         {
@@ -196,9 +226,9 @@ namespace SIZCapi.Controllers
             }
             return NotFound();
         }
-        
+
         // GET http://localhost:5000/api/Zamowienia/zamowienieStatus/
-        [AllowAnonymous]
+        [Authorize(Policy = "WymaganeUprawnieniaPracownika")]
         [HttpGet("zamowienieStatus")]
         public async Task<IActionResult> PobierzStatusyZamowien()
         {
@@ -213,8 +243,14 @@ namespace SIZCapi.Controllers
             return NotFound();
         }
 
+        // GET http://localhost:5000/api/Zamowienia/
+        [Authorize(Policy = "WymaganeUprawnieniaAdministratora")]
+        [HttpGet("{dataPoczatkowa:datetime}/{dataKoncowa:datetime}")]
+        public async Task<IActionResult> ZliczZamowieniaDoRaportu(DateTime dataPoczatkowa, DateTime dataKoncowa)
+        {
+            var iloscZamowien = await _repozytorium.ZliczZamowieniaDoRaportu(dataPoczatkowa, dataKoncowa);
 
-
-
+            return Ok(iloscZamowien);
+        }
     }
 }

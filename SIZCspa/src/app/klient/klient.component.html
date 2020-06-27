@@ -4,7 +4,7 @@
 
   <div class="col-sm-10 col-md-8 col-lg-6">
 
-    <div *ngIf="!opened" class="card">
+    <div *ngIf="!trybEdycjiDanych" class="card">
       <div class="card-body p-1">
         <div class="col-10">
           <table class="table table-borderless">
@@ -57,7 +57,7 @@
           </table>
 
           <div>
-            <button class="btn btn-primary mr-4" type="button" (click)="toggleSidebar()">Edytuj dane</button>
+            <button class="btn btn-primary mr-4" type="button" (click)="przelacznikTrybuEdycji()">Edytuj dane</button>
             <button class="btn btn-danger" type="button" (click)="usunProfilKlienta()">Usuń konto</button>
           </div>
         </div>
@@ -65,7 +65,7 @@
     </div>
 
 
-    <div *ngIf="opened" class="card">
+    <div *ngIf="trybEdycjiDanych" class="card">
       <div class="card-body p-1">
         <div class="col-10">
           <form #formularzRejestracji="ngForm" (ngSubmit)="aktualizujProfilKlienta()">

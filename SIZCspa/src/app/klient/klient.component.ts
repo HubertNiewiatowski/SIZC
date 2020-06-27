@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./klient.component.css']
 })
 export class KlientComponent implements OnInit {
-  opened = false;
+  trybEdycjiDanych = false;
   klientDoPobrania: PobierzKlient = {} as PobierzKlient;
   nameId: any;
 
@@ -52,12 +52,12 @@ export class KlientComponent implements OnInit {
     });
   }
 
-  toggleSidebar() {
-    this.opened = !this.opened;
+  przelacznikTrybuEdycji() {
+    this.trybEdycjiDanych = !this.trybEdycjiDanych;
   }
 
   anuluj() {
-    this.toggleSidebar();
+    this.przelacznikTrybuEdycji();
     this.alertService.info('Anulowano edycję profilu');
     this.router.navigate(['/klient']);
   }

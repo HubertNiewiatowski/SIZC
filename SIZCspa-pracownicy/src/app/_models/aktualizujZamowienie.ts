@@ -7,7 +7,7 @@ export interface AktualizujZamowienie {
     nrBudynek: string;
     nrMieszkanie: string;
     dataRealizacji: Date;
-    dataZlozenia?: Date;
+    dataZlozenia: Date;
     pozycjaMenuID: number;
     klientID: number;
     pracownikID: number;

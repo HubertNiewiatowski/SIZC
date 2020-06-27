@@ -23,17 +23,6 @@ namespace SIZCapi.Controllers
             _mapper = mapper;
         }
 
-        // GET http://localhost:5000/api/ProfilKlienta/
-        [Authorize(Policy = "WymaganeUprawnieniaAdministratora")]
-        [HttpGet("{dataPoczatkowa:datetime}/{dataKoncowa:datetime}")]
-        public async Task<IActionResult> ZliczProfileKlientowDoRaportu(DateTime dataPoczatkowa, DateTime dataKoncowa)
-        {
-            var iloscKlientow = await _repozytorium.ZliczProfileKlientowDoRaportu(dataPoczatkowa, dataKoncowa);
-
-            return Ok(iloscKlientow);
-
-        }
-
         // GET http://localhost:5000/api/ProfilKlienta/{id}
         [Authorize(Policy = "WymaganeUprawnieniaKlienta")]
         [HttpGet("{id}")]
@@ -85,6 +74,17 @@ namespace SIZCapi.Controllers
             await _repozytorium.ZapiszZasob();
 
             return NoContent();
+        }
+
+        // GET http://localhost:5000/api/ProfilKlienta/
+        [Authorize(Policy = "WymaganeUprawnieniaAdministratora")]
+        [HttpGet("{dataPoczatkowa:datetime}/{dataKoncowa:datetime}")]
+        public async Task<IActionResult> ZliczProfileKlientowDoRaportu(DateTime dataPoczatkowa, DateTime dataKoncowa)
+        {
+            var iloscKlientow = await _repozytorium.ZliczProfileKlientowDoRaportu(dataPoczatkowa, dataKoncowa);
+
+            return Ok(iloscKlientow);
+
         }
         
     }

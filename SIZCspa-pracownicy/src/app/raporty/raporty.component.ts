@@ -30,13 +30,13 @@ export class RaportyComponent implements OnInit {
     this.setDatepickerLanguage();
 
     this.formularzZamowienia = new FormGroup({
-      dataPoczatkowa: new FormControl('', Validators.required),
-      dataKoncowa: new FormControl('', Validators.required)
+      dataPoczatkowaZamowienia: new FormControl('', Validators.required),
+      dataKoncowaZamowienia: new FormControl('', Validators.required)
     });
 
     this.formularzKlienci = new FormGroup({
-      dataPoczatkowa: new FormControl('', Validators.required),
-      dataKoncowa: new FormControl('', Validators.required)
+      dataPoczatkowaKlienci: new FormControl('', Validators.required),
+      dataKoncowaKlienci: new FormControl('', Validators.required)
     });
   }
 
@@ -57,10 +57,6 @@ export class RaportyComponent implements OnInit {
 
     const dataKoncowaFormat = this.datepipe.transform(dataKoncowa, 'yyyy-MM-dd hh:mm:ss');
 
-    console.log(dataPoczatkowa);
-
-    console.log(dataPoczatkowaFormat);
-
 
     this.zamowieniaService.zliczZamowieniaDoRaportu(dataPoczatkowaFormat, dataKoncowaFormat).subscribe((iloscZamowien: number) => {
       this.iloscZamowien = iloscZamowien;
@@ -80,9 +76,6 @@ export class RaportyComponent implements OnInit {
 
     const dataKoncowaFormat = this.datepipe.transform(dataKoncowa, 'yyyy-MM-dd hh:mm:ss');
 
-    console.log(dataPoczatkowa);
-
-    console.log(dataPoczatkowaFormat);
 
     this.klienciService.zliczProfileKlientowDoRaportu(dataPoczatkowaFormat, dataKoncowaFormat).subscribe((iloscKlientow: number) => {
       this.iloscKlientow = iloscKlientow;

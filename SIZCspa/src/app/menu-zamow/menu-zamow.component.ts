@@ -35,19 +35,18 @@ export class MenuZamowComponent implements OnInit {
               private klienciService: KlienciService) {  }
 
   ngOnInit() {
+
+    this.nameId = this.autoryzacja.decodedToken.nameid;
+
     this.pobierzPozycjeMenu();
+
+    this.pobierzProfilKlienta();
 
     this.pobierzTypyPlatnosci();
 
     this.setDatepickerLanguage();
 
 
-    // this.typyPlatnosci.push({platnoscTypID: 1, nazwaPlatnosc: 'gotówka'});
-    // this.typyPlatnosci.push({platnoscTypID: 2, nazwaPlatnosc: 'blik'});
-    // this.typyPlatnosci.push({platnoscTypID: 3, nazwaPlatnosc: 'przelew'});
-
-
-    this.nameId = this.autoryzacja.decodedToken.nameid;
 
     this.formularzZamowienia = new FormGroup({
       kodPocztowy: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(5)]),
@@ -59,12 +58,6 @@ export class MenuZamowComponent implements OnInit {
       platnoscTyp: new FormControl('', Validators.required)
     }, this.czyDataRealizacjiPrawidlowa);
 
-
-    this.klienciService.pobierzProfilKlienta(this.nameId).subscribe((profilKlienta: PobierzKlient) => {
-      this.profilKlienta = profilKlienta;
-    }, error => {
-      this.alertService.danger('Błąd przy pobieraniu profilu klienta');
-    });
   }
 
   czyDataRealizacjiPrawidlowa(fg: FormGroup) {
@@ -75,6 +68,14 @@ export class MenuZamowComponent implements OnInit {
   setDatepickerLanguage() {
     defineLocale('pl', plLocale);
     this.localeService.use('pl');
+  }
+
+  pobierzProfilKlienta() {
+    this.klienciService.pobierzProfilKlienta(this.nameId).subscribe((profilKlienta: PobierzKlient) => {
+      this.profilKlienta = profilKlienta;
+    }, error => {
+      this.alertService.danger('Błąd przy pobieraniu profilu klienta');
+    });
   }
 
   pobierzPozycjeMenu() {

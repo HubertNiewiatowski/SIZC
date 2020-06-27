@@ -27,10 +27,14 @@ namespace SIZCapi.DTOs
 
         public virtual DlaZamowieniePozycjaMenuDto PozycjaMenu { get; set; }
 
+        public int KlientID { get; set; }
+        
+        public int PracownikID { get; set; }
+
         public virtual DlaZamowieniePlatnoscTypDto PlatnoscTyp { get; set; }
 
         public virtual DlaZamowienieZamowienieStatusDto ZamowienieStatus { get; set; }
 
-        public int PracownikID { get; set; }
+
     }
 }

@@ -13,7 +13,8 @@ export interface PobierzZamowienie {
     dataRealizacji: Date;
     dataZlozenia: Date;
     pozycjaMenu: DlaZamowieniePozycjaMenu;
+    klientID: number;
+    pracownikID: number;
     platnoscTyp: DlaZamowieniePlatnoscTyp;
     zamowienieStatus: DlaZamowienieZamowienieStatus;
-    pracownikID?: number;
 }

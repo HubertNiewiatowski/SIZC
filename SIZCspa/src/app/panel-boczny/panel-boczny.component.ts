@@ -8,7 +8,7 @@ import { AutoryzacjaService } from '../_serwisy/autoryzacja.service';
 })
 export class PanelBocznyComponent implements OnInit {
 
-  opened = true;
+  otwarty = true;
 
   constructor(public autoryzacja: AutoryzacjaService) { }
 
@@ -19,8 +19,8 @@ export class PanelBocznyComponent implements OnInit {
     return this.autoryzacja.zalogowany();
   }
 
-  toggleSidebar() {
-    this.opened = !this.opened;
+  przelacznikPanelBoczny() {
+    this.otwarty = !this.otwarty;
   }
 
 
