@@ -16,6 +16,8 @@ export class RejestracjaComponent implements OnInit {
   constructor(private autoryzacjaService: AutoryzacjaService, private alertService: AlertService, private router: Router) { }
 
   ngOnInit() {
+
+
     this.formularzRejestracji = new FormGroup({
       imie: new FormControl('', Validators.required),
       nazwisko: new FormControl('', Validators.required),
@@ -30,6 +32,8 @@ export class RejestracjaComponent implements OnInit {
       haslo: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(50)]),
       potwierdzHaslo: new FormControl('', Validators.required)
     }, this.czyHaslaJednakowe);
+
+
   }
 
   czyHaslaJednakowe(fg: FormGroup) {
@@ -38,7 +42,7 @@ export class RejestracjaComponent implements OnInit {
 
   zarejestruj() {
     if (this.formularzRejestracji.valid) {
-      this.autoryzacjaService.zarejestruj(this.formularzRejestracji.value).subscribe(() => {
+      this.autoryzacjaService.zarejestruj(this.formularzRejestracji.value).subscribe(next => {
         this.alertService.success('Rejestracja przebiegła pomyślnie');
         this.router.navigate(['/stronaGlowna']);
       }, error => {

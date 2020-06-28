@@ -6,24 +6,33 @@ import { PobierzPracownik } from '../_models/pobierzPracownik';
 @Injectable({
   providedIn: 'root'
 })
+
 export class PracownicyService {
+
+  // 1
   baseUrl = 'http://localhost:5000/api/ProfilPracownika/';
+
+  // 2
   constructor(private http: HttpClient) { }
 
-pobierzProfilePracownikowWszystkie(): Observable<PobierzPracownik[]> {
-  return this.http.get<PobierzPracownik[]>(this.baseUrl);
-}
+  // 3
+  pobierzProfilePracownikowWszystkie(): Observable<PobierzPracownik[]> {
 
-pobierzProfilPracownikaPoId(id): Observable<PobierzPracownik> {
-  return this.http.get<PobierzPracownik>(this.baseUrl + id);
-}
+    // 4
+    return this.http.get<PobierzPracownik[]>(this.baseUrl);
+  }
 
-aktualizujProfilPracownika(pracownik: PobierzPracownik, id): Observable<PobierzPracownik> {
-  return this.http.put<PobierzPracownik>(this.baseUrl + id, pracownik);
-}
+  // 5
+  pobierzProfilPracownikaPoId(id: number): Observable<PobierzPracownik> {
 
-usunProfilPracownika(id): Observable<{}> {
-  return this.http.delete(this.baseUrl + id);
-}
+    // 6
+    return this.http.get<PobierzPracownik>(this.baseUrl + id);
+  }
 
+  // 7
+  usunProfilPracownika(id: number): Observable<{}> {
+
+    // 8
+    return this.http.delete(this.baseUrl + id);
+  }
 }

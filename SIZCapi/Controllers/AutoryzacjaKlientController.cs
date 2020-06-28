@@ -38,14 +38,14 @@ namespace SIZCapi.Controllers
 
             if (await _repozytorium.CzyEmailIstnieje(klientRejestracja.AdresEmail))
             {
-                return BadRequest("Konto o tym adresie email jest już zajęte");
+                return BadRequest("Konto o tym adresie już istnieje");
             }
 
             var klientDoZarejestrowania = _mapper.Map<Klient>(klientRejestracja);
 
             await _repozytorium.Zarejestruj(klientDoZarejestrowania, klientRejestracja.Haslo);
 
-            return NoContent();
+            return Ok();
         }
 
         // POST /api/AutoryzacjaKlient/zaloguj/

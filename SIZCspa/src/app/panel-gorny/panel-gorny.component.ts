@@ -10,11 +10,13 @@ import { Router } from '@angular/router';
 })
 export class PanelGornyComponent implements OnInit {
 
+  //
   constructor(public autoryzacja: AutoryzacjaService, private alertService: AlertService, private router: Router) { }
 
   ngOnInit() {
   }
 
+  //
   zalogowany() {
     return this.autoryzacja.zalogowany();
   }

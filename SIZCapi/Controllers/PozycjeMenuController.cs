@@ -85,7 +85,7 @@ namespace SIZCapi.Controllers
 
             await _repozytorium.ZapiszZasob();
 
-            return NoContent();
+            return Ok();
         }
 
 
@@ -105,7 +105,7 @@ namespace SIZCapi.Controllers
             _repozytorium.UsunZasob(pozycjaModel);
             await _repozytorium.ZapiszZasob();
 
-            return NoContent();
+            return Ok();
         }
     }
 }

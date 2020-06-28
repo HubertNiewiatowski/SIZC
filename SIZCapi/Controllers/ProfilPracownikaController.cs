@@ -70,7 +70,7 @@ namespace SIZCapi.Controllers
 
             await _repozytorium.ZapiszZasob();
 
-            return NoContent();
+            return Ok();
         }
 
         // DELETE http://localhost:5000/api/ProfilPracownika/{id}
@@ -88,7 +88,7 @@ namespace SIZCapi.Controllers
             _repozytorium.UsunZasob(profilModel);
             await _repozytorium.ZapiszZasob();
 
-            return NoContent();
+            return Ok();
         }
     }
 }

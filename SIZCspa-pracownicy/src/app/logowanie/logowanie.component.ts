@@ -29,4 +29,9 @@ export class LogowanieComponent implements OnInit {
     });
   }
 
+  anuluj() {
+    this.alertService.info('Anulowano logowanie');
+    this.router.navigate(['/stronaGlowna']);
+  }
+
 }
