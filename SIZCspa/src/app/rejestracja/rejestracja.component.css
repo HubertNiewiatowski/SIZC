@@ -1,3 +1,11 @@
 .table {
     width: auto;
 }
+
+input {
+    width: 10rem;
+}
+
+td {
+    width: 11rem;
+}

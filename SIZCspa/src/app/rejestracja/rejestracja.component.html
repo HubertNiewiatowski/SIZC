@@ -5,9 +5,9 @@
 
     <div class="card">
       <div class="card-body p-1">
-        <div class="col-10">
+        <div class="col-12">
           <form [formGroup]="formularzRejestracji" (ngSubmit)="zarejestruj()">
-            <table class="table table-borderless">
+            <table class="table-responsive table-borderless">
               <tbody>
                 <tr>
                   <td><strong>Imię</strong></td>
@@ -34,7 +34,7 @@
                       [ngClass]="{'is-invalid': formularzRejestracji.get('adresEmail').errors && formularzRejestracji.get('adresEmail').touched}"
                       class="form-control"
                       formControlName="adresEmail">
-                    <div class="invalid-feedback">Pole adres email jest wymagane</div></td>
+                    <div class="invalid-feedback">Niepoprawny format adresu email</div></td>
                 </tr>
                 <tr>
                   <td><strong>Nr tel. stacjonarny</strong></td>
@@ -110,8 +110,8 @@
               </tbody>
             </table>
             <div class="form-group text-center">
-              <button class="btn btn-success mr-4" type="submit">Zarejestruj</button>
-              <button class="btn btn-info" type="button" (click)="anuluj()">Anuluj</button>
+              <button class="btn btn-success mr-4 mt-2" type="submit">Zarejestruj</button>
+              <button class="btn btn-info mt-2" type="button" (click)="anuluj()">Anuluj</button>
             </div>
           </form>
         </div>

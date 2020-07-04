@@ -62,15 +62,11 @@
               <table class="table table-borderless">
                 <tbody>
                   <tr>
-                    <td><strong>Koszt zamówienia</strong></td>
-                    <td>
-                      <tr>
-                        {{zamowienie.koszt | currency:'PLN'}} 
-                      </tr>
-                      <tr>
-                        w tym koszt dostawy - 5 zł
-                      </tr>
-                    </td>
+                    <td rowspan="2"><strong>Koszt zamówienia</strong></td>
+                    <td>{{zamowienie.koszt | currency:'PLN'}}</td>
+                  </tr>
+                  <tr>
+                    <td>w tym koszt dostawy - 5 zł</td>
                   </tr>
                   <tr>
                     <td><strong>Typ płatności</strong></td>

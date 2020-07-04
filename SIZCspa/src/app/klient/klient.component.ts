@@ -49,6 +49,7 @@ export class KlientComponent implements OnInit {
       this.alertService.warning('Błąd w trakcie usuwania profilu');
     }, () => {
       this.wyloguj();
+      this.router.navigate(['/klient']);
     });
   }
 

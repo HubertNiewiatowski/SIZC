@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
 import { AlertService } from 'ngx-alerts';
 import { ZamowieniaService } from '../_serwisy/zamowienia.service';
 import { DodajZamowienie } from '../_models/dodajZamowienie';
@@ -20,7 +20,7 @@ import { DlaZamowieniePlatnoscTyp } from '../_models/dlaZamowieniePlatnoscTyp';
   templateUrl: './menu-zamow.component.html',
   styleUrls: ['./menu-zamow.component.css']
 })
-export class MenuZamowComponent implements OnInit {
+export class MenuZamowComponent implements OnInit, DoCheck {
   pozycjaMenu: PobierzPozycjaMenu = {} as PobierzPozycjaMenu;
   zamowienie: DodajZamowienie = {} as DodajZamowienie;
   nameId: any;
@@ -46,8 +46,6 @@ export class MenuZamowComponent implements OnInit {
 
     this.setDatepickerLanguage();
 
-
-
     this.formularzZamowienia = new FormGroup({
       kodPocztowy: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(5)]),
       miejscowosc: new FormControl('', Validators.required),
@@ -58,6 +56,10 @@ export class MenuZamowComponent implements OnInit {
       platnoscTyp: new FormControl('', Validators.required)
     }, this.czyDataRealizacjiPrawidlowa);
 
+  }
+
+  ngDoCheck() {
+    this.zamowienie.koszt = this.pozycjaMenu.cena + 5;
   }
 
   czyDataRealizacjiPrawidlowa(fg: FormGroup) {
@@ -96,8 +98,6 @@ export class MenuZamowComponent implements OnInit {
 
   zamowPozycje() {
     if (this.formularzZamowienia.valid) {
-
-      this.zamowienie.koszt = this.pozycjaMenu.cena + 5;
 
       this.zamowienie.kodPocztowy = this.formularzZamowienia.get('kodPocztowy').value;
 

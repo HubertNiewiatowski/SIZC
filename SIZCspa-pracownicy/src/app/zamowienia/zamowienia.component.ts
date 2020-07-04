@@ -13,22 +13,32 @@ export class ZamowieniaComponent implements OnInit {
   zamowienia: PobierzZamowienie[];
   nameId: any;
   pracownikRolaId: string;
+  brakZamowien: boolean;
 
   constructor(private alertService: AlertService,
               private zamowieniaService: ZamowieniaService, private autoryzacja: AutoryzacjaService) { }
 
   ngOnInit() {
+    this.brakZamowien = false;
     this.nameId = this.autoryzacja.decodedToken.nameid;
     this.pracownikRolaId = this.autoryzacja.decodedToken.PracownikRolaId;
     this.pobierzZamowienia();
   }
 
   pobierzZamowienia() {
-    this.zamowieniaService.pobierzZamowieniaPracownika(this.nameId).subscribe((zamowienia: PobierzZamowienie[]) => {
-      this.zamowienia = zamowienia;
-    }, error => {
-      this.alertService.danger('Błąd przy pobieraniu zamowień');
-    });
+    this.zamowieniaService.pobierzZamowieniaPracownika(this.nameId).subscribe(
+      zamowienia => {
+        if (zamowienia.length > 0) {
+          this.zamowienia = zamowienia;
+        }
+        else {
+          this.brakZamowien = true;
+          this.alertService.info('Do Twojego konta nie przypisano żadnych zamówień');
+        }
+      }, error => {
+          this.alertService.danger('Błąd przy pobieraniu zamowień');
+      }
+    );
   }
 
   rolaKucharz() {
@@ -51,6 +61,10 @@ export class ZamowieniaComponent implements OnInit {
     {
       return false;
     }
+  }
+
+  czyNiePosiadaZamowien() {
+    return this.brakZamowien;
   }
 
 }

@@ -12,6 +12,7 @@ import { AutoryzacjaService } from '../_serwisy/autoryzacja.service';
 export class ZamowieniaComponent implements OnInit {
   zamowienia: PobierzZamowienie[];
   nameId: any;
+  brakZamowien: boolean;
 
   constructor(private alertService: AlertService,
               private zamowieniaService: ZamowieniaService, private autoryzacja: AutoryzacjaService) { }
@@ -22,11 +23,22 @@ export class ZamowieniaComponent implements OnInit {
   }
 
   pobierzZamowienia() {
-    this.zamowieniaService.pobierzZamowieniaKlienta(this.nameId).subscribe((zamowienia: PobierzZamowienie[]) => {
-      this.zamowienia = zamowienia;
+    this.zamowieniaService.pobierzZamowieniaKlienta(this.nameId).subscribe(
+      zamowienia => {
+      if (zamowienia.length > 0) {
+        this.zamowienia = zamowienia;
+      }
+      else {
+        this.brakZamowien = true;
+        this.alertService.info('Twoje konto nie posiada złożonych zamówień');
+      }
     }, error => {
-      this.alertService.danger('Błąd przy pobieraniu zamowień');
-    });
+        this.alertService.danger('Błąd przy pobieraniu zamowień');
+    }
+  );
+}
+  czyNiePosiadaZamowien() {
+    return this.brakZamowien;
   }
 
 }

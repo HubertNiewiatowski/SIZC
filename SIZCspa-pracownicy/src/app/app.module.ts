@@ -63,7 +63,7 @@ export function tokenGetter() {
       ReactiveFormsModule,
       SidebarModule.forRoot(),
       BrowserAnimationsModule,
-      AlertModule.forRoot({maxMessages: 5, timeout: 50000, position: 'right'}),
+      AlertModule.forRoot({maxMessages: 5, timeout: 90000, position: 'right'}),
       BsDatepickerModule.forRoot(),
       BsDropdownModule.forRoot(),
       RouterModule.forRoot(appRoutes),
