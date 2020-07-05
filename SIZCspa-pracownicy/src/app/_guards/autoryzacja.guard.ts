@@ -15,7 +15,7 @@ export class AutoryzacjaGuard implements CanActivate {
       return true;
     }
 
-    this.alertService.warning('Brak dostępu');
+    this.alertService.warning('Operacja dostępna dla zalogowanych pracowników');
     this.router.navigate(['/stronaGlowna']);
     return false;
   }

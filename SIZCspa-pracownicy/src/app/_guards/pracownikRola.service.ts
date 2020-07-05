@@ -22,7 +22,7 @@ export class PracownikRolaService implements CanActivate {
     if (!this.autoryzacja.zalogowany() || this.autoryzacja.decodedToken.PracownikRolaId !== rolaPracownika) {
       this.router.navigate(['/stronaGlowna']
       );
-      this.alertService.warning('Brak dostępu');
+      this.alertService.warning('Operacja wymaga uprawnień administratora');
       return false;
     }
     return true;
