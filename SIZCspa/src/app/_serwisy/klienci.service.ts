@@ -12,15 +12,15 @@ export class KlienciService {
 
 constructor(private http: HttpClient) { }
 
-  pobierzProfilKlienta(id): Observable<PobierzKlient> {
+  pobierzProfilKlienta(id: number): Observable<PobierzKlient> {
     return this.http.get<PobierzKlient>(this.baseUrl + id);
   }
 
-  aktualizujProfilKlienta(klient: PobierzKlient, id): Observable<PobierzKlient> {
+  aktualizujProfilKlienta(klient: PobierzKlient, id: number): Observable<PobierzKlient> {
     return this.http.put<PobierzKlient>(this.baseUrl + id, klient);
   }
 
-  usunProfilKlienta(id): Observable<{}> {
+  usunProfilKlienta(id: number): Observable<{}> {
     return this.http.delete(this.baseUrl + id);
   }
 }

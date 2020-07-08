@@ -14,7 +14,7 @@ export class ZamowieniaService {
 
   constructor(private http: HttpClient) { }
 
-  pobierzZamowieniaKlienta(id): Observable<PobierzZamowienie[]> {
+  pobierzZamowieniaKlienta(id: number): Observable<PobierzZamowienie[]> {
     return this.http.get<PobierzZamowienie[]>(this.baseUrl + 'klient/' + id);
   }
 

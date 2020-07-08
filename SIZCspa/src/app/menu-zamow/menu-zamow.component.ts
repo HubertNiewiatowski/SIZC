@@ -64,7 +64,7 @@ export class MenuZamowComponent implements OnInit, DoCheck {
 
   czyDataRealizacjiPrawidlowa(fg: FormGroup) {
     const aktualnaData = new Date();
-    return fg.get('dataRealizacji').value > aktualnaData ? null : {'nieprawidłowaDataRealizacji': true};
+    return fg.get('dataRealizacji').value > aktualnaData ? null : {nieprawidłowaDataRealizacji: true};
   }
 
   setDatepickerLanguage() {

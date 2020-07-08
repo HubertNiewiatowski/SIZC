@@ -3,7 +3,6 @@ import { ZamowieniaService } from '../_serwisy/zamowienia.service';
 import { AlertService } from 'ngx-alerts';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';
-
 import { AktualizujZamowienie } from '../_models/aktualizujZamowienie';
 import { DlaZamowienieZamowienieStatus } from '../_models/dlaZamowienieZamowienieStatus';
 import { AutoryzacjaService } from '../_serwisy/autoryzacja.service';
@@ -30,13 +29,6 @@ export class ZamowienieEdytujComponent implements OnInit {
     this.pracownikRolaId = this.autoryzacja.decodedToken?.PracownikRolaId;
     this.rolaKucharz();
     this.rolaDostawca();
-
-
-    // this.statusyZamowien.push({zamowienieStatusID: 1, nazwaStatus: 'zamówione'});
-    // this.statusyZamowien.push({zamowienieStatusID: 2, nazwaStatus: 'w trakcie przygotowywania'});
-    // this.statusyZamowien.push({zamowienieStatusID: 3, nazwaStatus: 'przygotowane'});
-    // this.statusyZamowien.push({zamowienieStatusID: 4, nazwaStatus: 'w trakcie dostawy'});
-    // this.statusyZamowien.push({zamowienieStatusID: 5, nazwaStatus: 'dostarczone'});
 
     this.formularzZamowienia = new FormGroup({
 

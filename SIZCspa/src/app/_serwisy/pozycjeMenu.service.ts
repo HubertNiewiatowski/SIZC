@@ -16,7 +16,7 @@ export class PozycjeMenuService {
     return this.http.get<PobierzPozycjaMenu[]>(this.baseUrl);
   }
 
-  pobierzPozycjeMenuPoId(id): Observable<PobierzPozycjaMenu> {
+  pobierzPozycjeMenuPoId(id: number): Observable<PobierzPozycjaMenu> {
     return this.http.get<PobierzPozycjaMenu>(this.baseUrl + id);
   }
 }

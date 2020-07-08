@@ -24,7 +24,7 @@ export class RejestracjaPracownikComponent implements OnInit {
   }
 
   czyHaslaJednakowe(fg: FormGroup) {
-    return fg.get('haslo').value === fg.get('potwierdzHaslo').value ? null : {'nieprawidłowe': true};
+    return fg.get('haslo').value === fg.get('potwierdzHaslo').value ? null : {nieprawidłowe: true};
   }
 
   zarejestruj() {
